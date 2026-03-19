@@ -11,7 +11,6 @@ export function Hero() {
       <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_18%,rgba(214,186,150,0.34),transparent_42%),radial-gradient(circle_at_50%_72%,rgba(168,140,104,0.16),transparent_58%),linear-gradient(180deg,#e9dfd2_0%,#ddd0bf_46%,#cdb9a0_100%)]" />
       <div className="pointer-events-none absolute left-[0%] top-[-12%] h-[42rem] w-[12rem] rotate-[-38deg] bg-[radial-gradient(ellipse_at_top,rgba(205,46,58,0.20)_0%,rgba(205,46,58,0.42)_28%,rgba(205,46,58,0.35)_52%,transparent_12%)] blur-3xl" />
       <div className="pointer-events-none absolute right-[0%] top-[-12%] h-[42rem] w-[12rem] rotate-[38deg] bg-[radial-gradient(ellipse_at_top,rgba(0,71,160,0.20)_0%,rgba(0,71,160,0.42)_28%,rgba(0,71,160,0.35)_52%,transparent_12%)] blur-3xl" />
-      <div className="absolute inset-x-0 top-0 h-40 bg-gradient-to-b from-white/30 to-transparent" />
 
       <div className="relative z-10 mx-auto flex min-h-[100svh] w-full  items-center px-5 sm:px-8 lg:px-10">
         <div className="relative mx-auto w-full min-h-[100svh]">
@@ -30,15 +29,19 @@ export function Hero() {
               fill
               priority
               sizes="(max-width: 768px) 92vw, 1100px"
-              className="hidden object-contain mx-auto mt-16 max-w-5xl sm:block"
+              className="hidden object-contain mx-auto mt-24 max-w-6xl sm:block"
             />
 
-            <div className="pointer-events-none absolute inset-x-0 top-[8%] z-30 h-[34%] bg-gradient-to-b from-white/75 via-white/55 to-transparent blur-3xl" />
+            <div className="pointer-events-none absolute inset-x-0 top-[8%] z-30 h-[45%] bg-gradient-to-b from-[#E6DCD0] via-[#E6DCD0]/80 to-transparent blur-3xl" />
 
-            <div className="relative z-30 px-2 text-center">
-              <p className="mb-3 font-korean text-2xl font-black text-[#CD2E3A]">
-                Jin<span className="text-[#0047A0]">jja</span>
-              </p>
+            <div className="relative flex flex-col gap-2 justify-center items-center z-30 px-2 text-center">
+              <div className="inline-flex items-center mb-3 gap-3">
+                
+                <p className="font-korean text-2xl font-black text-[#CD2E3A]">
+                  Jinjja
+                </p>
+                <Image src="/marketing/hero/south-korea-flag.png" alt="Flag of South Korea" width={40} height={20} />
+              </div>
               <p className="inline-flex rounded-full border border-slate-600/20 bg-slate-600/5 px-3 py-1 text-xs uppercase tracking-[0.14em] text-neutral-700/80">
                 {heroContent.eyebrow}
               </p>

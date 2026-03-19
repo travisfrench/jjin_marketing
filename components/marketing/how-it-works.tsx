@@ -8,7 +8,7 @@ export function HowItWorks() {
   const reduceMotion = useReducedMotion();
 
   return (
-    <section id="how-it-works" className="relative border-t border-white/10 bg-[#F0E4D9] py-20 sm:py-24">
+    <section id="how-it-works" className="relative border-t border-white/10 py-20 sm:py-24">
       <SectionShell>
         <div className="mx-auto max-w-3xl space-y-3 text-center">
           <p className="text-xs uppercase tracking-[0.15em] text-neutral-800/70">Why audio + reading works</p>

@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Image from "next/image";
 import { SectionShell } from "@/components/marketing/section-shell";
 import { appStoreUrl, footerLinks } from "@/lib/marketing-content";
 
@@ -7,19 +8,18 @@ export function Footer() {
     <footer className="border-t border-white/10 py-8">
       <SectionShell>
         <div className="flex flex-col gap-5 sm:flex-row sm:items-center sm:justify-between">
-          <p className="font-korean text-lg font-black text-foreground">Jinjja</p>
+          <div className="inline-flex items-center mb-3 gap-3">
+
+            <p className="font-korean text-2xl font-black text-[#CD2E3A]">
+              Jinjja
+            </p>
+            <Image src="/marketing/hero/south-korea-flag.png" alt="Flag of South Korea" width={40} height={20} />
+          </div>
 
           <div className="flex flex-wrap items-center gap-4 text-sm">
-            <a
-              href={appStoreUrl}
-              target="_blank"
-              rel="noreferrer"
-              className="text-warm transition hover:text-[#f1bd84]"
-            >
-              App Store
-            </a>
+
             {footerLinks.map((link) => (
-              <Link key={link.href} href={link.href} className="text-white/75 transition hover:text-white">
+              <Link key={link.href} href={link.href} className="text-neutral-800/75 transition hover:text-neutral-800">
                 {link.label}
               </Link>
             ))}

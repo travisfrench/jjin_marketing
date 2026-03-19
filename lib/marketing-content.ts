@@ -111,23 +111,23 @@ export const howItWorksItems = [
 export const appScreens = [
   // Swap these files with final app screenshots while keeping the same paths.
   {
-    title: "Home",
-    src: "/marketing/app/screen-home.png",
+    title: "Study",
+    src: "/marketing/screenshots/study-card-light.webp",
     alt: "Jinjja app home screen",
   },
   {
-    title: "Study",
-    src: "/marketing/app/screen-study.png",
+    title: "Categories",
+    src: "/marketing/screenshots/category-courtesy-light.webp",
     alt: "Jinjja study screen",
   },
   {
-    title: "Browse",
-    src: "/marketing/app/screen-browse.png",
+    title: "Quiz",
+    src: "/marketing/screenshots/quiz-light.webp",
     alt: "Jinjja browse screen",
   },
   {
-    title: "Favorites",
-    src: "/marketing/app/screen-favorites.png",
+    title: "Conversation",
+    src: "/marketing/screenshots/conversation-light.webp",
     alt: "Jinjja favorites screen",
   },
 ];

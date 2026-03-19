@@ -81,10 +81,10 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className="h-full bg-background">
+    <html lang="en" className="h-full bg-[#F0E4D9]">
       <body
         id="top"
-        className={`${sora.variable} ${sourceSans.variable} ${notoSansKr.variable} min-h-full bg-background font-body text-foreground antialiased`}
+        className={`${sora.variable} ${sourceSans.variable} ${notoSansKr.variable} min-h-full bg-[#F0E4D9] font-body text-foreground antialiased`}
       >
         {children}
       </body>

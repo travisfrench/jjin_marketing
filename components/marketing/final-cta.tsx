@@ -1,12 +1,16 @@
 import { ArrowUp } from "lucide-react";
 import { SectionShell } from "@/components/marketing/section-shell";
 import { appStoreUrl } from "@/lib/marketing-content";
+import Image from "next/image";
+
+const appStoreBadgeSrc =
+  "/marketing/app/Download_on_the_App_Store_Badge_US-UK_RGB_wht_092917.svg";
 
 export function FinalCta() {
   return (
     <section id="download" className="relative border-t border-white/10 py-20 sm:py-24">
       <SectionShell>
-        <div className="mx-auto max-w-3xl rounded-3xl border border-white/15 bg-[linear-gradient(180deg,rgba(20,24,31,0.85),rgba(9,11,14,0.96))] px-6 py-10 text-center shadow-panel-soft sm:px-12 sm:py-14">
+        <div className="mx-auto max-w-3xl rounded-3xl border border-white/5 bg-[linear-gradient(160deg,rgba(68,71,110,0.9),rgba(146,95,89,0.88))] backdrop-blur-xl px-6 py-10 text-center shadow-panel-soft sm:px-12 sm:py-14">
           <h2 className="font-heading text-3xl font-semibold text-foreground sm:text-4xl">
             Take Korean with you
           </h2>
@@ -14,14 +18,21 @@ export function FinalCta() {
             Built for real-life moments in Korea and everyday practice in between.
           </p>
 
-          <div className="mt-8 flex flex-wrap items-center justify-center gap-3">
+          <div className="mt-8 flex inline-flex items-center justify-center gap-3">
             <a
               href={appStoreUrl}
               target="_blank"
               rel="noreferrer"
-              className="rounded-full border border-warm/70 bg-warm/20 px-5 py-3 text-sm font-medium text-warm transition hover:bg-warm/30"
+              className="mx-auto inline-flex"
+              aria-label={`Download Jinjja from the App Store`}
             >
-              Download on the App Store
+              <Image
+                src={appStoreBadgeSrc}
+                alt="Download on the App Store"
+                width={180}
+                height={60}
+                className="h-11 w-auto"
+              />
             </a>
             <a
               href="#top"
@@ -36,3 +47,4 @@ export function FinalCta() {
     </section>
   );
 }
+

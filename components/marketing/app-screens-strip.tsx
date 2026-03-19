@@ -9,14 +9,14 @@ export function AppScreensStrip() {
   const reduceMotion = useReducedMotion();
 
   return (
-    <section className="relative border-t border-white/10 py-20 sm:py-24">
+    <section className="relative bg-[#C9BBAE] border-t border-white/10 py-20 sm:py-24">
       <SectionShell>
         <div className="mx-auto max-w-2xl space-y-3 text-center">
-          <p className="text-xs uppercase tracking-[0.15em] text-white/70">Inside the app</p>
-          <h2 className="font-heading text-3xl font-semibold text-foreground sm:text-4xl">
+          <p className="text-xs uppercase tracking-[0.15em] text-neutral-800/70">Inside the app</p>
+          <h2 className="font-heading text-3xl font-semibold text-neutral-800 sm:text-4xl">
             Built to feel fast, focused, and easy to use
           </h2>
-          <p className="text-base text-muted sm:text-lg">
+          <p className="text-base text-neutral-800/70 sm:text-lg">
             No clutter. Just the phrases you need, when you need them.
           </p>
         </div>
