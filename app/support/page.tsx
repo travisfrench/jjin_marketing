@@ -51,7 +51,7 @@ export default function SupportPage() {
                 <MessageSquareText size={16} className="mt-1 text-warm" />
                 How do I delete my account?
               </p>
-              <p className="pl-6">If you are a premium member, cancel your membership through Apple Subscriptions. For account deletion, send us an email at support@getjinjja.com and we'll delete your account and all information.</p>
+              <p className="pl-6">If you are a premium member, cancel your membership through Apple Subscriptions. For account deletion, send us an email at support@getjinjja.com and we&apos;ll delete your account and all information.</p>
             </div>
           </section>
         </div>
