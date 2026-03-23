@@ -12,9 +12,9 @@ export const heroContent = {
 };
 
 export const navigationLinks = [
-  { label: "How it works", href: "#how-it-works" },
-  { label: "Scenes", href: "#scenes" },
-  { label: "Download", href: "#download" },
+  { label: "Privacy", href: "/privacy" },
+  { label: "Terms", href: "/terms" },
+  { label: "Support", href: "/support" },
 ];
 
 export type SceneContent = {

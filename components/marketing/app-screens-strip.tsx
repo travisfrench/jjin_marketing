@@ -14,15 +14,15 @@ export function AppScreensStrip() {
         <div className="mx-auto max-w-2xl space-y-3 text-center">
           <p className="text-xs uppercase tracking-[0.15em] text-neutral-800/70">Inside the app</p>
           <h2 className="font-heading text-3xl font-semibold text-neutral-800 sm:text-4xl">
-            Built to feel fast, focused, and easy to use
+            Built around repetition
           </h2>
           <p className="text-base text-neutral-800/70 sm:text-lg">
-            No clutter. Just the phrases you need, when you need them.
+            Audio first learning. Hangul basics. Active learning quizzes, and more.
           </p>
         </div>
 
         <div className="-mx-5 mt-12 overflow-x-auto overflow-y-clip px-5 pb-2 sm:mx-0 sm:overflow-visible sm:px-0 sm:pb-0">
-          <div className="flex w-max snap-x snap-mandatory gap-4 sm:grid sm:w-auto sm:grid-cols-2 lg:grid-cols-4">
+          <div className="flex w-max snap-x snap-mandatory gap-4 sm:grid sm:w-auto sm:grid-cols-2 lg:grid-cols-5">
           {appScreens.map((screen, index) => (
             <motion.figure
               key={screen.src}

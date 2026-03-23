@@ -74,12 +74,13 @@ export function Hero() {
               className="absolute bottom-[12%] left-1/2 z-20 inline-flex -translate-x-1/2 transition hover:opacity-90 sm:bottom-[12%]"
               aria-label="Download Jinjja from the App Store"
             >
+              <p className="text-black text-md text-center font-semibold bg-white border border-black/70 rounded-md px-3 py-2 shadow-lg">iOS App Available Soon!</p>
               <Image
                 src={appStoreBadgeSrc}
                 alt="Download on the App Store"
                 width={180}
                 height={60}
-                className="h-11 w-auto sm:h-12"
+                className="hidden h-11 w-auto sm:h-12"
               />
             </a>
           </div>

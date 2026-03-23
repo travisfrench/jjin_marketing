@@ -1,5 +1,7 @@
 import Link from "next/link";
 import { SectionShell } from "@/components/marketing/section-shell";
+import { Navbar } from "@/components/marketing/navbar";
+import { Footer } from "@/components/marketing/footer";
 
 export const metadata = {
   title: "Privacy Policy | Jinjja",
@@ -9,6 +11,7 @@ export const metadata = {
 export default function PrivacyPage() {
   return (
     <main className="min-h-screen border-t border-white/10 pt-24">
+      <Navbar />
       <SectionShell className="pb-20">
         <div className="mx-auto max-w-3xl space-y-8 rounded-3xl border border-white/15 bg-[linear-gradient(180deg,rgba(15,19,24,0.8),rgba(8,10,13,0.9))] p-6 sm:p-10">
           <div className="space-y-3">
@@ -326,6 +329,7 @@ export default function PrivacyPage() {
           </div>
         </div>
       </SectionShell>
+      <Footer />
     </main>
   );
 }

@@ -19,26 +19,26 @@ export function Navbar() {
   return (
     <header className="fixed inset-x-0 top-0 z-50 px-4 pt-4 sm:px-8">
       <div
-        className={`mx-auto flex w-full max-w-6xl items-center justify-between rounded-2xl border px-4 py-3 transition-all duration-300 sm:px-6 ${
+        className={`mx-auto flex w-full max-w-6xl items-center justify-between rounded-2xl px-4 py-3 transition-all duration-300 sm:px-6 ${
           scrolled
-            ? "border-white/20 bg-black/45 shadow-panel-soft backdrop-blur-xl"
-            : "border-white/10 bg-black/20 backdrop-blur"
+            ? "border border-white/10 bg-white/20 backdrop-blur"
+            : ""
         }`}
       >
         <Link
           href="/"
-          className="font-heading text-lg font-semibold tracking-wide text-foreground"
+          className="font-korean font-black text-xl tracking-wide text-black/80"
           aria-label="Jinjja home"
         >
           Jinjja
         </Link>
 
-        <nav className="hidden items-center gap-7 md:flex" aria-label="Primary">
+        <nav className="items-center gap-7 md:flex" aria-label="Primary">
           {navigationLinks.map((item) => (
             <a
               key={item.href}
               href={item.href}
-              className="hidden text-sm text-white/80 transition hover:text-white"
+              className="text-sm text-black/80 transition hover:text-black"
             >
               {item.label}
             </a>
@@ -47,7 +47,7 @@ export function Navbar() {
             href={appStoreUrl}
             target="_blank"
             rel="noreferrer"
-            className="rounded-full border border-warm/60 bg-warm/20 px-4 py-2 text-sm font-medium text-warm transition hover:border-warm hover:bg-warm/30"
+            className="rounded-full border border-neutral-700/60 bg-warm/20 px-4 py-2 text-sm font-medium text-neutral-700 transition hover:border-warm hover:bg-warm/30"
           >
             Download
           </a>

@@ -57,7 +57,7 @@ export const metadata: Metadata = {
   description:
     "Study real Korean phrases for cafes, restaurants, transit, hotels, and everyday life in Korea.",
   applicationName: "Jinjja",
-  metadataBase: new URL("https://jinjja.app"),
+  metadataBase: new URL("https://getjinjja.com"),
   openGraph: {
     title: "Jinjja | Learn Korean for real-life moments",
     description:
@@ -66,7 +66,7 @@ export const metadata: Metadata = {
     type: "website",
     images: [
       {
-        url: "/marketing/og/og-image.png",
+        url: "/marketing/og/og-image.jpg",
         width: 1200,
         height: 630,
         alt: "Jinjja app preview",

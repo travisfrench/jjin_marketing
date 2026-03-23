@@ -26,12 +26,13 @@ export function FinalCta() {
               className="mx-auto inline-flex"
               aria-label={`Download Jinjja from the App Store`}
             >
+              <p className="text-black text-md text-center font-semibold bg-white border border-black/70 rounded-md px-3 py-2 shadow-lg">iOS App Available Soon!</p>
               <Image
                 src={appStoreBadgeSrc}
                 alt="Download on the App Store"
                 width={180}
                 height={60}
-                className="h-11 w-auto"
+                className="hidden h-11 w-auto"
               />
             </a>
           </div>
