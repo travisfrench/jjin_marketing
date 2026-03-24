@@ -1,10 +1,10 @@
 export const appStoreUrl = "https://apps.apple.com";
 
 export const heroContent = {
-  eyebrow: "Repetition-first Korean learning",
+  eyebrow: "Listen. Repeat. Learn.",
   title: "Korean learnings for real Korea moments",
   description:
-    "Study real phrases for cafes, restaurants, transit, hotels, and everyday life in Korea.",
+    "Audio driven, repetition-first Korean learning.",
   ctaPrimary: "Download on the App Store",
   ctaSecondary: "See how it works",
   sceneTags: ["Restaurants", "Cafes", "Transit", "Hotels", "Basics"],
@@ -24,6 +24,7 @@ export type SceneContent = {
   phrase: string;
   romanization: string;
   meaning: string;
+  pills: string[];
   copy: string;
   image: string;
   audio: string;
@@ -36,7 +37,8 @@ export const scenes: SceneContent[] = [
     title: "Handle your first table interaction with confidence",
     phrase: "메뉴 좀 주세요",
     romanization: "menyu jom juseyo",
-    meaning: "Please give me the menu",
+    meaning: "Let me look at the menu",
+    pills: ["Dining", "Menu", "Confidence"],
     copy: "Start comfortably the moment you sit down.",
     image: "/marketing/scenes/jinjja-kbbq-bg.webp",
     audio: "/marketing/audio/menu.wav",
@@ -48,6 +50,7 @@ export const scenes: SceneContent[] = [
     phrase: "포장해 주세요",
     romanization: "pojanghae juseyo",
     meaning: "To go please",
+    pills: ["Ordering", "Takeout", "Speed"],
     copy: "Useful at the counter when you need to order quickly.",
     image: "/marketing/scenes/jinjja-cafe-bg.webp",
     audio: "/marketing/audio/pojanghae-juseyo.wav",
@@ -59,6 +62,7 @@ export const scenes: SceneContent[] = [
     phrase: "어디에서 타요?",
     romanization: "eodieseo tayo?",
     meaning: "Where do I board?",
+    pills: ["Subway", "Directions", "Urgent"],
     copy: "Learn what helps when you need to move and ask fast.",
     image: "/marketing/scenes/jinjja-subway-bg.webp",
     audio: "/marketing/audio/eodieseo-tayo.wav",
@@ -70,6 +74,7 @@ export const scenes: SceneContent[] = [
     phrase: "체크인",
     romanization: "Chekeu in",
     meaning: "Check in",
+    pills: ["Traveling", "Arrival", "Polite"],
     copy: "Smooth out the essential parts of travel.",
     image: "/marketing/scenes/jinjja-hotel-bg.webp",
     audio: "/marketing/audio/chekeu-in.wav",
@@ -81,6 +86,7 @@ export const scenes: SceneContent[] = [
     phrase: "실례합니다",
     romanization: "sillyehamnida",
     meaning: "Excuse me",
+    pills: ["Conversation", "Everyday", "Respectful"],
     copy: "One of the most useful phrases when you are learning in the real world.",
     image: "/marketing/scenes/jinjja-basics-bg.webp",
     audio: "/marketing/audio/sillyehamnida.wav",

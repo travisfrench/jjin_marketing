@@ -93,7 +93,7 @@ export function SceneSection({ scenes }: SceneSectionProps) {
                   romanization={scene.romanization}
                   meaning={scene.meaning}
                   audioSrc={scene.audio}
-                  pills={["Situation", "Phrase", "Confidence"]}
+                  pills={scene.pills}
                 />
                 <div className="max-w-3xl space-y-3">
                   <p className="text-sm uppercase tracking-[0.15em] text-white/80">{scene.label}</p>
@@ -195,7 +195,7 @@ export function SceneSection({ scenes }: SceneSectionProps) {
                     audioSrc={scene.audio}
                     audioLabel={`Play ${scene.label} phrase audio`}
                     isActive={isActive}
-                    pills={["Situation", "Phrase", "Confidence"]}
+                    pills={scene.pills}
                     className="mx-auto"
                   />
 

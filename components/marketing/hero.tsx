@@ -59,10 +59,10 @@ export function Hero() {
                 label="Basics"
                 phrase="안녕하세요"
                 romanization="annyeonghaseyo"
-                meaning="Hello"
+                meaning="Hello (polite)"
                 audioSrc="/marketing/audio/hello.wav"
                 audioLabel="Play hello phrase audio"
-                pills={["First phrase", "Everyday", "Speak"]}
+                pills={["First phrase", "Everyday", "Essentials"]}
                 className="border-white/20 bg-[linear-gradient(160deg,rgba(18,24,30,0.94),rgba(7,9,13,0.92))] p-3 sm:p-4"
               />
             </div>
