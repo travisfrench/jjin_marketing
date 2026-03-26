@@ -9,7 +9,7 @@ export function Hero() {
   return (
     <section className="relative min-h-[100svh] w-full overflow-hidden">
       <Image
-        src="/marketing/hero/Jjin-hero-mobile-sky.webp"
+        src="/marketing/hero/jjin-hero-mobile-sky.webp"
         alt="Jjin hero scene showing the app in a Korean street setting"
         fill
         priority

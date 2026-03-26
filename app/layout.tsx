@@ -57,7 +57,7 @@ export const metadata: Metadata = {
   description:
     "Study real Korean phrases for cafes, restaurants, transit, hotels, and everyday life in Korea.",
   applicationName: "Jjin",
-  metadataBase: new URL("https://getJjin.com"),
+  metadataBase: new URL("https://jjin.app"),
   openGraph: {
     title: "Jjin | Learn Korean for real-life moments",
     description:

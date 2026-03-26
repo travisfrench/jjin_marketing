@@ -331,7 +331,7 @@ export default function AboutPage() {
             <div className="relative overflow-hidden rounded-[2.1rem] border border-[#9D7D63] bg-[#261B13] p-8 text-[#F5E8D9] shadow-[0_28px_60px_rgba(46,28,15,0.38)] sm:p-12">
               <div className="absolute inset-0">
                 <Image
-                  src="/marketing/scenes/Jjin-hotel-bg.webp"
+                  src="/marketing/scenes/jjin-hotel-bg.webp"
                   alt="Korea evening scene"
                   fill
                   sizes="100vw"

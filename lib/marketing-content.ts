@@ -8,7 +8,7 @@ export const heroContent = {
   ctaPrimary: "Download on the App Store",
   ctaSecondary: "See how it works",
   sceneTags: ["Restaurants", "Cafes", "Transit", "Hotels", "Basics"],
-  heroArt: "/marketing/hero/Jjin-hero-full-sky.webp",
+  heroArt: "/marketing/hero/jjin-hero-full-sky.webp",
 };
 
 export const navigationLinks = [
@@ -41,7 +41,7 @@ export const scenes: SceneContent[] = [
     meaning: "Let me look at the menu",
     pills: ["Dining", "Menu", "Confidence"],
     copy: "Start comfortably the moment you sit down.",
-    image: "/marketing/scenes/Jjin-kbbq-bg.webp",
+    image: "/marketing/scenes/jjin-kbbq-bg.webp",
     audio: "/marketing/audio/menu.wav",
   },
   {
@@ -53,7 +53,7 @@ export const scenes: SceneContent[] = [
     meaning: "To go please",
     pills: ["Ordering", "Takeout", "Speed"],
     copy: "Useful at the counter when you need to order quickly.",
-    image: "/marketing/scenes/Jjin-cafe-bg.webp",
+    image: "/marketing/scenes/jjin-cafe-bg.webp",
     audio: "/marketing/audio/pojanghae-juseyo.wav",
   },
   {
@@ -65,7 +65,7 @@ export const scenes: SceneContent[] = [
     meaning: "Where do I board?",
     pills: ["Subway", "Directions", "Urgent"],
     copy: "Learn what helps when you need to move and ask fast.",
-    image: "/marketing/scenes/Jjin-subway-bg.webp",
+    image: "/marketing/scenes/jjin-subway-bg.webp",
     audio: "/marketing/audio/eodieseo-tayo.wav",
   },
   {
@@ -77,7 +77,7 @@ export const scenes: SceneContent[] = [
     meaning: "Check in",
     pills: ["Traveling", "Arrival", "Polite"],
     copy: "Smooth out the essential parts of travel.",
-    image: "/marketing/scenes/Jjin-hotel-bg.webp",
+    image: "/marketing/scenes/jjin-hotel-bg.webp",
     audio: "/marketing/audio/chekeu-in.wav",
   },
   {
@@ -89,7 +89,7 @@ export const scenes: SceneContent[] = [
     meaning: "Excuse me",
     pills: ["Conversation", "Everyday", "Respectful"],
     copy: "One of the most useful phrases when you are learning in the real world.",
-    image: "/marketing/scenes/Jjin-basics-bg.webp",
+    image: "/marketing/scenes/jjin-basics-bg.webp",
     audio: "/marketing/audio/sillyehamnida.wav",
   },
 ];
