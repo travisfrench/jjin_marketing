@@ -1,4 +1,4 @@
-export const appStoreUrl = "https://apps.apple.com";
+export const appStoreUrl = "https://apps.apple.com/us/app/jjin-learn-korean/id6760714406";
 
 export const heroContent = {
   eyebrow: "Listen. Repeat. Learn.",

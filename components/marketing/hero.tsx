@@ -66,15 +66,12 @@ export function Hero() {
             className="absolute bottom-[12%] left-1/2 z-30 inline-flex -translate-x-1/2 transition hover:opacity-90 sm:bottom-[12%]"
             aria-label="Download Jjin from the App Store"
           >
-            <p className="rounded-md border border-black/70 bg-white px-3 py-2 text-center text-md font-semibold text-black shadow-lg">
-              iOS App Available Soon!
-            </p>
             <Image
               src={appStoreBadgeSrc}
               alt="Download on the App Store"
               width={180}
               height={60}
-              className="hidden h-11 w-auto sm:h-12"
+              className="h-11 w-auto sm:h-12"
             />
           </a>
         </div>

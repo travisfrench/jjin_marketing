@@ -108,13 +108,12 @@ export function SceneSection({ scenes }: SceneSectionProps) {
                     className="mx-auto mt-4 inline-flex"
                     aria-label={`Download Jjin from the App Store for ${scene.label}`}
                   >
-                    <p className="text-black text-md text-center font-semibold bg-white border border-black/70 rounded-md px-3 py-2 shadow-lg">iOS App Available Soon!</p>
                     <Image
                       src={appStoreBadgeSrc}
                       alt="Download on the App Store"
                       width={180}
                       height={60}
-                      className="hidden h-11 w-auto"
+                      className="h-11 w-auto"
                     />
                   </a>
                 </div>
@@ -212,13 +211,12 @@ export function SceneSection({ scenes }: SceneSectionProps) {
                       className="mx-auto mt-4 inline-flex"
                       aria-label={`Download Jjin from the App Store for ${scene.label}`}
                     >
-                      <p className="text-black text-md text-center font-semibold bg-white border border-black/70 rounded-md px-3 py-2 shadow-lg">iOS App Available Soon!</p>
                       <Image
                         src={appStoreBadgeSrc}
                         alt="Download on the App Store"
                         width={180}
                         height={60}
-                        className="hidden h-11 w-auto mt-6"
+                        className="h-11 w-auto mt-6"
                       />
                     </a>
                   </div>
