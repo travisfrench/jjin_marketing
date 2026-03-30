@@ -81,7 +81,7 @@ export function Navbar() {
             href={appStoreUrl}
             target="_blank"
             rel="noreferrer"
-            className="rounded-full border border-neutral-700/60 bg-warm/20 px-4 py-2 text-sm font-medium text-neutral-700 transition hover:border-warm hover:bg-warm/30"
+            className="rounded-full border border-blue-700/60 bg-blue-600 px-4 py-2 text-sm font-medium text-white transition hover:bg-blue-500/80"
           >
             Download
           </a>
