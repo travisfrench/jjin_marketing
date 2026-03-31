@@ -1,7 +1,9 @@
-import type { Metadata } from "next";
 import { Sora, Source_Sans_3 } from "next/font/google";
 import localFont from "next/font/local";
 import Script from "next/script";
+import { JsonLd } from "@/components/seo/json-ld";
+import { buildSiteSchema, createMetadata } from "@/lib/seo";
+import { siteConfig } from "@/lib/site-config";
 import "./globals.css";
 
 const sora = Sora({
@@ -53,31 +55,11 @@ const notoSansKr = localFont({
   ],
 });
 
-export const metadata: Metadata = {
-  title: "Jjin | Learn Korean for real-life moments",
-  description:
-    "Study real Korean phrases for cafes, restaurants, transit, hotels, and everyday life in Korea.",
-  applicationName: "Jjin",
-  metadataBase: new URL("https://jjin.app"),
-  icons: {
-    icon: "/favicon.png",
-  },
-  openGraph: {
-    title: "Jjin | Learn Korean for real-life moments",
-    description:
-      "Study real Korean phrases for cafes, restaurants, transit, hotels, and everyday life in Korea.",
-    siteName: "Jjin",
-    type: "website",
-    images: [
-      {
-        url: "/marketing/og/og-image.jpg",
-        width: 1200,
-        height: 630,
-        alt: "Jjin app preview",
-      },
-    ],
-  },
-};
+export const metadata = createMetadata({
+  title: siteConfig.defaultTitle,
+  description: siteConfig.defaultDescription,
+  path: "/",
+});
 
 export default function RootLayout({
   children,
@@ -92,6 +74,7 @@ export default function RootLayout({
         id="top"
         className={`${sora.variable} ${sourceSans.variable} ${notoSansKr.variable} min-h-full bg-white font-body text-foreground antialiased`}
       >
+        <JsonLd data={buildSiteSchema()} />
         {children}
         {isProduction && (
           <>

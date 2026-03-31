@@ -11,13 +11,21 @@ import { Navbar } from "@/components/marketing/navbar";
 import { Footer } from "@/components/marketing/footer";
 import { SectionShell } from "@/components/marketing/section-shell";
 import { StudyCard } from "@/components/marketing/study-card";
+import { JsonLd } from "@/components/seo/json-ld";
 import { appStoreUrl, howItWorksItems, scenes } from "@/lib/marketing-content";
+import { buildBreadcrumbSchema, createMetadata } from "@/lib/seo";
 
-export const metadata = {
-  title: "About | Jjin",
+export const metadata = createMetadata({
+  title: "About Jjin | Korean Learning App Story",
   description:
-    "The lived story behind Jjin and how real Korea moments shape every phrase set.",
-};
+    "Learn how Jjin was shaped by real-life Korean conversations in cafes, transit, restaurants, and family visits in Korea.",
+  path: "/about",
+});
+
+const breadcrumbSchema = buildBreadcrumbSchema([
+  { name: "Home", path: "/" },
+  { name: "About", path: "/about" },
+]);
 
 const fieldNotes = [
   {
@@ -127,6 +135,7 @@ function MomentShowcase() {
 export default function AboutPage() {
   return (
     <>
+      <JsonLd data={breadcrumbSchema} />
       <Navbar />
       <main className="relative overflow-hidden border-t border-[#CEB8A4] bg-[linear-gradient(180deg,#F1E5DA_0%,#EADBCD_38%,#F3E9DF_100%)] pt-24 text-[#1E1712]">
         <div className="pointer-events-none absolute inset-0 opacity-70 [background-image:radial-gradient(circle_at_20%_15%,rgba(255,255,255,0.75),transparent_36%),radial-gradient(circle_at_80%_5%,rgba(235,191,149,0.38),transparent_30%),radial-gradient(circle_at_50%_85%,rgba(192,155,121,0.22),transparent_40%)]" />

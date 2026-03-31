@@ -2,43 +2,54 @@ import Link from "next/link";
 import { SectionShell } from "@/components/marketing/section-shell";
 import { Navbar } from "@/components/marketing/navbar";
 import { Footer } from "@/components/marketing/footer";
+import { JsonLd } from "@/components/seo/json-ld";
+import { buildBreadcrumbSchema, createMetadata } from "@/lib/seo";
 
-export const metadata = {
-  title: "Terms of Service | Jjin",
-  description: "Terms of service for the Jjin iOS app.",
-};
+export const metadata = createMetadata({
+  title: "Terms of Service | Jjin Korean Learning App",
+  description:
+    "Read the terms of use for the Jjin iPhone app, including subscriptions, acceptable use, support, and liability terms.",
+  path: "/terms",
+});
+
+const breadcrumbSchema = buildBreadcrumbSchema([
+  { name: "Home", path: "/" },
+  { name: "Terms of Service", path: "/terms" },
+]);
 
 export default function TermsPage() {
   return (
-    <main className="min-h-screen border-t border-white/10 pt-24">
-      <Navbar />
-      <SectionShell className="pb-20">
-        <div className="mx-auto max-w-3xl space-y-8 rounded-3xl border border-white/15 bg-[linear-gradient(180deg,rgba(15,19,24,0.8),rgba(8,10,13,0.9))] p-6 sm:p-10">
-          <div className="space-y-3">
-            <p className="text-sm uppercase tracking-[0.24em] text-white/45">
-              Effective Date: March 19, 2026
-            </p>
-            <h1 className="text-3xl font-semibold tracking-tight text-white sm:text-4xl">
-              Jjin Korean Learning Terms of Use
-            </h1>
-            <p className="text-sm leading-7 text-white/72 sm:text-[15px]">
-              These Terms of Use (“Terms”) govern your use of the Jjin Korean
-              Learning mobile application, website, and related services
-              operated by Travis French (“we,” “us,” or “our”).
-            </p>
-            <p className="text-sm leading-7 text-white/72 sm:text-[15px]">
-              By downloading, accessing, or using Jjin Korean Learning, you
-              agree to these Terms.
-            </p>
-            <p className="text-sm leading-7 text-white/72 sm:text-[15px]">
-              If you access the app through Apple’s App Store, Apple’s standard
-              Licensed Application End User License Agreement may also apply.
-              These Terms are intended to supplement, not replace, any terms
-              required by Apple for App Store distribution.
-            </p>
-          </div>
+    <>
+      <JsonLd data={breadcrumbSchema} />
+      <main className="min-h-screen border-t border-white/10 pt-24">
+        <Navbar />
+        <SectionShell className="pb-20">
+          <div className="mx-auto max-w-3xl space-y-8 rounded-3xl border border-white/15 bg-[linear-gradient(180deg,rgba(15,19,24,0.8),rgba(8,10,13,0.9))] p-6 sm:p-10">
+            <div className="space-y-3">
+              <p className="text-sm uppercase tracking-[0.24em] text-white/45">
+                Effective Date: March 19, 2026
+              </p>
+              <h1 className="text-3xl font-semibold tracking-tight text-white sm:text-4xl">
+                Jjin Korean Learning Terms of Use
+              </h1>
+              <p className="text-sm leading-7 text-white/72 sm:text-[15px]">
+                These Terms of Use (“Terms”) govern your use of the Jjin Korean
+                Learning mobile application, website, and related services
+                operated by Travis French (“we,” “us,” or “our”).
+              </p>
+              <p className="text-sm leading-7 text-white/72 sm:text-[15px]">
+                By downloading, accessing, or using Jjin Korean Learning, you
+                agree to these Terms.
+              </p>
+              <p className="text-sm leading-7 text-white/72 sm:text-[15px]">
+                If you access the app through Apple’s App Store, Apple’s standard
+                Licensed Application End User License Agreement may also apply.
+                These Terms are intended to supplement, not replace, any terms
+                required by Apple for App Store distribution.
+              </p>
+            </div>
 
-          <div className="space-y-8 text-sm leading-7 text-white/80 sm:text-[15px]">
+            <div className="space-y-8 text-sm leading-7 text-white/80 sm:text-[15px]">
             <section className="space-y-3">
               <h2 className="text-xl font-semibold text-white">1. Use of the Service</h2>
               <p>
@@ -256,10 +267,11 @@ export default function TermsPage() {
                 </p>
               </div>
             </section>
+            </div>
           </div>
-        </div>
-      </SectionShell>
-      <Footer />
-    </main>
+        </SectionShell>
+        <Footer />
+      </main>
+    </>
   );
 }
