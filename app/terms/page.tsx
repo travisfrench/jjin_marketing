@@ -173,7 +173,7 @@ export default function TermsPage() {
                   href="/support"
                   className="text-white underline decoration-white/30 underline-offset-4 transition hover:decoration-white/70"
                 >
-                  getJjin.com/support
+                  jjin.app/support
                 </Link>
                 .
               </p>
@@ -187,7 +187,7 @@ export default function TermsPage() {
                   href="/privacy"
                   className="text-white underline decoration-white/30 underline-offset-4 transition hover:decoration-white/70"
                 >
-                  getJjin.com/privacy
+                  jjin.app/privacy
                 </Link>
                 .
               </p>
@@ -259,10 +259,10 @@ export default function TermsPage() {
                 <p>Travis French</p>
                 <p>
                   <a
-                    href="mailto:hello@getJjin.com"
+                    href="mailto:hello@jjin.app"
                     className="text-white underline decoration-white/30 underline-offset-4 transition hover:decoration-white/70"
                   >
-                    hello@getJjin.com
+                    hello@jjin.app
                   </a>
                 </p>
               </div>

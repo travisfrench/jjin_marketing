@@ -40,7 +40,7 @@ export default function SupportPage() {
             <div className="rounded-2xl border border-white/15 bg-white/5 p-5">
               <p className="flex items-center gap-2 text-foreground">
                 <Mail size={18} className="text-warm" />
-                support@getJjin.com
+                support@jjin.app
               </p>
             </div>
 
@@ -61,7 +61,7 @@ export default function SupportPage() {
                   <MessageSquareText size={16} className="mt-1 text-warm" />
                   How do I delete my account?
                 </p>
-                <p className="pl-6">If you are a premium member, cancel your membership through Apple Subscriptions. For account deletion, send us an email at support@getJjin.com and we&apos;ll delete your account and all information.</p>
+                <p className="pl-6">If you are a premium member, cancel your membership through Apple Subscriptions. For account deletion, send us an email at support@jjin.app and we&apos;ll delete your account and all information.</p>
               </div>
             </section>
           </div>

@@ -263,7 +263,7 @@ export default function PrivacyPage() {
                   href="/support"
                   className="text-white underline decoration-white/30 underline-offset-4 transition hover:decoration-white/70"
                 >
-                  getJjin.com/support
+                  jjin.app/support
                 </Link>
                 .
               </p>
@@ -329,10 +329,10 @@ export default function PrivacyPage() {
                 <p>Travis French</p>
                 <p>
                   <a
-                    href="mailto:hello@getJjin.com"
+                    href="mailto:hello@jjin.app"
                     className="text-white underline decoration-white/30 underline-offset-4 transition hover:decoration-white/70"
                   >
-                    hello@getJjin.com
+                    hello@jjin.app
                   </a>
                 </p>
               </div>

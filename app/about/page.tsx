@@ -200,7 +200,7 @@ export default function AboutPage() {
                     <div className="relative aspect-[4/5] overflow-hidden rounded-2xl">
                       <Image
                         src="/marketing/about/gwangju-walking-night.webp"
-                        alt="Vertical Korea moment placeholder"
+                        alt="Visiting Lotte Tower"
                         fill
                         sizes="(max-width: 1024px) 45vw, 18vw"
                         className="object-cover"
