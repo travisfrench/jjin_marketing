@@ -67,18 +67,18 @@ const momentShowcaseImages = [
 
 function MomentShowcase() {
   return (
-    <section className="relative border-y border-[#CEB8A4] bg-[linear-gradient(180deg,#E5D2C0_0%,#E9DACA_45%,#E4D1BE_100%)] py-16 sm:py-24">
-      <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_15%_15%,rgba(255,255,255,0.65),transparent_33%),radial-gradient(circle_at_85%_80%,rgba(255,255,255,0.4),transparent_30%)]" />
+    <section className="relative border-y border-black/8 bg-[linear-gradient(180deg,#F7FAFF_0%,#FFFFFF_48%,#FFF7EE_100%)] py-16 sm:py-24">
+      <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_15%_15%,rgba(34,83,217,0.1),transparent_33%),radial-gradient(circle_at_85%_80%,rgba(255,170,92,0.12),transparent_30%)]" />
       <SectionShell>
         <div className="relative z-10">
           <div className="mx-auto max-w-3xl text-center">
-            <p className="text-xs uppercase tracking-[0.2em] text-[#8B694E]">Built in real life</p>
-            <h2 className="mt-4 font-heading text-3xl font-semibold leading-tight text-[#1F1712] sm:text-5xl">
+            <p className="text-xs uppercase tracking-[0.2em] text-neutral-500">Built in real life</p>
+            <h2 className="mt-4 font-heading text-3xl font-semibold leading-tight text-neutral-950 sm:text-5xl">
               The exact moments that shaped Jjin
             </h2>
-            <p className="mt-5 text-base leading-7 text-[#3E3024] sm:text-lg">
+            <p className="mt-5 text-base leading-7 text-neutral-700 sm:text-lg">
               These are not abstract lesson themes. They are the interactions that kept repeating, so they became the
-              foundation of the app.
+              foundation of Jjin.
             </p>
           </div>
 
@@ -92,7 +92,7 @@ function MomentShowcase() {
               return (
                 <article
                   key={scene.id}
-                  className="relative overflow-hidden rounded-[1.6rem] border border-[#C6A586] bg-[linear-gradient(165deg,#F8EEDG,#EEDBC9)] p-3 shadow-[0_16px_36px_rgba(56,34,17,0.14)] sm:p-4"
+                  className="relative overflow-hidden rounded-[1.6rem] border border-black/10 bg-[linear-gradient(165deg,#FFFFFF,#F7FAFF_72%,#FFF5EA)] p-3 shadow-[0_16px_36px_rgba(15,23,42,0.08)] sm:p-4"
                 >
                 <div className="relative aspect-[4/3] overflow-hidden rounded-[1.1rem] sm:aspect-[16/10]">
                   <Image
@@ -103,8 +103,8 @@ function MomentShowcase() {
                     className="object-cover object-center"
                     priority={index < 2}
                   />
-                  <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(23,16,11,0)_42%,rgba(23,16,11,0.32)_100%)]" />
-                  <div className="absolute left-3 top-3 rounded-full border border-[#E8D3C0] bg-[#F5E6D8]/90 px-3 py-1 text-[11px] uppercase tracking-[0.15em] text-[#5A4433]">
+                  <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(12,16,22,0)_42%,rgba(12,16,22,0.32)_100%)]" />
+                  <div className="absolute left-3 top-3 rounded-full border border-[#D7E2FF] bg-white px-3 py-1 text-[11px] uppercase tracking-[0.15em] text-[#2253D9]">
                     {scene.label}
                   </div>
                 </div>
@@ -119,7 +119,7 @@ function MomentShowcase() {
                     pills={scene.pills}
                     audioSrc={scene.audio}
                     audioLabel={`Play ${scene.label} phrase audio`}
-                    className="max-w-none rounded-[1.2rem] border-[#B58D6B]/45 bg-[linear-gradient(160deg,rgba(63,45,33,0.96),rgba(90,60,44,0.93))] p-4 sm:p-4"
+                    className="max-w-none rounded-[1.2rem] border-[#D5DDEA] bg-[linear-gradient(160deg,rgba(18,24,30,0.96),rgba(7,9,13,0.94))] p-4 sm:p-4"
                   />
                 </div>
                 </article>
@@ -137,20 +137,20 @@ export default function AboutPage() {
     <>
       <JsonLd data={breadcrumbSchema} />
       <Navbar />
-      <main className="relative overflow-hidden border-t border-[#CEB8A4] bg-[linear-gradient(180deg,#F1E5DA_0%,#EADBCD_38%,#F3E9DF_100%)] pt-24 text-[#1E1712]">
-        <div className="pointer-events-none absolute inset-0 opacity-70 [background-image:radial-gradient(circle_at_20%_15%,rgba(255,255,255,0.75),transparent_36%),radial-gradient(circle_at_80%_5%,rgba(235,191,149,0.38),transparent_30%),radial-gradient(circle_at_50%_85%,rgba(192,155,121,0.22),transparent_40%)]" />
+      <main className="relative overflow-hidden border-t border-black/8 bg-[linear-gradient(180deg,#F8FAFE_0%,#FFFFFF_24%,#F7F8FB_58%,#FFFFFF_100%)] pt-24 text-neutral-950">
+        <div className="pointer-events-none absolute inset-0 opacity-70 [background-image:radial-gradient(circle_at_20%_15%,rgba(34,83,217,0.1),transparent_36%),radial-gradient(circle_at_80%_5%,rgba(255,170,92,0.18),transparent_30%),radial-gradient(circle_at_50%_85%,rgba(34,83,217,0.08),transparent_40%)]" />
 
         <section className="relative pb-12 pt-6 sm:pb-20 sm:pt-10">
           <SectionShell>
             <div className="grid items-start gap-10 lg:grid-cols-[1.08fr,1fr]">
               <div className="relative z-10">
-                <p className="inline-flex rounded-full border border-[#C29D7D] bg-[#F4E5D6]/90 px-3 py-1 text-xs uppercase tracking-[0.2em] text-[#88664A]">
+                <p className="inline-flex rounded-full border border-black/10 bg-white/80 px-3 py-1 text-xs uppercase tracking-[0.2em] text-neutral-600 shadow-sm">
                   About Jjin
                 </p>
                 <h1 className="mt-5 max-w-[14ch] font-heading text-4xl font-semibold leading-[1.04] sm:text-6xl">
                   I built Jjin to talk with family in Korea
                 </h1>
-                <div className="mt-6 max-w-xl space-y-4 text-base leading-7 text-[#3D2F23] sm:text-lg">
+                <div className="mt-6 max-w-xl space-y-4 text-base leading-7 text-neutral-700 sm:text-lg">
                   <p>
                     Jjin started as a personal fix. I wanted to stop freezing in everyday Korean moments and start
                     responding with more confidence.
@@ -166,22 +166,16 @@ export default function AboutPage() {
                     href={appStoreUrl}
                     target="_blank"
                     rel="noreferrer"
-                    className="inline-flex items-center gap-2 rounded-full border border-[#2A2018] bg-[#2D221A] px-5 py-3 text-sm font-semibold text-[#F8EBDC] transition hover:bg-[#1E1712]"
+                    className="inline-flex items-center gap-2 rounded-full border border-[#1B47C8] bg-[#2253D9] px-5 py-3 text-sm font-semibold text-white transition hover:bg-[#1B47C8]"
                   >
                     Get Jjin on iOS
                     <ArrowUpRight className="h-4 w-4" />
-                  </a>
-                  <a
-                    href="#real-moments"
-                    className="inline-flex items-center rounded-full border border-[#B28E72] bg-[#F7ECDD]/80 px-5 py-3 text-sm font-semibold text-[#3A2C20] transition hover:bg-white"
-                  >
-                    Hear Real Phrase Cards
                   </a>
                 </div>
               </div>
 
               <div className="relative lg:pt-2">
-                <div className="relative overflow-hidden rounded-[2rem] border border-[#B89579] bg-[#DCC6AF] p-3 shadow-[0_30px_60px_rgba(71,44,25,0.2)]">
+                <div className="relative overflow-hidden rounded-[2rem] border border-black/10 bg-white/70 p-3 shadow-[0_30px_60px_rgba(15,23,42,0.1)]">
                   <div className="relative aspect-[16/11] overflow-hidden rounded-[1.35rem]">
                     <Image
                       src="/marketing/about/hangul-statue-seoul.webp"
@@ -196,7 +190,7 @@ export default function AboutPage() {
                 </div>
 
                 <div className="mt-4 grid grid-cols-2 gap-4">
-                  <div className="relative overflow-hidden rounded-3xl border border-[#BA977A] bg-[#F2E3D3] p-2 shadow-[0_20px_40px_rgba(71,44,25,0.14)]">
+                  <div className="relative overflow-hidden rounded-3xl border border-black/10 bg-white/80 p-2 shadow-[0_20px_40px_rgba(15,23,42,0.08)]">
                     <div className="relative aspect-[4/5] overflow-hidden rounded-2xl">
                       <Image
                         src="/marketing/about/gwangju-walking-night.webp"
@@ -208,7 +202,7 @@ export default function AboutPage() {
                     </div>
                   </div>
 
-                  <div className="relative overflow-hidden rounded-3xl border border-[#BA977A] bg-[#F2E3D3] p-2 shadow-[0_20px_40px_rgba(71,44,25,0.14)]">
+                  <div className="relative overflow-hidden rounded-3xl border border-black/10 bg-white/80 p-2 shadow-[0_20px_40px_rgba(15,23,42,0.08)]">
                     <div className="relative aspect-[4/5] overflow-hidden rounded-2xl">
                       <Image
                         src="/marketing/about/starfield-coex-library.webp"
@@ -229,7 +223,7 @@ export default function AboutPage() {
         <section className="relative py-14 sm:py-24">
           <SectionShell>
             <div className="grid gap-9 lg:grid-cols-[1fr,1.05fr] lg:items-center">
-              <div className="relative overflow-hidden rounded-[2rem] border border-[#BD9A7E] bg-[#1D232D] p-3 shadow-[0_25px_50px_rgba(60,36,18,0.2)]">
+              <div className="relative overflow-hidden rounded-[2rem] border border-black/10 bg-white/70 p-3 shadow-[0_25px_50px_rgba(15,23,42,0.1)]">
                 <div className="relative aspect-[16/10] overflow-hidden rounded-[1.35rem]">
                   <Image
                     src="/marketing/about/family-flowers-gwangju.webp"
@@ -250,11 +244,11 @@ export default function AboutPage() {
               </div>
 
               <div>
-                <p className="text-xs uppercase tracking-[0.2em] text-[#8B694E]">Field-tested in Korea</p>
+                <p className="text-xs uppercase tracking-[0.2em] text-neutral-500">Field-tested in Korea</p>
                 <h2 className="mt-3 font-heading text-3xl font-semibold leading-tight sm:text-5xl">
-                  A month in Korea changed the product roadmap
+                  A month in Korea changed the app roadmap
                 </h2>
-                <p className="mt-5 text-base leading-7 text-[#3E3024] sm:text-lg">
+                <p className="mt-5 text-base leading-7 text-neutral-700 sm:text-lg">
                   I spent a month in Korea tracking the phrases that came up over and over, where hesitation happened,
                   and what was actually useful. That cut the filler and sharpened the app around practical listening and
                   speaking confidence.
@@ -270,11 +264,11 @@ export default function AboutPage() {
                     return (
                       <article
                         key={item.title}
-                        className="rounded-3xl border border-[#C5A789] bg-[#F8EEDF]/90 p-5 shadow-[0_14px_30px_rgba(67,43,24,0.08)]"
+                        className="rounded-3xl border border-black/10 bg-white/85 p-5 shadow-[0_14px_30px_rgba(15,23,42,0.06)]"
                       >
-                        <Icon className="h-5 w-5 text-[#7E5E44]" />
-                        <h3 className="mt-3 font-heading text-lg font-semibold text-[#231A14]">{item.title}</h3>
-                        <p className="mt-2 text-sm leading-6 text-[#473729]">{item.copy}</p>
+                        <Icon className="h-5 w-5 text-[#2253D9]" />
+                        <h3 className="mt-3 font-heading text-lg font-semibold text-neutral-950">{item.title}</h3>
+                        <p className="mt-2 text-sm leading-6 text-neutral-700">{item.copy}</p>
                       </article>
                     );
                   })}
@@ -288,11 +282,11 @@ export default function AboutPage() {
           <SectionShell>
             <div className="grid gap-8 lg:grid-cols-[1fr,0.95fr] lg:items-center">
               <div>
-                <p className="text-xs uppercase tracking-[0.2em] text-[#8B694E]">Why this works</p>
+                <p className="text-xs uppercase tracking-[0.2em] text-neutral-500">Why this works</p>
                 <h2 className="mt-3 font-heading text-3xl font-semibold leading-tight sm:text-5xl">
                   Personal scope. Clear purpose. No fake fluency promises.
                 </h2>
-                <p className="mt-5 text-base leading-7 text-[#3E3024] sm:text-lg">
+                <p className="mt-5 text-base leading-7 text-neutral-700 sm:text-lg">
                   Jjin is intentionally focused. It is for practical phrases, listening-first practice, and confidence
                   in everyday situations. That narrow scope is the point, and it keeps the app honest.
                 </p>
@@ -301,17 +295,17 @@ export default function AboutPage() {
                   {howItWorksItems.map((item) => (
                     <article
                       key={item.title}
-                      className="rounded-2xl border border-[#C0A184] bg-[#F8EEDF]/85 p-4 text-center"
+                      className="rounded-2xl border border-black/10 bg-[linear-gradient(180deg,#FFFFFF,#F7F9FC)] p-4 text-center shadow-[0_12px_28px_rgba(15,23,42,0.05)]"
                     >
-                      <p className="font-heading text-4xl font-semibold leading-none text-[#5D4634]">{item.stat}</p>
-                      <p className="mt-2 text-sm font-semibold text-[#2D2118]">{item.title}</p>
+                      <p className="font-heading text-4xl font-semibold leading-none text-[#2253D9]">{item.stat}</p>
+                      <p className="mt-2 text-sm font-semibold text-neutral-900">{item.title}</p>
                     </article>
                   ))}
                 </div>
               </div>
 
               <div className="relative">
-                <div className="relative overflow-hidden rounded-[2rem] border border-[#BA977B] bg-[#DFCCB9] p-3 shadow-[0_24px_50px_rgba(62,38,20,0.2)]">
+                <div className="relative overflow-hidden rounded-[2rem] border border-black/10 bg-white/75 p-3 shadow-[0_24px_50px_rgba(15,23,42,0.1)]">
                   <div className="relative aspect-[4/5] overflow-hidden rounded-[1.35rem]">
                     <Image
                       src="/marketing/about/lotte-tower-outside.webp"
@@ -324,10 +318,10 @@ export default function AboutPage() {
                   </div>
                 </div>
 
-                <div className="absolute -left-3 -top-3 rounded-2xl border border-[#B28F73] bg-[#F9EEDC] px-4 py-2 text-xs uppercase tracking-[0.14em] text-[#7D5D43] shadow-lg sm:-left-6 sm:-top-6">
+                <div className="absolute -left-3 -top-3 rounded-2xl border border-[#D7E2FF] bg-white px-4 py-2 text-xs uppercase tracking-[0.14em] text-[#2253D9] shadow-lg sm:-left-6 sm:-top-6">
                   built from lived experience
                 </div>
-                <div className="absolute -bottom-4 -right-2 rounded-2xl border border-[#AB886D] bg-[#2D2219] px-4 py-2 text-xs uppercase tracking-[0.14em] text-[#F0E3D3] shadow-lg sm:-bottom-5 sm:-right-5">
+                <div className="absolute -bottom-4 -right-2 rounded-2xl border border-[#F4D7B9] bg-[#FFF5EA] px-4 py-2 text-xs uppercase tracking-[0.14em] text-[#9A5B22] shadow-lg sm:-bottom-5 sm:-right-5">
                   listening first
                 </div>
               </div>
@@ -337,7 +331,7 @@ export default function AboutPage() {
 
         <section className="relative pb-16 sm:pb-24">
           <SectionShell>
-            <div className="relative overflow-hidden rounded-[2.1rem] border border-[#9D7D63] bg-[#261B13] p-8 text-[#F5E8D9] shadow-[0_28px_60px_rgba(46,28,15,0.38)] sm:p-12">
+            <div className="relative overflow-hidden rounded-[2.1rem] border border-black/10 bg-[#111827] p-8 text-[#F8FAFC] shadow-[0_28px_60px_rgba(15,23,42,0.28)] sm:p-12">
               <div className="absolute inset-0">
                 <Image
                   src="/marketing/scenes/jjin-hotel-bg.webp"
@@ -346,11 +340,11 @@ export default function AboutPage() {
                   sizes="100vw"
                   className="object-cover opacity-30"
                 />
-                <div className="absolute inset-0 bg-[linear-gradient(120deg,rgba(19,13,9,0.9),rgba(41,27,16,0.82))]" />
+                <div className="absolute inset-0 bg-[linear-gradient(120deg,rgba(12,18,28,0.92),rgba(22,34,56,0.84))]" />
               </div>
 
               <div className="relative z-10 max-w-3xl">
-                <p className="inline-flex items-center gap-2 text-xs uppercase tracking-[0.2em] text-[#D7B696]">
+                <p className="inline-flex items-center gap-2 text-xs uppercase tracking-[0.2em] text-[#D8E5FF]">
                   <Sparkles className="h-4 w-4" />
                   Founder note
                 </p>
@@ -364,23 +358,23 @@ export default function AboutPage() {
                     href={appStoreUrl}
                     target="_blank"
                     rel="noreferrer"
-                    className="inline-flex items-center gap-2 rounded-full border border-[#E9D2BA]/75 bg-[#F5E4D2] px-5 py-3 text-sm font-semibold text-[#2A2018] transition hover:bg-white"
+                    className="inline-flex items-center gap-2 rounded-full border border-[#D7E2FF]/70 bg-white px-5 py-3 text-sm font-semibold text-neutral-950 transition hover:bg-[#F7FAFF]"
                   >
                     Download Jjin
                     <ArrowUpRight className="h-4 w-4" />
                   </a>
                   <Link
                     href="/"
-                    className="inline-flex items-center rounded-full border border-[#C19B7D]/65 px-5 py-3 text-sm font-semibold text-[#F5E8D9] transition hover:bg-white/10"
+                    className="inline-flex items-center rounded-full border border-white/20 px-5 py-3 text-sm font-semibold text-white transition hover:bg-white/10"
                   >
                     Back to homepage
                   </Link>
                 </div>
 
-                <div className="mt-9 flex flex-wrap gap-2 text-xs uppercase tracking-[0.14em] text-[#D4B090]">
-                  <span className="rounded-full border border-[#B59072]/70 px-3 py-1">real Korea moments</span>
-                  <span className="rounded-full border border-[#B59072]/70 px-3 py-1">practical phrases</span>
-                  <span className="rounded-full border border-[#B59072]/70 px-3 py-1">confidence in everyday situations</span>
+                <div className="mt-9 flex flex-wrap gap-2 text-xs uppercase tracking-[0.14em] text-[#D8E5FF]">
+                  <span className="rounded-full border border-white/18 px-3 py-1">real Korea moments</span>
+                  <span className="rounded-full border border-white/18 px-3 py-1">practical phrases</span>
+                  <span className="rounded-full border border-white/18 px-3 py-1">confidence in everyday situations</span>
                 </div>
               </div>
             </div>

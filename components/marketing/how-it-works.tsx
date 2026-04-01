@@ -8,15 +8,21 @@ export function HowItWorks() {
   const reduceMotion = useReducedMotion();
 
   return (
-    <section id="how-it-works" className="relative border-t border-white/10 py-20 sm:py-24">
+    <section
+      id="how-it-works"
+      className="relative border-t border-black/8 bg-[linear-gradient(180deg,#FFFFFF,#F7F9FC)] py-20 sm:py-24"
+    >
       <SectionShell>
         <div className="mx-auto max-w-3xl space-y-3 text-center">
-          <p className="text-xs uppercase tracking-[0.15em] text-neutral-800/70">Why audio + reading works</p>
-          <h2 className="font-heading text-3xl font-semibold text-neutral-800 sm:text-4xl lg:text-5xl">
-            Listening while reading drives stronger retention
+          <p className="text-xs uppercase tracking-[0.15em] text-neutral-500">
+            How Jjin works
+          </p>
+          <h2 className="font-heading text-3xl font-semibold text-neutral-950 sm:text-4xl lg:text-5xl">
+            A cleaner learning loop for useful Korean
           </h2>
-          <p className="text-base text-neutral-600 sm:text-lg">
-            Seeing Hangul and hearing pronunciation together builds memory faster than reading alone.
+          <p className="text-base text-neutral-700 sm:text-lg">
+            Jjin pairs listening, readable Hangul, and practical phrase sets so
+            study stays close to the situations that actually matter.
           </p>
         </div>
 
@@ -28,23 +34,24 @@ export function HowItWorks() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, amount: 0.35 }}
               transition={{ duration: 0.5, delay: index * 0.08, ease: "easeOut" }}
-              className="rounded-2xl border border-white/15 bg-[linear-gradient(160deg,rgba(16,20,27,0.9),rgba(8,10,14,0.96))] p-6 text-center shadow-panel-soft"
+              className="rounded-[1.9rem] border border-black/10 bg-white/80 p-6 text-left shadow-[0_22px_60px_rgba(15,23,42,0.06)]"
             >
-              <p className="font-heading text-5xl font-semibold leading-none text-warm sm:text-6xl">
+              <p className="text-xs uppercase tracking-[0.18em] text-[#2253D9]">
                 {item.stat}
               </p>
-              <h3 className="mt-5 font-heading text-2xl font-semibold text-foreground">
+              <h3 className="mt-4 font-heading text-2xl font-semibold text-neutral-950">
                 {item.title}
               </h3>
-              <p className="mt-3 text-sm leading-relaxed text-muted sm:text-base">
+              <p className="mt-3 text-sm leading-relaxed text-neutral-700 sm:text-base">
                 {item.description}
               </p>
             </motion.article>
           ))}
         </div>
 
-        <p className="mt-5 text-center text-xs text-neutral-800/50">
-          Based on internal Jjin beta learning sessions.
+        <p className="mt-5 text-center text-xs text-neutral-500">
+          Designed around short, repeatable study loops instead of broad lesson
+          filler.
         </p>
       </SectionShell>
     </section>

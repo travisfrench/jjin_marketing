@@ -19,6 +19,27 @@ const OG_IMAGE_HEIGHT = 630;
 
 export const publicSitePages = [
   { path: "/", priority: 1, changeFrequency: "weekly" as const },
+  {
+    path: "/korean-learning-app",
+    priority: 0.95,
+    changeFrequency: "monthly" as const,
+  },
+  {
+    path: "/learn-korean-for-travel",
+    priority: 0.9,
+    changeFrequency: "monthly" as const,
+  },
+  {
+    path: "/korean-listening-practice",
+    priority: 0.9,
+    changeFrequency: "monthly" as const,
+  },
+  { path: "/learn-hangul", priority: 0.85, changeFrequency: "monthly" as const },
+  {
+    path: "/korean-phrases-app",
+    priority: 0.9,
+    changeFrequency: "monthly" as const,
+  },
   { path: "/about", priority: 0.8, changeFrequency: "monthly" as const },
   { path: "/support", priority: 0.6, changeFrequency: "monthly" as const },
   { path: "/privacy", priority: 0.3, changeFrequency: "yearly" as const },

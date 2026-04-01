@@ -31,7 +31,7 @@ export function Hero() {
 
       <div className="pointer-events-none absolute inset-x-0 top-0 z-10 h-[58svh] bg-[radial-gradient(ellipse_at_top,rgba(255,255,255,0.88)_0%,rgba(239,246,255,0.72)_28%,rgba(255,255,255,0.34)_52%,transparent_76%)]" />
 
-      <div className="relative z-20 mx-auto flex min-h-[100svh] w-full items-center px-2 sm:px-8 lg:px-10">
+      <div className="mt-4 sm:mt-6 relative z-20 mx-auto flex min-h-[100svh] w-full items-center px-2 sm:px-8 lg:px-10">
         <div className="relative mx-auto flex min-h-[100svh] w-full flex-col items-center">
           <div className="relative flex flex-col items-center justify-start gap-2 pt-8 text-center sm:pt-10">
             <p className="mt-8 sm:mt-6 inline-flex rounded-full border border-blue-600/50 bg-blue-600/20 px-3 py-1 text-xs uppercase tracking-[0.14em] text-neutral-700">

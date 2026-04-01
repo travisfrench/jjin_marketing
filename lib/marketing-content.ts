@@ -12,10 +12,11 @@ export const heroContent = {
 };
 
 export const navigationLinks = [
+  { label: "Learn Korean", href: "/korean-learning-app" },
+  { label: "Travel", href: "/learn-korean-for-travel" },
+  { label: "Listening", href: "/korean-listening-practice" },
+  { label: "Hangul", href: "/learn-hangul" },
   { label: "About", href: "/about" },
-  { label: "Privacy", href: "/privacy" },
-  { label: "Terms", href: "/terms" },
-  { label: "Support", href: "/support" },
 ];
 
 export type SceneContent = {
@@ -96,22 +97,22 @@ export const scenes: SceneContent[] = [
 
 export const howItWorksItems = [
   {
-    stat: "2x",
-    title: "Higher phrase retention",
+    stat: "Listen",
+    title: "Hear Korean before you need to answer",
     description:
-      "Learners retained roughly twice as many target phrases when audio and text were reviewed together.",
+      "Lessons pair spoken Korean with readable text so sound, script, and meaning reinforce each other in one study loop.",
   },
   {
-    stat: "38%",
-    title: "Better pronunciation confidence",
+    stat: "Repeat",
+    title: "Practice phrases you can actually use",
     description:
-      "Paired listening + reading reduced hesitation and improved confidence before speaking in real situations.",
+      "Jjin is organized around cafes, transit, hotels, courtesy, and everyday interactions instead of broad topic buckets.",
   },
   {
-    stat: "72%",
-    title: "Faster first-response speed",
+    stat: "Learn",
+    title: "Build recall through short review loops",
     description:
-      "Most learners responded faster after repeated listen-while-read loops compared with reading-only drills.",
+      "Short, repeatable phrase study makes it easier to revisit the Korean that keeps coming up in real life.",
   },
 ];
 
@@ -120,33 +121,38 @@ export const appScreens = [
   {
     title: "Study",
     src: "/marketing/screenshots/study-card-light.webp",
-    alt: "Jjin app home screen",
+    alt: "Jjin Korean study card screen",
   },
   {
     title: "Categories",
     src: "/marketing/screenshots/category-courtesy-light.webp",
-    alt: "Jjin study screen",
+    alt: "Jjin Korean phrase categories screen",
   },
   {
     title: "Hangul Basics",
     src: "/marketing/screenshots/hangul-basics.webp",
-    alt: "Jjin Hangul basics screen",
+    alt: "Jjin Hangul basics learning screen",
   },
   {
     title: "Quiz",
     src: "/marketing/screenshots/quiz-light.webp",
-    alt: "Jjin browse screen",
+    alt: "Jjin Korean quiz review screen",
   },
   {
     title: "Conversation",
     src: "/marketing/screenshots/conversation-light.webp",
-    alt: "Jjin favorites screen",
+    alt: "Jjin Korean conversation review screen",
   },
 ];
 
 export const footerLinks = [
+  { label: "Korean Learning App", href: "/korean-learning-app" },
+  { label: "Travel Korean", href: "/learn-korean-for-travel" },
+  { label: "Listening Practice", href: "/korean-listening-practice" },
+  { label: "Learn Hangul", href: "/learn-hangul" },
+  { label: "Korean Phrases", href: "/korean-phrases-app" },
   { label: "About", href: "/about" },
+  { label: "Support", href: "/support" },
   { label: "Privacy", href: "/privacy" },
   { label: "Terms", href: "/terms" },
-  { label: "Support", href: "/support" },
 ];
