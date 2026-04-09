@@ -79,7 +79,7 @@ export const landingPages: LandingPageContent[] = [
       "Listening practice with readable Hangul",
       "Useful phrases for real moments in Korea",
     ],
-    heroImage: "/marketing/screenshots/study-youre-welcome-light.webp",
+    heroImage: "/marketing/screenshots/study-card-small.webp",
     heroImageAlt: "Jjin Korean learning app in a Korea street scene",
     heroScreen: {
       title: "Study screen",
@@ -317,7 +317,7 @@ export const landingPages: LandingPageContent[] = [
         title: "Study cards",
         description:
           "Listen, read, and revisit the phrase before you need it in the real world.",
-        src: "/marketing/screenshots/study-card-light.webp",
+        src: "/marketing/screenshots/study-card-small.webp",
         alt: "Jjin travel Korean study card screen",
       },
       {

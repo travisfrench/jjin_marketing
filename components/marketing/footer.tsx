@@ -4,6 +4,9 @@ import { SectionShell } from "@/components/marketing/section-shell";
 import { footerLinks } from "@/lib/marketing-content";
 import { appStoreUrl } from "@/lib/site-config";
 
+const appStoreBadgeSrc =
+  "/marketing/app/Download_on_the_App_Store_Badge_US-UK_RGB_blk_092917.svg";
+
 export function Footer() {
   return (
     <footer className="border-t border-black/8 bg-[linear-gradient(180deg,#FFFFFF,#F7F9FC)] py-10 sm:py-14">
@@ -29,9 +32,16 @@ export function Footer() {
               href={appStoreUrl}
               target="_blank"
               rel="noreferrer"
-              className="mt-5 inline-flex items-center gap-2 text-sm font-medium text-[#2253D9] transition hover:text-[#1D47B8]"
+              className="mt-5 inline-flex transition hover:opacity-90"
+              aria-label="Download Jjin from the App Store"
             >
-              Download on the App Store
+              <Image
+                src={appStoreBadgeSrc}
+                alt="Download on the App Store"
+                width={180}
+                height={60}
+                className="h-11 w-auto"
+              />
             </a>
           </div>
 
