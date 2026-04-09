@@ -14,14 +14,12 @@ export function Footer() {
         <div className="grid gap-10 lg:grid-cols-[0.95fr,1.05fr] lg:items-start">
           <div className="max-w-xl">
             <div className="mb-4 inline-flex items-center gap-3">
-              <p className="font-korean text-2xl font-black text-[#CD2E3A]">
-                Jjin
-              </p>
               <Image
-                src="/marketing/hero/south-korea-flag.png"
-                alt="Flag of South Korea"
-                width={40}
-                height={20}
+                src="/marketing/app/jjin-logo.svg"
+                alt="Jjin"
+                width={112}
+                height={66}
+                className="h-16 w-auto"
               />
             </div>
             <p className="text-sm leading-6 text-neutral-700 sm:text-base">

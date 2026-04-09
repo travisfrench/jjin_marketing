@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import Link from "next/link";
 import { useEffect, useRef, useState } from "react";
 import { Menu, X } from "lucide-react";
@@ -61,11 +62,18 @@ export function Navbar() {
       >
         <Link
           href="/"
-          className="font-korean text-xl font-black tracking-wide text-black/80"
+          className="inline-flex items-center"
           aria-label="Jjin home"
           onClick={() => setOpen(false)}
         >
-          Jjin
+          <Image
+            src="/marketing/app/jjin-logo.svg"
+            alt="Jjin"
+            width={96}
+            height={56}
+            className="h-10 w-auto"
+            priority
+          />
         </Link>
 
         <nav className="hidden items-center gap-7 md:flex" aria-label="Primary">
