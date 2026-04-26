@@ -123,7 +123,7 @@ export function PhrasePageTemplate({
             className="object-cover"
           />
           <div className="absolute inset-0 bg-gradient-to-b md:bg-gradient-to-r from-white/95 via-white/60 to-white/50" />
-          <SectionShell className="relative pb-16 pt-6 sm:pb-20">
+          <SectionShell className="relative pb-16 pt-0 sm:pt-6 sm:pb-20">
             <div className="grid gap-10 lg:grid-cols-[0.98fr,1.02fr] lg:items-center">
               <div className="max-w-2xl">
                 <div className="inline-flex gap-2">

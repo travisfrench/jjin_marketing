@@ -38,7 +38,7 @@ function PhraseListCard({ phrase }: { phrase: PhraseRecord }) {
       <p className="mt-4 min-h-14 text-lg font-semibold text-neutral-900">
         {phrase.englishText}
       </p>
-      <div className="flex items-center justify-between gap-4">
+      <div className="flex items-center justify-end gap-4">
         <Link
           href={getPhrasePath(phrase)}
           className="inline-flex items-center gap-2 text-sm font-semibold text-[#2253D9]"
@@ -91,8 +91,7 @@ function CategoryCard({ hub }: { hub: PhraseHub }) {
       href={hub.path}
       className="group rounded-2xl border border-black/10 bg-white p-5 shadow-[0_18px_45px_rgba(15,23,42,0.05)] transition hover:-translate-y-0.5 hover:shadow-[0_24px_60px_rgba(15,23,42,0.09)]"
     >
-      <Compass className="h-6 w-6 text-[#2253D9]" />
-      <h3 className="mt-5 font-heading text-2xl font-semibold text-neutral-950">
+      <h3 className="font-heading text-2xl font-semibold text-neutral-950">
         {hub.title}
       </h3>
       <p className="mt-3 text-sm leading-6 text-neutral-600">{hub.description}</p>
@@ -118,7 +117,7 @@ export function PhraseHubTemplate({
     <>
       <Navbar />
       <main className="overflow-hidden bg-[linear-gradient(180deg,#F8FAFE_0%,#FFFFFF_36%,#F7F8FB_100%)] text-neutral-950">
-        <section className="border-b border-black/8 pt-32">
+        <section className="border-b border-black/8  pt-28 lg:pt-32">
           <SectionShell className="pb-16 sm:pb-20">
             <div className="grid gap-10 lg:grid-cols-[1fr,0.78fr] lg:items-center">
               <div className="max-w-3xl">

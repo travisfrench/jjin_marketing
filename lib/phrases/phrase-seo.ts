@@ -46,7 +46,7 @@ export function buildPhraseH1(phrase: PhraseRecord) {
 }
 
 export function buildPhraseDescription(phrase: PhraseRecord) {
-  return `Hear ${phrase.koreanText} (${phrase.romanization}) spoken clearly and how to say "${phrase.englishText}" in Korean. Listen, repeat, and learn with Jjin.`;
+  return `Hear ${phrase.koreanText} (${phrase.romanization}) spoken clearly and learn how to say "${phrase.englishText}" in Korean. Listen, repeat, and learn with Jjin.`;
 }
 
 export function phraseNoIndex(phrase: PhraseRecord) {

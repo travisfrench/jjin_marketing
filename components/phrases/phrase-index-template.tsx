@@ -135,7 +135,7 @@ export function PhraseIndexTemplate({
     <>
       <Navbar />
       <main className="overflow-hidden bg-[linear-gradient(180deg,#F8FAFE_0%,#FFFFFF_34%,#F7F8FB_100%)] text-neutral-950">
-        <section className="border-b border-black/8 pt-32">
+        <section className="border-b border-black/8 pt-28 lg:pt-32">
           <SectionShell className="pb-16 sm:pb-20">
             <div className="grid gap-10 lg:grid-cols-[1.02fr,0.98fr] lg:items-center">
               <div className="max-w-3xl">
@@ -234,7 +234,7 @@ export function PhraseIndexTemplate({
         {showcaseHubs.map((hub) => (
           <section
             key={hub.slug}
-            className="relative h-dvh overflow-hidden border-t border-black/8 py-20 sm:py-24"
+            className="relative lg:h-dvh overflow-hidden border-t border-black/8 py-20 sm:py-24"
           >
             <Image
               src={categoryBackgrounds[hub.category] ?? "/marketing/hero/jjin-hero-full-sky.webp"}
