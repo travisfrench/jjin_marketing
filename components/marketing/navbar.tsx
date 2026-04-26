@@ -3,8 +3,12 @@
 import Image from "next/image";
 import Link from "next/link";
 import { useEffect, useRef, useState } from "react";
-import { Menu, X } from "lucide-react";
-import { appStoreUrl, navigationLinks } from "@/lib/marketing-content";
+import { ChevronDown, Menu, X } from "lucide-react";
+import {
+  appStoreUrl,
+  navigationLinks,
+  phraseCategoryLinks,
+} from "@/lib/marketing-content";
 import { FaApple } from "react-icons/fa";
 
 export function Navbar() {
@@ -77,15 +81,47 @@ export function Navbar() {
         </Link>
 
         <nav className="hidden items-center gap-7 md:flex" aria-label="Primary">
-          {navigationLinks.map((item) => (
-            <Link
-              key={item.href}
-              href={item.href}
-              className="text-sm text-black/80 transition hover:text-black"
-            >
-              {item.label}
-            </Link>
-          ))}
+          {navigationLinks.map((item) =>
+            item.href === "/korean-phrases" ? (
+              <div key={item.href} className="group relative py-3">
+                <Link
+                  href={item.href}
+                  className="inline-flex items-center gap-1.5 text-sm text-black/80 transition hover:text-black"
+                >
+                  {item.label}
+                  <ChevronDown className="h-3.5 w-3.5 transition group-hover:rotate-180" />
+                </Link>
+                <div className="invisible absolute left-0 top-full z-50 w-64 rounded-2xl border border-black/10 bg-white/95 p-3 opacity-0 shadow-xl backdrop-blur-xl transition group-hover:visible group-hover:opacity-100 group-focus-within:visible group-focus-within:opacity-100">
+                  <Link
+                    href="/korean-phrases"
+                    className="block rounded-xl px-3 py-2 text-sm font-semibold text-neutral-950 transition hover:bg-neutral-100"
+                  >
+                    All phrases
+                  </Link>
+                  <div className="my-2 h-px bg-black/8" />
+                  <div className="grid grid-cols-2 gap-1">
+                    {phraseCategoryLinks.map((category) => (
+                      <Link
+                        key={category.href}
+                        href={category.href}
+                        className="rounded-lg px-3 py-2 text-sm text-neutral-700 transition hover:bg-neutral-100 hover:text-neutral-950"
+                      >
+                        {category.label}
+                      </Link>
+                    ))}
+                  </div>
+                </div>
+              </div>
+            ) : (
+              <Link
+                key={item.href}
+                href={item.href}
+                className="text-sm text-black/80 transition hover:text-black"
+              >
+                {item.label}
+              </Link>
+            ),
+          )}
           <a
             href={appStoreUrl}
             target="_blank"
@@ -115,14 +151,29 @@ export function Navbar() {
           aria-label="Mobile primary"
         >
           {navigationLinks.map((item) => (
-            <Link
-              key={item.href}
-              href={item.href}
-              onClick={() => setOpen(false)}
-              className="rounded-lg px-2 py-2 text-sm text-neutral-800 transition hover:bg-neutral-100"
-            >
-              {item.label}
-            </Link>
+            <div key={item.href}>
+              <Link
+                href={item.href}
+                onClick={() => setOpen(false)}
+                className="block rounded-lg px-2 py-2 text-sm text-neutral-800 transition hover:bg-neutral-100"
+              >
+                {item.label}
+              </Link>
+              {item.href === "/korean-phrases" ? (
+                <div className="ml-3 grid grid-cols-2 gap-1 border-l border-neutral-200 pl-3">
+                  {phraseCategoryLinks.map((category) => (
+                    <Link
+                      key={category.href}
+                      href={category.href}
+                      onClick={() => setOpen(false)}
+                      className="rounded-lg px-2 py-1.5 text-sm text-neutral-600 transition hover:bg-neutral-100"
+                    >
+                      {category.label}
+                    </Link>
+                  ))}
+                </div>
+              ) : null}
+            </div>
           ))}
           <a
             href={appStoreUrl}

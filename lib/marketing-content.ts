@@ -12,11 +12,24 @@ export const heroContent = {
 };
 
 export const navigationLinks = [
+  { label: "Phrases", href: "/korean-phrases" },
   { label: "Learn Korean", href: "/korean-learning-app" },
   { label: "Travel", href: "/learn-korean-for-travel" },
   { label: "Listening", href: "/korean-listening-practice" },
   { label: "Hangul", href: "/learn-hangul" },
   { label: "About", href: "/about" },
+];
+
+export const phraseCategoryLinks = [
+  { label: "Greetings", href: "/korean-phrases/greeting" },
+  { label: "Courtesy", href: "/korean-phrases/courtesy" },
+  { label: "Restaurant", href: "/korean-phrases/restaurant" },
+  { label: "Cafe", href: "/korean-phrases/cafe" },
+  { label: "Transit", href: "/korean-phrases/transit" },
+  { label: "Hotel", href: "/korean-phrases/hotel" },
+  { label: "Shopping", href: "/korean-phrases/shopping" },
+  { label: "Directions", href: "/korean-phrases/directions" },
+  { label: "Emergency", href: "/korean-phrases/emergency" },
 ];
 
 export type SceneContent = {
@@ -147,6 +160,7 @@ export const appScreens = [
 
 export const footerLinks = [
   { label: "Korean Learning App", href: "/korean-learning-app" },
+  { label: "Korean Phrase Library", href: "/korean-phrases" },
   { label: "Travel Korean", href: "/learn-korean-for-travel" },
   { label: "Listening Practice", href: "/korean-listening-practice" },
   { label: "Learn Hangul", href: "/learn-hangul" },
