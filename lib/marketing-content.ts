@@ -12,11 +12,11 @@ export const heroContent = {
 };
 
 export const navigationLinks = [
-  { label: "Phrases", href: "/korean-phrases" },
   { label: "Learn Korean", href: "/korean-learning-app" },
+  { label: "Phrases", href: "/korean-phrases" },
+  { label: "Hangul Basics", href: "/learn-hangul" },
   { label: "Travel", href: "/learn-korean-for-travel" },
   { label: "Listening", href: "/korean-listening-practice" },
-  { label: "Hangul", href: "/learn-hangul" },
   { label: "About", href: "/about" },
 ];
 
@@ -163,10 +163,39 @@ export const footerLinks = [
   { label: "Korean Phrase Library", href: "/korean-phrases" },
   { label: "Travel Korean", href: "/learn-korean-for-travel" },
   { label: "Listening Practice", href: "/korean-listening-practice" },
-  { label: "Learn Hangul", href: "/learn-hangul" },
+  { label: "Hangul Basics", href: "/learn-hangul" },
   { label: "Korean Phrases", href: "/korean-phrases-app" },
   { label: "About", href: "/about" },
   { label: "Support", href: "/support" },
   { label: "Privacy", href: "/privacy" },
   { label: "Terms", href: "/terms" },
+];
+
+export const footerLinkSections = [
+  {
+    title: "Learn Korean",
+    links: [
+      { label: "All Korean Phrases", href: "/korean-phrases" },
+      ...phraseCategoryLinks,
+    ],
+  },
+  {
+    title: "Study",
+    links: [
+      { label: "Korean Learning App", href: "/korean-learning-app" },
+      { label: "Hangul Basics", href: "/learn-hangul" },
+      { label: "Travel Korean", href: "/learn-korean-for-travel" },
+      { label: "Listening Practice", href: "/korean-listening-practice" },
+      { label: "Korean Phrases App", href: "/korean-phrases-app" },
+    ],
+  },
+  {
+    title: "Jjin",
+    links: [
+      { label: "About", href: "/about" },
+      { label: "Support", href: "/support" },
+      { label: "Privacy", href: "/privacy" },
+      { label: "Terms", href: "/terms" },
+    ],
+  },
 ];

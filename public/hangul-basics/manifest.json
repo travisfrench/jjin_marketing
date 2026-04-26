@@ -1,0 +1,1510 @@
+{
+  "version": 1,
+  "generatedAt": "2026-04-26T15:38:15.467Z",
+  "consonants": [
+    {
+      "symbol": "ㄱ",
+      "romanization": "g/k",
+      "sortOrder": 10,
+      "isPublished": true
+    },
+    {
+      "symbol": "ㄴ",
+      "romanization": "n",
+      "sortOrder": 20,
+      "isPublished": true
+    },
+    {
+      "symbol": "ㄷ",
+      "romanization": "d/t",
+      "sortOrder": 30,
+      "isPublished": true
+    },
+    {
+      "symbol": "ㄹ",
+      "romanization": "r/l",
+      "sortOrder": 40,
+      "isPublished": true
+    },
+    {
+      "symbol": "ㅁ",
+      "romanization": "m",
+      "sortOrder": 50,
+      "isPublished": true
+    },
+    {
+      "symbol": "ㅂ",
+      "romanization": "b/p",
+      "sortOrder": 60,
+      "isPublished": true
+    },
+    {
+      "symbol": "ㅅ",
+      "romanization": "s",
+      "sortOrder": 70,
+      "isPublished": true
+    },
+    {
+      "symbol": "ㅇ",
+      "romanization": "ng/silent",
+      "sortOrder": 80,
+      "isPublished": true
+    },
+    {
+      "symbol": "ㅈ",
+      "romanization": "j",
+      "sortOrder": 90,
+      "isPublished": true
+    },
+    {
+      "symbol": "ㅊ",
+      "romanization": "ch",
+      "sortOrder": 100,
+      "isPublished": true
+    },
+    {
+      "symbol": "ㅋ",
+      "romanization": "k",
+      "sortOrder": 110,
+      "isPublished": true
+    },
+    {
+      "symbol": "ㅌ",
+      "romanization": "t",
+      "sortOrder": 120,
+      "isPublished": true
+    },
+    {
+      "symbol": "ㅍ",
+      "romanization": "p",
+      "sortOrder": 130,
+      "isPublished": true
+    },
+    {
+      "symbol": "ㅎ",
+      "romanization": "h",
+      "sortOrder": 140,
+      "isPublished": true
+    }
+  ],
+  "vowels": [
+    {
+      "symbol": "ㅏ",
+      "romanization": "a",
+      "sortOrder": 210,
+      "isPublished": true
+    },
+    {
+      "symbol": "ㅓ",
+      "romanization": "eo",
+      "sortOrder": 220,
+      "isPublished": true
+    },
+    {
+      "symbol": "ㅗ",
+      "romanization": "o",
+      "sortOrder": 230,
+      "isPublished": true
+    },
+    {
+      "symbol": "ㅜ",
+      "romanization": "u",
+      "sortOrder": 240,
+      "isPublished": true
+    },
+    {
+      "symbol": "ㅡ",
+      "romanization": "eu",
+      "sortOrder": 250,
+      "isPublished": true
+    },
+    {
+      "symbol": "ㅣ",
+      "romanization": "i",
+      "sortOrder": 260,
+      "isPublished": true
+    },
+    {
+      "symbol": "ㅐ",
+      "romanization": "ae",
+      "sortOrder": 270,
+      "isPublished": true
+    },
+    {
+      "symbol": "ㅔ",
+      "romanization": "e",
+      "sortOrder": 280,
+      "isPublished": true
+    },
+    {
+      "symbol": "ㅑ",
+      "romanization": "ya",
+      "sortOrder": 290,
+      "isPublished": true
+    },
+    {
+      "symbol": "ㅕ",
+      "romanization": "yeo",
+      "sortOrder": 300,
+      "isPublished": true
+    },
+    {
+      "symbol": "ㅛ",
+      "romanization": "yo",
+      "sortOrder": 310,
+      "isPublished": true
+    },
+    {
+      "symbol": "ㅠ",
+      "romanization": "yu",
+      "sortOrder": 320,
+      "isPublished": true
+    }
+  ],
+  "items": [
+    {
+      "id": "c3131-v314f",
+      "slug": "c3131-v314f",
+      "consonant": "ㄱ",
+      "vowel": "ㅏ",
+      "syllable": "가",
+      "audioPath": "hangul-basics/audio/c3131-v314f/ko_normal.wav"
+    },
+    {
+      "id": "c3131-v3153",
+      "slug": "c3131-v3153",
+      "consonant": "ㄱ",
+      "vowel": "ㅓ",
+      "syllable": "거",
+      "audioPath": "hangul-basics/audio/c3131-v3153/ko_normal.wav"
+    },
+    {
+      "id": "c3131-v3157",
+      "slug": "c3131-v3157",
+      "consonant": "ㄱ",
+      "vowel": "ㅗ",
+      "syllable": "고",
+      "audioPath": "hangul-basics/audio/c3131-v3157/ko_normal.wav"
+    },
+    {
+      "id": "c3131-v315c",
+      "slug": "c3131-v315c",
+      "consonant": "ㄱ",
+      "vowel": "ㅜ",
+      "syllable": "구",
+      "audioPath": "hangul-basics/audio/c3131-v315c/ko_normal.wav"
+    },
+    {
+      "id": "c3131-v3161",
+      "slug": "c3131-v3161",
+      "consonant": "ㄱ",
+      "vowel": "ㅡ",
+      "syllable": "그",
+      "audioPath": "hangul-basics/audio/c3131-v3161/ko_normal.wav"
+    },
+    {
+      "id": "c3131-v3163",
+      "slug": "c3131-v3163",
+      "consonant": "ㄱ",
+      "vowel": "ㅣ",
+      "syllable": "기",
+      "audioPath": "hangul-basics/audio/c3131-v3163/ko_normal.wav"
+    },
+    {
+      "id": "c3131-v3150",
+      "slug": "c3131-v3150",
+      "consonant": "ㄱ",
+      "vowel": "ㅐ",
+      "syllable": "개",
+      "audioPath": "hangul-basics/audio/c3131-v3150/ko_normal.wav"
+    },
+    {
+      "id": "c3131-v3154",
+      "slug": "c3131-v3154",
+      "consonant": "ㄱ",
+      "vowel": "ㅔ",
+      "syllable": "게",
+      "audioPath": "hangul-basics/audio/c3131-v3154/ko_normal.wav"
+    },
+    {
+      "id": "c3131-v3151",
+      "slug": "c3131-v3151",
+      "consonant": "ㄱ",
+      "vowel": "ㅑ",
+      "syllable": "갸",
+      "audioPath": "hangul-basics/audio/c3131-v3151/ko_normal.wav"
+    },
+    {
+      "id": "c3131-v3155",
+      "slug": "c3131-v3155",
+      "consonant": "ㄱ",
+      "vowel": "ㅕ",
+      "syllable": "겨",
+      "audioPath": "hangul-basics/audio/c3131-v3155/ko_normal.wav"
+    },
+    {
+      "id": "c3131-v315b",
+      "slug": "c3131-v315b",
+      "consonant": "ㄱ",
+      "vowel": "ㅛ",
+      "syllable": "교",
+      "audioPath": "hangul-basics/audio/c3131-v315b/ko_normal.wav"
+    },
+    {
+      "id": "c3131-v3160",
+      "slug": "c3131-v3160",
+      "consonant": "ㄱ",
+      "vowel": "ㅠ",
+      "syllable": "규",
+      "audioPath": "hangul-basics/audio/c3131-v3160/ko_normal.wav"
+    },
+    {
+      "id": "c3134-v314f",
+      "slug": "c3134-v314f",
+      "consonant": "ㄴ",
+      "vowel": "ㅏ",
+      "syllable": "나",
+      "audioPath": "hangul-basics/audio/c3134-v314f/ko_normal.wav"
+    },
+    {
+      "id": "c3134-v3153",
+      "slug": "c3134-v3153",
+      "consonant": "ㄴ",
+      "vowel": "ㅓ",
+      "syllable": "너",
+      "audioPath": "hangul-basics/audio/c3134-v3153/ko_normal.wav"
+    },
+    {
+      "id": "c3134-v3157",
+      "slug": "c3134-v3157",
+      "consonant": "ㄴ",
+      "vowel": "ㅗ",
+      "syllable": "노",
+      "audioPath": "hangul-basics/audio/c3134-v3157/ko_normal.wav"
+    },
+    {
+      "id": "c3134-v315c",
+      "slug": "c3134-v315c",
+      "consonant": "ㄴ",
+      "vowel": "ㅜ",
+      "syllable": "누",
+      "audioPath": "hangul-basics/audio/c3134-v315c/ko_normal.wav"
+    },
+    {
+      "id": "c3134-v3161",
+      "slug": "c3134-v3161",
+      "consonant": "ㄴ",
+      "vowel": "ㅡ",
+      "syllable": "느",
+      "audioPath": "hangul-basics/audio/c3134-v3161/ko_normal.wav"
+    },
+    {
+      "id": "c3134-v3163",
+      "slug": "c3134-v3163",
+      "consonant": "ㄴ",
+      "vowel": "ㅣ",
+      "syllable": "니",
+      "audioPath": "hangul-basics/audio/c3134-v3163/ko_normal.wav"
+    },
+    {
+      "id": "c3134-v3150",
+      "slug": "c3134-v3150",
+      "consonant": "ㄴ",
+      "vowel": "ㅐ",
+      "syllable": "내",
+      "audioPath": "hangul-basics/audio/c3134-v3150/ko_normal.wav"
+    },
+    {
+      "id": "c3134-v3154",
+      "slug": "c3134-v3154",
+      "consonant": "ㄴ",
+      "vowel": "ㅔ",
+      "syllable": "네",
+      "audioPath": "hangul-basics/audio/c3134-v3154/ko_normal.wav"
+    },
+    {
+      "id": "c3134-v3151",
+      "slug": "c3134-v3151",
+      "consonant": "ㄴ",
+      "vowel": "ㅑ",
+      "syllable": "냐",
+      "audioPath": "hangul-basics/audio/c3134-v3151/ko_normal.wav"
+    },
+    {
+      "id": "c3134-v3155",
+      "slug": "c3134-v3155",
+      "consonant": "ㄴ",
+      "vowel": "ㅕ",
+      "syllable": "녀",
+      "audioPath": "hangul-basics/audio/c3134-v3155/ko_normal.wav"
+    },
+    {
+      "id": "c3134-v315b",
+      "slug": "c3134-v315b",
+      "consonant": "ㄴ",
+      "vowel": "ㅛ",
+      "syllable": "뇨",
+      "audioPath": "hangul-basics/audio/c3134-v315b/ko_normal.wav"
+    },
+    {
+      "id": "c3134-v3160",
+      "slug": "c3134-v3160",
+      "consonant": "ㄴ",
+      "vowel": "ㅠ",
+      "syllable": "뉴",
+      "audioPath": "hangul-basics/audio/c3134-v3160/ko_normal.wav"
+    },
+    {
+      "id": "c3137-v314f",
+      "slug": "c3137-v314f",
+      "consonant": "ㄷ",
+      "vowel": "ㅏ",
+      "syllable": "다",
+      "audioPath": "hangul-basics/audio/c3137-v314f/ko_normal.wav"
+    },
+    {
+      "id": "c3137-v3153",
+      "slug": "c3137-v3153",
+      "consonant": "ㄷ",
+      "vowel": "ㅓ",
+      "syllable": "더",
+      "audioPath": "hangul-basics/audio/c3137-v3153/ko_normal.wav"
+    },
+    {
+      "id": "c3137-v3157",
+      "slug": "c3137-v3157",
+      "consonant": "ㄷ",
+      "vowel": "ㅗ",
+      "syllable": "도",
+      "audioPath": "hangul-basics/audio/c3137-v3157/ko_normal.wav"
+    },
+    {
+      "id": "c3137-v315c",
+      "slug": "c3137-v315c",
+      "consonant": "ㄷ",
+      "vowel": "ㅜ",
+      "syllable": "두",
+      "audioPath": "hangul-basics/audio/c3137-v315c/ko_normal.wav"
+    },
+    {
+      "id": "c3137-v3161",
+      "slug": "c3137-v3161",
+      "consonant": "ㄷ",
+      "vowel": "ㅡ",
+      "syllable": "드",
+      "audioPath": "hangul-basics/audio/c3137-v3161/ko_normal.wav"
+    },
+    {
+      "id": "c3137-v3163",
+      "slug": "c3137-v3163",
+      "consonant": "ㄷ",
+      "vowel": "ㅣ",
+      "syllable": "디",
+      "audioPath": "hangul-basics/audio/c3137-v3163/ko_normal.wav"
+    },
+    {
+      "id": "c3137-v3150",
+      "slug": "c3137-v3150",
+      "consonant": "ㄷ",
+      "vowel": "ㅐ",
+      "syllable": "대",
+      "audioPath": "hangul-basics/audio/c3137-v3150/ko_normal.wav"
+    },
+    {
+      "id": "c3137-v3154",
+      "slug": "c3137-v3154",
+      "consonant": "ㄷ",
+      "vowel": "ㅔ",
+      "syllable": "데",
+      "audioPath": "hangul-basics/audio/c3137-v3154/ko_normal.wav"
+    },
+    {
+      "id": "c3137-v3151",
+      "slug": "c3137-v3151",
+      "consonant": "ㄷ",
+      "vowel": "ㅑ",
+      "syllable": "댜",
+      "audioPath": "hangul-basics/audio/c3137-v3151/ko_normal.wav"
+    },
+    {
+      "id": "c3137-v3155",
+      "slug": "c3137-v3155",
+      "consonant": "ㄷ",
+      "vowel": "ㅕ",
+      "syllable": "뎌",
+      "audioPath": "hangul-basics/audio/c3137-v3155/ko_normal.wav"
+    },
+    {
+      "id": "c3137-v315b",
+      "slug": "c3137-v315b",
+      "consonant": "ㄷ",
+      "vowel": "ㅛ",
+      "syllable": "됴",
+      "audioPath": "hangul-basics/audio/c3137-v315b/ko_normal.wav"
+    },
+    {
+      "id": "c3137-v3160",
+      "slug": "c3137-v3160",
+      "consonant": "ㄷ",
+      "vowel": "ㅠ",
+      "syllable": "듀",
+      "audioPath": "hangul-basics/audio/c3137-v3160/ko_normal.wav"
+    },
+    {
+      "id": "c3139-v314f",
+      "slug": "c3139-v314f",
+      "consonant": "ㄹ",
+      "vowel": "ㅏ",
+      "syllable": "라",
+      "audioPath": "hangul-basics/audio/c3139-v314f/ko_normal.wav"
+    },
+    {
+      "id": "c3139-v3153",
+      "slug": "c3139-v3153",
+      "consonant": "ㄹ",
+      "vowel": "ㅓ",
+      "syllable": "러",
+      "audioPath": "hangul-basics/audio/c3139-v3153/ko_normal.wav"
+    },
+    {
+      "id": "c3139-v3157",
+      "slug": "c3139-v3157",
+      "consonant": "ㄹ",
+      "vowel": "ㅗ",
+      "syllable": "로",
+      "audioPath": "hangul-basics/audio/c3139-v3157/ko_normal.wav"
+    },
+    {
+      "id": "c3139-v315c",
+      "slug": "c3139-v315c",
+      "consonant": "ㄹ",
+      "vowel": "ㅜ",
+      "syllable": "루",
+      "audioPath": "hangul-basics/audio/c3139-v315c/ko_normal.wav"
+    },
+    {
+      "id": "c3139-v3161",
+      "slug": "c3139-v3161",
+      "consonant": "ㄹ",
+      "vowel": "ㅡ",
+      "syllable": "르",
+      "audioPath": "hangul-basics/audio/c3139-v3161/ko_normal.wav"
+    },
+    {
+      "id": "c3139-v3163",
+      "slug": "c3139-v3163",
+      "consonant": "ㄹ",
+      "vowel": "ㅣ",
+      "syllable": "리",
+      "audioPath": "hangul-basics/audio/c3139-v3163/ko_normal.wav"
+    },
+    {
+      "id": "c3139-v3150",
+      "slug": "c3139-v3150",
+      "consonant": "ㄹ",
+      "vowel": "ㅐ",
+      "syllable": "래",
+      "audioPath": "hangul-basics/audio/c3139-v3150/ko_normal.wav"
+    },
+    {
+      "id": "c3139-v3154",
+      "slug": "c3139-v3154",
+      "consonant": "ㄹ",
+      "vowel": "ㅔ",
+      "syllable": "레",
+      "audioPath": "hangul-basics/audio/c3139-v3154/ko_normal.wav"
+    },
+    {
+      "id": "c3139-v3151",
+      "slug": "c3139-v3151",
+      "consonant": "ㄹ",
+      "vowel": "ㅑ",
+      "syllable": "랴",
+      "audioPath": "hangul-basics/audio/c3139-v3151/ko_normal.wav"
+    },
+    {
+      "id": "c3139-v3155",
+      "slug": "c3139-v3155",
+      "consonant": "ㄹ",
+      "vowel": "ㅕ",
+      "syllable": "려",
+      "audioPath": "hangul-basics/audio/c3139-v3155/ko_normal.wav"
+    },
+    {
+      "id": "c3139-v315b",
+      "slug": "c3139-v315b",
+      "consonant": "ㄹ",
+      "vowel": "ㅛ",
+      "syllable": "료",
+      "audioPath": "hangul-basics/audio/c3139-v315b/ko_normal.wav"
+    },
+    {
+      "id": "c3139-v3160",
+      "slug": "c3139-v3160",
+      "consonant": "ㄹ",
+      "vowel": "ㅠ",
+      "syllable": "류",
+      "audioPath": "hangul-basics/audio/c3139-v3160/ko_normal.wav"
+    },
+    {
+      "id": "c3141-v314f",
+      "slug": "c3141-v314f",
+      "consonant": "ㅁ",
+      "vowel": "ㅏ",
+      "syllable": "마",
+      "audioPath": "hangul-basics/audio/c3141-v314f/ko_normal.wav"
+    },
+    {
+      "id": "c3141-v3153",
+      "slug": "c3141-v3153",
+      "consonant": "ㅁ",
+      "vowel": "ㅓ",
+      "syllable": "머",
+      "audioPath": "hangul-basics/audio/c3141-v3153/ko_normal.wav"
+    },
+    {
+      "id": "c3141-v3157",
+      "slug": "c3141-v3157",
+      "consonant": "ㅁ",
+      "vowel": "ㅗ",
+      "syllable": "모",
+      "audioPath": "hangul-basics/audio/c3141-v3157/ko_normal.wav"
+    },
+    {
+      "id": "c3141-v315c",
+      "slug": "c3141-v315c",
+      "consonant": "ㅁ",
+      "vowel": "ㅜ",
+      "syllable": "무",
+      "audioPath": "hangul-basics/audio/c3141-v315c/ko_normal.wav"
+    },
+    {
+      "id": "c3141-v3161",
+      "slug": "c3141-v3161",
+      "consonant": "ㅁ",
+      "vowel": "ㅡ",
+      "syllable": "므",
+      "audioPath": "hangul-basics/audio/c3141-v3161/ko_normal.wav"
+    },
+    {
+      "id": "c3141-v3163",
+      "slug": "c3141-v3163",
+      "consonant": "ㅁ",
+      "vowel": "ㅣ",
+      "syllable": "미",
+      "audioPath": "hangul-basics/audio/c3141-v3163/ko_normal.wav"
+    },
+    {
+      "id": "c3141-v3150",
+      "slug": "c3141-v3150",
+      "consonant": "ㅁ",
+      "vowel": "ㅐ",
+      "syllable": "매",
+      "audioPath": "hangul-basics/audio/c3141-v3150/ko_normal.wav"
+    },
+    {
+      "id": "c3141-v3154",
+      "slug": "c3141-v3154",
+      "consonant": "ㅁ",
+      "vowel": "ㅔ",
+      "syllable": "메",
+      "audioPath": "hangul-basics/audio/c3141-v3154/ko_normal.wav"
+    },
+    {
+      "id": "c3141-v3151",
+      "slug": "c3141-v3151",
+      "consonant": "ㅁ",
+      "vowel": "ㅑ",
+      "syllable": "먀",
+      "audioPath": "hangul-basics/audio/c3141-v3151/ko_normal.wav"
+    },
+    {
+      "id": "c3141-v3155",
+      "slug": "c3141-v3155",
+      "consonant": "ㅁ",
+      "vowel": "ㅕ",
+      "syllable": "며",
+      "audioPath": "hangul-basics/audio/c3141-v3155/ko_normal.wav"
+    },
+    {
+      "id": "c3141-v315b",
+      "slug": "c3141-v315b",
+      "consonant": "ㅁ",
+      "vowel": "ㅛ",
+      "syllable": "묘",
+      "audioPath": "hangul-basics/audio/c3141-v315b/ko_normal.wav"
+    },
+    {
+      "id": "c3141-v3160",
+      "slug": "c3141-v3160",
+      "consonant": "ㅁ",
+      "vowel": "ㅠ",
+      "syllable": "뮤",
+      "audioPath": "hangul-basics/audio/c3141-v3160/ko_normal.wav"
+    },
+    {
+      "id": "c3142-v314f",
+      "slug": "c3142-v314f",
+      "consonant": "ㅂ",
+      "vowel": "ㅏ",
+      "syllable": "바",
+      "audioPath": "hangul-basics/audio/c3142-v314f/ko_normal.wav"
+    },
+    {
+      "id": "c3142-v3153",
+      "slug": "c3142-v3153",
+      "consonant": "ㅂ",
+      "vowel": "ㅓ",
+      "syllable": "버",
+      "audioPath": "hangul-basics/audio/c3142-v3153/ko_normal.wav"
+    },
+    {
+      "id": "c3142-v3157",
+      "slug": "c3142-v3157",
+      "consonant": "ㅂ",
+      "vowel": "ㅗ",
+      "syllable": "보",
+      "audioPath": "hangul-basics/audio/c3142-v3157/ko_normal.wav"
+    },
+    {
+      "id": "c3142-v315c",
+      "slug": "c3142-v315c",
+      "consonant": "ㅂ",
+      "vowel": "ㅜ",
+      "syllable": "부",
+      "audioPath": "hangul-basics/audio/c3142-v315c/ko_normal.wav"
+    },
+    {
+      "id": "c3142-v3161",
+      "slug": "c3142-v3161",
+      "consonant": "ㅂ",
+      "vowel": "ㅡ",
+      "syllable": "브",
+      "audioPath": "hangul-basics/audio/c3142-v3161/ko_normal.wav"
+    },
+    {
+      "id": "c3142-v3163",
+      "slug": "c3142-v3163",
+      "consonant": "ㅂ",
+      "vowel": "ㅣ",
+      "syllable": "비",
+      "audioPath": "hangul-basics/audio/c3142-v3163/ko_normal.wav"
+    },
+    {
+      "id": "c3142-v3150",
+      "slug": "c3142-v3150",
+      "consonant": "ㅂ",
+      "vowel": "ㅐ",
+      "syllable": "배",
+      "audioPath": "hangul-basics/audio/c3142-v3150/ko_normal.wav"
+    },
+    {
+      "id": "c3142-v3154",
+      "slug": "c3142-v3154",
+      "consonant": "ㅂ",
+      "vowel": "ㅔ",
+      "syllable": "베",
+      "audioPath": "hangul-basics/audio/c3142-v3154/ko_normal.wav"
+    },
+    {
+      "id": "c3142-v3151",
+      "slug": "c3142-v3151",
+      "consonant": "ㅂ",
+      "vowel": "ㅑ",
+      "syllable": "뱌",
+      "audioPath": "hangul-basics/audio/c3142-v3151/ko_normal.wav"
+    },
+    {
+      "id": "c3142-v3155",
+      "slug": "c3142-v3155",
+      "consonant": "ㅂ",
+      "vowel": "ㅕ",
+      "syllable": "벼",
+      "audioPath": "hangul-basics/audio/c3142-v3155/ko_normal.wav"
+    },
+    {
+      "id": "c3142-v315b",
+      "slug": "c3142-v315b",
+      "consonant": "ㅂ",
+      "vowel": "ㅛ",
+      "syllable": "뵤",
+      "audioPath": "hangul-basics/audio/c3142-v315b/ko_normal.wav"
+    },
+    {
+      "id": "c3142-v3160",
+      "slug": "c3142-v3160",
+      "consonant": "ㅂ",
+      "vowel": "ㅠ",
+      "syllable": "뷰",
+      "audioPath": "hangul-basics/audio/c3142-v3160/ko_normal.wav"
+    },
+    {
+      "id": "c3145-v314f",
+      "slug": "c3145-v314f",
+      "consonant": "ㅅ",
+      "vowel": "ㅏ",
+      "syllable": "사",
+      "audioPath": "hangul-basics/audio/c3145-v314f/ko_normal.wav"
+    },
+    {
+      "id": "c3145-v3153",
+      "slug": "c3145-v3153",
+      "consonant": "ㅅ",
+      "vowel": "ㅓ",
+      "syllable": "서",
+      "audioPath": "hangul-basics/audio/c3145-v3153/ko_normal.wav"
+    },
+    {
+      "id": "c3145-v3157",
+      "slug": "c3145-v3157",
+      "consonant": "ㅅ",
+      "vowel": "ㅗ",
+      "syllable": "소",
+      "audioPath": "hangul-basics/audio/c3145-v3157/ko_normal.wav"
+    },
+    {
+      "id": "c3145-v315c",
+      "slug": "c3145-v315c",
+      "consonant": "ㅅ",
+      "vowel": "ㅜ",
+      "syllable": "수",
+      "audioPath": "hangul-basics/audio/c3145-v315c/ko_normal.wav"
+    },
+    {
+      "id": "c3145-v3161",
+      "slug": "c3145-v3161",
+      "consonant": "ㅅ",
+      "vowel": "ㅡ",
+      "syllable": "스",
+      "audioPath": "hangul-basics/audio/c3145-v3161/ko_normal.wav"
+    },
+    {
+      "id": "c3145-v3163",
+      "slug": "c3145-v3163",
+      "consonant": "ㅅ",
+      "vowel": "ㅣ",
+      "syllable": "시",
+      "audioPath": "hangul-basics/audio/c3145-v3163/ko_normal.wav"
+    },
+    {
+      "id": "c3145-v3150",
+      "slug": "c3145-v3150",
+      "consonant": "ㅅ",
+      "vowel": "ㅐ",
+      "syllable": "새",
+      "audioPath": "hangul-basics/audio/c3145-v3150/ko_normal.wav"
+    },
+    {
+      "id": "c3145-v3154",
+      "slug": "c3145-v3154",
+      "consonant": "ㅅ",
+      "vowel": "ㅔ",
+      "syllable": "세",
+      "audioPath": "hangul-basics/audio/c3145-v3154/ko_normal.wav"
+    },
+    {
+      "id": "c3145-v3151",
+      "slug": "c3145-v3151",
+      "consonant": "ㅅ",
+      "vowel": "ㅑ",
+      "syllable": "샤",
+      "audioPath": "hangul-basics/audio/c3145-v3151/ko_normal.wav"
+    },
+    {
+      "id": "c3145-v3155",
+      "slug": "c3145-v3155",
+      "consonant": "ㅅ",
+      "vowel": "ㅕ",
+      "syllable": "셔",
+      "audioPath": "hangul-basics/audio/c3145-v3155/ko_normal.wav"
+    },
+    {
+      "id": "c3145-v315b",
+      "slug": "c3145-v315b",
+      "consonant": "ㅅ",
+      "vowel": "ㅛ",
+      "syllable": "쇼",
+      "audioPath": "hangul-basics/audio/c3145-v315b/ko_normal.wav"
+    },
+    {
+      "id": "c3145-v3160",
+      "slug": "c3145-v3160",
+      "consonant": "ㅅ",
+      "vowel": "ㅠ",
+      "syllable": "슈",
+      "audioPath": "hangul-basics/audio/c3145-v3160/ko_normal.wav"
+    },
+    {
+      "id": "c3147-v314f",
+      "slug": "c3147-v314f",
+      "consonant": "ㅇ",
+      "vowel": "ㅏ",
+      "syllable": "아",
+      "audioPath": "hangul-basics/audio/c3147-v314f/ko_normal.wav"
+    },
+    {
+      "id": "c3147-v3153",
+      "slug": "c3147-v3153",
+      "consonant": "ㅇ",
+      "vowel": "ㅓ",
+      "syllable": "어",
+      "audioPath": "hangul-basics/audio/c3147-v3153/ko_normal.wav"
+    },
+    {
+      "id": "c3147-v3157",
+      "slug": "c3147-v3157",
+      "consonant": "ㅇ",
+      "vowel": "ㅗ",
+      "syllable": "오",
+      "audioPath": "hangul-basics/audio/c3147-v3157/ko_normal.wav"
+    },
+    {
+      "id": "c3147-v315c",
+      "slug": "c3147-v315c",
+      "consonant": "ㅇ",
+      "vowel": "ㅜ",
+      "syllable": "우",
+      "audioPath": "hangul-basics/audio/c3147-v315c/ko_normal.wav"
+    },
+    {
+      "id": "c3147-v3161",
+      "slug": "c3147-v3161",
+      "consonant": "ㅇ",
+      "vowel": "ㅡ",
+      "syllable": "으",
+      "audioPath": "hangul-basics/audio/c3147-v3161/ko_normal.wav"
+    },
+    {
+      "id": "c3147-v3163",
+      "slug": "c3147-v3163",
+      "consonant": "ㅇ",
+      "vowel": "ㅣ",
+      "syllable": "이",
+      "audioPath": "hangul-basics/audio/c3147-v3163/ko_normal.wav"
+    },
+    {
+      "id": "c3147-v3150",
+      "slug": "c3147-v3150",
+      "consonant": "ㅇ",
+      "vowel": "ㅐ",
+      "syllable": "애",
+      "audioPath": "hangul-basics/audio/c3147-v3150/ko_normal.wav"
+    },
+    {
+      "id": "c3147-v3154",
+      "slug": "c3147-v3154",
+      "consonant": "ㅇ",
+      "vowel": "ㅔ",
+      "syllable": "에",
+      "audioPath": "hangul-basics/audio/c3147-v3154/ko_normal.wav"
+    },
+    {
+      "id": "c3147-v3151",
+      "slug": "c3147-v3151",
+      "consonant": "ㅇ",
+      "vowel": "ㅑ",
+      "syllable": "야",
+      "audioPath": "hangul-basics/audio/c3147-v3151/ko_normal.wav"
+    },
+    {
+      "id": "c3147-v3155",
+      "slug": "c3147-v3155",
+      "consonant": "ㅇ",
+      "vowel": "ㅕ",
+      "syllable": "여",
+      "audioPath": "hangul-basics/audio/c3147-v3155/ko_normal.wav"
+    },
+    {
+      "id": "c3147-v315b",
+      "slug": "c3147-v315b",
+      "consonant": "ㅇ",
+      "vowel": "ㅛ",
+      "syllable": "요",
+      "audioPath": "hangul-basics/audio/c3147-v315b/ko_normal.wav"
+    },
+    {
+      "id": "c3147-v3160",
+      "slug": "c3147-v3160",
+      "consonant": "ㅇ",
+      "vowel": "ㅠ",
+      "syllable": "유",
+      "audioPath": "hangul-basics/audio/c3147-v3160/ko_normal.wav"
+    },
+    {
+      "id": "c3148-v314f",
+      "slug": "c3148-v314f",
+      "consonant": "ㅈ",
+      "vowel": "ㅏ",
+      "syllable": "자",
+      "audioPath": "hangul-basics/audio/c3148-v314f/ko_normal.wav"
+    },
+    {
+      "id": "c3148-v3153",
+      "slug": "c3148-v3153",
+      "consonant": "ㅈ",
+      "vowel": "ㅓ",
+      "syllable": "저",
+      "audioPath": "hangul-basics/audio/c3148-v3153/ko_normal.wav"
+    },
+    {
+      "id": "c3148-v3157",
+      "slug": "c3148-v3157",
+      "consonant": "ㅈ",
+      "vowel": "ㅗ",
+      "syllable": "조",
+      "audioPath": "hangul-basics/audio/c3148-v3157/ko_normal.wav"
+    },
+    {
+      "id": "c3148-v315c",
+      "slug": "c3148-v315c",
+      "consonant": "ㅈ",
+      "vowel": "ㅜ",
+      "syllable": "주",
+      "audioPath": "hangul-basics/audio/c3148-v315c/ko_normal.wav"
+    },
+    {
+      "id": "c3148-v3161",
+      "slug": "c3148-v3161",
+      "consonant": "ㅈ",
+      "vowel": "ㅡ",
+      "syllable": "즈",
+      "audioPath": "hangul-basics/audio/c3148-v3161/ko_normal.wav"
+    },
+    {
+      "id": "c3148-v3163",
+      "slug": "c3148-v3163",
+      "consonant": "ㅈ",
+      "vowel": "ㅣ",
+      "syllable": "지",
+      "audioPath": "hangul-basics/audio/c3148-v3163/ko_normal.wav"
+    },
+    {
+      "id": "c3148-v3150",
+      "slug": "c3148-v3150",
+      "consonant": "ㅈ",
+      "vowel": "ㅐ",
+      "syllable": "재",
+      "audioPath": "hangul-basics/audio/c3148-v3150/ko_normal.wav"
+    },
+    {
+      "id": "c3148-v3154",
+      "slug": "c3148-v3154",
+      "consonant": "ㅈ",
+      "vowel": "ㅔ",
+      "syllable": "제",
+      "audioPath": "hangul-basics/audio/c3148-v3154/ko_normal.wav"
+    },
+    {
+      "id": "c3148-v3151",
+      "slug": "c3148-v3151",
+      "consonant": "ㅈ",
+      "vowel": "ㅑ",
+      "syllable": "쟈",
+      "audioPath": "hangul-basics/audio/c3148-v3151/ko_normal.wav"
+    },
+    {
+      "id": "c3148-v3155",
+      "slug": "c3148-v3155",
+      "consonant": "ㅈ",
+      "vowel": "ㅕ",
+      "syllable": "져",
+      "audioPath": "hangul-basics/audio/c3148-v3155/ko_normal.wav"
+    },
+    {
+      "id": "c3148-v315b",
+      "slug": "c3148-v315b",
+      "consonant": "ㅈ",
+      "vowel": "ㅛ",
+      "syllable": "죠",
+      "audioPath": "hangul-basics/audio/c3148-v315b/ko_normal.wav"
+    },
+    {
+      "id": "c3148-v3160",
+      "slug": "c3148-v3160",
+      "consonant": "ㅈ",
+      "vowel": "ㅠ",
+      "syllable": "쥬",
+      "audioPath": "hangul-basics/audio/c3148-v3160/ko_normal.wav"
+    },
+    {
+      "id": "c314a-v314f",
+      "slug": "c314a-v314f",
+      "consonant": "ㅊ",
+      "vowel": "ㅏ",
+      "syllable": "차",
+      "audioPath": "hangul-basics/audio/c314a-v314f/ko_normal.wav"
+    },
+    {
+      "id": "c314a-v3153",
+      "slug": "c314a-v3153",
+      "consonant": "ㅊ",
+      "vowel": "ㅓ",
+      "syllable": "처",
+      "audioPath": "hangul-basics/audio/c314a-v3153/ko_normal.wav"
+    },
+    {
+      "id": "c314a-v3157",
+      "slug": "c314a-v3157",
+      "consonant": "ㅊ",
+      "vowel": "ㅗ",
+      "syllable": "초",
+      "audioPath": "hangul-basics/audio/c314a-v3157/ko_normal.wav"
+    },
+    {
+      "id": "c314a-v315c",
+      "slug": "c314a-v315c",
+      "consonant": "ㅊ",
+      "vowel": "ㅜ",
+      "syllable": "추",
+      "audioPath": "hangul-basics/audio/c314a-v315c/ko_normal.wav"
+    },
+    {
+      "id": "c314a-v3161",
+      "slug": "c314a-v3161",
+      "consonant": "ㅊ",
+      "vowel": "ㅡ",
+      "syllable": "츠",
+      "audioPath": "hangul-basics/audio/c314a-v3161/ko_normal.wav"
+    },
+    {
+      "id": "c314a-v3163",
+      "slug": "c314a-v3163",
+      "consonant": "ㅊ",
+      "vowel": "ㅣ",
+      "syllable": "치",
+      "audioPath": "hangul-basics/audio/c314a-v3163/ko_normal.wav"
+    },
+    {
+      "id": "c314a-v3150",
+      "slug": "c314a-v3150",
+      "consonant": "ㅊ",
+      "vowel": "ㅐ",
+      "syllable": "채",
+      "audioPath": "hangul-basics/audio/c314a-v3150/ko_normal.wav"
+    },
+    {
+      "id": "c314a-v3154",
+      "slug": "c314a-v3154",
+      "consonant": "ㅊ",
+      "vowel": "ㅔ",
+      "syllable": "체",
+      "audioPath": "hangul-basics/audio/c314a-v3154/ko_normal.wav"
+    },
+    {
+      "id": "c314a-v3151",
+      "slug": "c314a-v3151",
+      "consonant": "ㅊ",
+      "vowel": "ㅑ",
+      "syllable": "챠",
+      "audioPath": "hangul-basics/audio/c314a-v3151/ko_normal.wav"
+    },
+    {
+      "id": "c314a-v3155",
+      "slug": "c314a-v3155",
+      "consonant": "ㅊ",
+      "vowel": "ㅕ",
+      "syllable": "쳐",
+      "audioPath": "hangul-basics/audio/c314a-v3155/ko_normal.wav"
+    },
+    {
+      "id": "c314a-v315b",
+      "slug": "c314a-v315b",
+      "consonant": "ㅊ",
+      "vowel": "ㅛ",
+      "syllable": "쵸",
+      "audioPath": "hangul-basics/audio/c314a-v315b/ko_normal.wav"
+    },
+    {
+      "id": "c314a-v3160",
+      "slug": "c314a-v3160",
+      "consonant": "ㅊ",
+      "vowel": "ㅠ",
+      "syllable": "츄",
+      "audioPath": "hangul-basics/audio/c314a-v3160/ko_normal.wav"
+    },
+    {
+      "id": "c314b-v314f",
+      "slug": "c314b-v314f",
+      "consonant": "ㅋ",
+      "vowel": "ㅏ",
+      "syllable": "카",
+      "audioPath": "hangul-basics/audio/c314b-v314f/ko_normal.wav"
+    },
+    {
+      "id": "c314b-v3153",
+      "slug": "c314b-v3153",
+      "consonant": "ㅋ",
+      "vowel": "ㅓ",
+      "syllable": "커",
+      "audioPath": "hangul-basics/audio/c314b-v3153/ko_normal.wav"
+    },
+    {
+      "id": "c314b-v3157",
+      "slug": "c314b-v3157",
+      "consonant": "ㅋ",
+      "vowel": "ㅗ",
+      "syllable": "코",
+      "audioPath": "hangul-basics/audio/c314b-v3157/ko_normal.wav"
+    },
+    {
+      "id": "c314b-v315c",
+      "slug": "c314b-v315c",
+      "consonant": "ㅋ",
+      "vowel": "ㅜ",
+      "syllable": "쿠",
+      "audioPath": "hangul-basics/audio/c314b-v315c/ko_normal.wav"
+    },
+    {
+      "id": "c314b-v3161",
+      "slug": "c314b-v3161",
+      "consonant": "ㅋ",
+      "vowel": "ㅡ",
+      "syllable": "크",
+      "audioPath": "hangul-basics/audio/c314b-v3161/ko_normal.wav"
+    },
+    {
+      "id": "c314b-v3163",
+      "slug": "c314b-v3163",
+      "consonant": "ㅋ",
+      "vowel": "ㅣ",
+      "syllable": "키",
+      "audioPath": "hangul-basics/audio/c314b-v3163/ko_normal.wav"
+    },
+    {
+      "id": "c314b-v3150",
+      "slug": "c314b-v3150",
+      "consonant": "ㅋ",
+      "vowel": "ㅐ",
+      "syllable": "캐",
+      "audioPath": "hangul-basics/audio/c314b-v3150/ko_normal.wav"
+    },
+    {
+      "id": "c314b-v3154",
+      "slug": "c314b-v3154",
+      "consonant": "ㅋ",
+      "vowel": "ㅔ",
+      "syllable": "케",
+      "audioPath": "hangul-basics/audio/c314b-v3154/ko_normal.wav"
+    },
+    {
+      "id": "c314b-v3151",
+      "slug": "c314b-v3151",
+      "consonant": "ㅋ",
+      "vowel": "ㅑ",
+      "syllable": "캬",
+      "audioPath": "hangul-basics/audio/c314b-v3151/ko_normal.wav"
+    },
+    {
+      "id": "c314b-v3155",
+      "slug": "c314b-v3155",
+      "consonant": "ㅋ",
+      "vowel": "ㅕ",
+      "syllable": "켜",
+      "audioPath": "hangul-basics/audio/c314b-v3155/ko_normal.wav"
+    },
+    {
+      "id": "c314b-v315b",
+      "slug": "c314b-v315b",
+      "consonant": "ㅋ",
+      "vowel": "ㅛ",
+      "syllable": "쿄",
+      "audioPath": "hangul-basics/audio/c314b-v315b/ko_normal.wav"
+    },
+    {
+      "id": "c314b-v3160",
+      "slug": "c314b-v3160",
+      "consonant": "ㅋ",
+      "vowel": "ㅠ",
+      "syllable": "큐",
+      "audioPath": "hangul-basics/audio/c314b-v3160/ko_normal.wav"
+    },
+    {
+      "id": "c314c-v314f",
+      "slug": "c314c-v314f",
+      "consonant": "ㅌ",
+      "vowel": "ㅏ",
+      "syllable": "타",
+      "audioPath": "hangul-basics/audio/c314c-v314f/ko_normal.wav"
+    },
+    {
+      "id": "c314c-v3153",
+      "slug": "c314c-v3153",
+      "consonant": "ㅌ",
+      "vowel": "ㅓ",
+      "syllable": "터",
+      "audioPath": "hangul-basics/audio/c314c-v3153/ko_normal.wav"
+    },
+    {
+      "id": "c314c-v3157",
+      "slug": "c314c-v3157",
+      "consonant": "ㅌ",
+      "vowel": "ㅗ",
+      "syllable": "토",
+      "audioPath": "hangul-basics/audio/c314c-v3157/ko_normal.wav"
+    },
+    {
+      "id": "c314c-v315c",
+      "slug": "c314c-v315c",
+      "consonant": "ㅌ",
+      "vowel": "ㅜ",
+      "syllable": "투",
+      "audioPath": "hangul-basics/audio/c314c-v315c/ko_normal.wav"
+    },
+    {
+      "id": "c314c-v3161",
+      "slug": "c314c-v3161",
+      "consonant": "ㅌ",
+      "vowel": "ㅡ",
+      "syllable": "트",
+      "audioPath": "hangul-basics/audio/c314c-v3161/ko_normal.wav"
+    },
+    {
+      "id": "c314c-v3163",
+      "slug": "c314c-v3163",
+      "consonant": "ㅌ",
+      "vowel": "ㅣ",
+      "syllable": "티",
+      "audioPath": "hangul-basics/audio/c314c-v3163/ko_normal.wav"
+    },
+    {
+      "id": "c314c-v3150",
+      "slug": "c314c-v3150",
+      "consonant": "ㅌ",
+      "vowel": "ㅐ",
+      "syllable": "태",
+      "audioPath": "hangul-basics/audio/c314c-v3150/ko_normal.wav"
+    },
+    {
+      "id": "c314c-v3154",
+      "slug": "c314c-v3154",
+      "consonant": "ㅌ",
+      "vowel": "ㅔ",
+      "syllable": "테",
+      "audioPath": "hangul-basics/audio/c314c-v3154/ko_normal.wav"
+    },
+    {
+      "id": "c314c-v3151",
+      "slug": "c314c-v3151",
+      "consonant": "ㅌ",
+      "vowel": "ㅑ",
+      "syllable": "탸",
+      "audioPath": "hangul-basics/audio/c314c-v3151/ko_normal.wav"
+    },
+    {
+      "id": "c314c-v3155",
+      "slug": "c314c-v3155",
+      "consonant": "ㅌ",
+      "vowel": "ㅕ",
+      "syllable": "텨",
+      "audioPath": "hangul-basics/audio/c314c-v3155/ko_normal.wav"
+    },
+    {
+      "id": "c314c-v315b",
+      "slug": "c314c-v315b",
+      "consonant": "ㅌ",
+      "vowel": "ㅛ",
+      "syllable": "툐",
+      "audioPath": "hangul-basics/audio/c314c-v315b/ko_normal.wav"
+    },
+    {
+      "id": "c314c-v3160",
+      "slug": "c314c-v3160",
+      "consonant": "ㅌ",
+      "vowel": "ㅠ",
+      "syllable": "튜",
+      "audioPath": "hangul-basics/audio/c314c-v3160/ko_normal.wav"
+    },
+    {
+      "id": "c314d-v314f",
+      "slug": "c314d-v314f",
+      "consonant": "ㅍ",
+      "vowel": "ㅏ",
+      "syllable": "파",
+      "audioPath": "hangul-basics/audio/c314d-v314f/ko_normal.wav"
+    },
+    {
+      "id": "c314d-v3153",
+      "slug": "c314d-v3153",
+      "consonant": "ㅍ",
+      "vowel": "ㅓ",
+      "syllable": "퍼",
+      "audioPath": "hangul-basics/audio/c314d-v3153/ko_normal.wav"
+    },
+    {
+      "id": "c314d-v3157",
+      "slug": "c314d-v3157",
+      "consonant": "ㅍ",
+      "vowel": "ㅗ",
+      "syllable": "포",
+      "audioPath": "hangul-basics/audio/c314d-v3157/ko_normal.wav"
+    },
+    {
+      "id": "c314d-v315c",
+      "slug": "c314d-v315c",
+      "consonant": "ㅍ",
+      "vowel": "ㅜ",
+      "syllable": "푸",
+      "audioPath": "hangul-basics/audio/c314d-v315c/ko_normal.wav"
+    },
+    {
+      "id": "c314d-v3161",
+      "slug": "c314d-v3161",
+      "consonant": "ㅍ",
+      "vowel": "ㅡ",
+      "syllable": "프",
+      "audioPath": "hangul-basics/audio/c314d-v3161/ko_normal.wav"
+    },
+    {
+      "id": "c314d-v3163",
+      "slug": "c314d-v3163",
+      "consonant": "ㅍ",
+      "vowel": "ㅣ",
+      "syllable": "피",
+      "audioPath": "hangul-basics/audio/c314d-v3163/ko_normal.wav"
+    },
+    {
+      "id": "c314d-v3150",
+      "slug": "c314d-v3150",
+      "consonant": "ㅍ",
+      "vowel": "ㅐ",
+      "syllable": "패",
+      "audioPath": "hangul-basics/audio/c314d-v3150/ko_normal.wav"
+    },
+    {
+      "id": "c314d-v3154",
+      "slug": "c314d-v3154",
+      "consonant": "ㅍ",
+      "vowel": "ㅔ",
+      "syllable": "페",
+      "audioPath": "hangul-basics/audio/c314d-v3154/ko_normal.wav"
+    },
+    {
+      "id": "c314d-v3151",
+      "slug": "c314d-v3151",
+      "consonant": "ㅍ",
+      "vowel": "ㅑ",
+      "syllable": "퍄",
+      "audioPath": "hangul-basics/audio/c314d-v3151/ko_normal.wav"
+    },
+    {
+      "id": "c314d-v3155",
+      "slug": "c314d-v3155",
+      "consonant": "ㅍ",
+      "vowel": "ㅕ",
+      "syllable": "펴",
+      "audioPath": "hangul-basics/audio/c314d-v3155/ko_normal.wav"
+    },
+    {
+      "id": "c314d-v315b",
+      "slug": "c314d-v315b",
+      "consonant": "ㅍ",
+      "vowel": "ㅛ",
+      "syllable": "표",
+      "audioPath": "hangul-basics/audio/c314d-v315b/ko_normal.wav"
+    },
+    {
+      "id": "c314d-v3160",
+      "slug": "c314d-v3160",
+      "consonant": "ㅍ",
+      "vowel": "ㅠ",
+      "syllable": "퓨",
+      "audioPath": "hangul-basics/audio/c314d-v3160/ko_normal.wav"
+    },
+    {
+      "id": "c314e-v314f",
+      "slug": "c314e-v314f",
+      "consonant": "ㅎ",
+      "vowel": "ㅏ",
+      "syllable": "하",
+      "audioPath": "hangul-basics/audio/c314e-v314f/ko_normal.wav"
+    },
+    {
+      "id": "c314e-v3153",
+      "slug": "c314e-v3153",
+      "consonant": "ㅎ",
+      "vowel": "ㅓ",
+      "syllable": "허",
+      "audioPath": "hangul-basics/audio/c314e-v3153/ko_normal.wav"
+    },
+    {
+      "id": "c314e-v3157",
+      "slug": "c314e-v3157",
+      "consonant": "ㅎ",
+      "vowel": "ㅗ",
+      "syllable": "호",
+      "audioPath": "hangul-basics/audio/c314e-v3157/ko_normal.wav"
+    },
+    {
+      "id": "c314e-v315c",
+      "slug": "c314e-v315c",
+      "consonant": "ㅎ",
+      "vowel": "ㅜ",
+      "syllable": "후",
+      "audioPath": "hangul-basics/audio/c314e-v315c/ko_normal.wav"
+    },
+    {
+      "id": "c314e-v3161",
+      "slug": "c314e-v3161",
+      "consonant": "ㅎ",
+      "vowel": "ㅡ",
+      "syllable": "흐",
+      "audioPath": "hangul-basics/audio/c314e-v3161/ko_normal.wav"
+    },
+    {
+      "id": "c314e-v3163",
+      "slug": "c314e-v3163",
+      "consonant": "ㅎ",
+      "vowel": "ㅣ",
+      "syllable": "히",
+      "audioPath": "hangul-basics/audio/c314e-v3163/ko_normal.wav"
+    },
+    {
+      "id": "c314e-v3150",
+      "slug": "c314e-v3150",
+      "consonant": "ㅎ",
+      "vowel": "ㅐ",
+      "syllable": "해",
+      "audioPath": "hangul-basics/audio/c314e-v3150/ko_normal.wav"
+    },
+    {
+      "id": "c314e-v3154",
+      "slug": "c314e-v3154",
+      "consonant": "ㅎ",
+      "vowel": "ㅔ",
+      "syllable": "헤",
+      "audioPath": "hangul-basics/audio/c314e-v3154/ko_normal.wav"
+    },
+    {
+      "id": "c314e-v3151",
+      "slug": "c314e-v3151",
+      "consonant": "ㅎ",
+      "vowel": "ㅑ",
+      "syllable": "햐",
+      "audioPath": "hangul-basics/audio/c314e-v3151/ko_normal.wav"
+    },
+    {
+      "id": "c314e-v3155",
+      "slug": "c314e-v3155",
+      "consonant": "ㅎ",
+      "vowel": "ㅕ",
+      "syllable": "혀",
+      "audioPath": "hangul-basics/audio/c314e-v3155/ko_normal.wav"
+    },
+    {
+      "id": "c314e-v315b",
+      "slug": "c314e-v315b",
+      "consonant": "ㅎ",
+      "vowel": "ㅛ",
+      "syllable": "효",
+      "audioPath": "hangul-basics/audio/c314e-v315b/ko_normal.wav"
+    },
+    {
+      "id": "c314e-v3160",
+      "slug": "c314e-v3160",
+      "consonant": "ㅎ",
+      "vowel": "ㅠ",
+      "syllable": "휴",
+      "audioPath": "hangul-basics/audio/c314e-v3160/ko_normal.wav"
+    }
+  ]
+}

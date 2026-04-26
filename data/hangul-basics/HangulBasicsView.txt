@@ -1,0 +1,978 @@
+import AVFoundation
+import Foundation
+import SwiftUI
+
+private enum HangulLearningPath: String, CaseIterable, Hashable {
+    case consonant
+    case vowel
+
+    var title: String {
+        switch self {
+        case .consonant:
+            return "Consonant"
+        case .vowel:
+            return "Vowel"
+        }
+    }
+
+    var subtitle: String {
+        switch self {
+        case .consonant:
+            return "One consonant paired with all vowels."
+        case .vowel:
+            return "One vowel paired with all consonants."
+        }
+    }
+
+}
+
+private enum HangulBasicsScreenMode: String, CaseIterable, Hashable {
+    case learn
+    case quiz
+
+    var title: String {
+        switch self {
+        case .learn:
+            return "Learn"
+        case .quiz:
+            return "Quiz"
+        }
+    }
+}
+
+private struct HangulBasicsItem: Identifiable, Hashable {
+    let id: String
+    let slug: String
+    let consonant: String
+    let vowel: String
+    let syllable: String
+    let audioPath: String
+}
+
+private struct HangulBasicsQuizFeedback {
+    let isCorrect: Bool
+    let message: String
+}
+
+private struct HangulBasicsManifest: Decodable {
+    struct SymbolEntry: Decodable {
+        let symbol: String
+        let romanization: String
+        let sortOrder: Int
+        let isPublished: Bool
+    }
+
+    struct ItemEntry: Decodable {
+        let id: String
+        let slug: String
+        let consonant: String
+        let vowel: String
+        let syllable: String
+        let audioPath: String
+    }
+
+    let consonants: [SymbolEntry]
+    let vowels: [SymbolEntry]
+    let items: [ItemEntry]
+}
+
+@MainActor
+private final class HangulBasicsViewModel: NSObject, ObservableObject, AVAudioPlayerDelegate, AVSpeechSynthesizerDelegate {
+    @Published var screenMode: HangulBasicsScreenMode = .learn
+    @Published var learningPath: HangulLearningPath = .consonant
+    @Published var selectedConsonant: String
+    @Published var selectedVowel: String
+    @Published private(set) var visibleItems: [HangulBasicsItem] = []
+    @Published private(set) var activePlaybackID: String?
+    @Published private(set) var isAutoplaying = false
+
+    @Published private(set) var quizQuestion: HangulBasicsItem?
+    @Published var quizConsonantSelection: String
+    @Published var quizVowelSelection: String
+    @Published private(set) var quizFeedback: HangulBasicsQuizFeedback?
+
+    let consonants: [String]
+    let vowels: [String]
+
+    private let allItems: [HangulBasicsItem]
+    private var itemByPair: [String: HangulBasicsItem] = [:]
+    private var consonantOrder: [String: Int] = [:]
+    private var vowelOrder: [String: Int] = [:]
+
+    private var audioPlayer: AVAudioPlayer?
+    private let speechSynthesizer = AVSpeechSynthesizer()
+    private var playbackCompletion: (() -> Void)?
+
+    private var autoplayQueue: [HangulBasicsItem] = []
+    private var autoplayIndex = 0
+
+    override init() {
+        let loaded = Self.loadSeedData()
+        self.consonants = loaded.consonants
+        self.vowels = loaded.vowels
+        self.allItems = loaded.items
+        self.selectedConsonant = loaded.consonants.first ?? "ㄱ"
+        self.selectedVowel = loaded.vowels.first ?? "ㅏ"
+        self.quizConsonantSelection = loaded.consonants.first ?? "ㄱ"
+        self.quizVowelSelection = loaded.vowels.first ?? "ㅏ"
+        super.init()
+
+        speechSynthesizer.delegate = self
+
+        for (index, symbol) in consonants.enumerated() {
+            consonantOrder[symbol] = index
+        }
+        for (index, symbol) in vowels.enumerated() {
+            vowelOrder[symbol] = index
+        }
+
+        for item in allItems {
+            itemByPair["\(item.consonant)|\(item.vowel)"] = item
+        }
+
+        refreshVisibleItems()
+        prepareQuizQuestion(autoplay: false)
+    }
+
+    var selectionSymbols: [String] {
+        switch learningPath {
+        case .consonant:
+            return consonants
+        case .vowel:
+            return vowels
+        }
+    }
+
+    var selectedBaseSymbol: String {
+        switch learningPath {
+        case .consonant:
+            return selectedConsonant
+        case .vowel:
+            return selectedVowel
+        }
+    }
+
+    var promptTitle: String {
+        switch learningPath {
+        case .consonant:
+            return "\(selectedConsonant) + all vowels"
+        case .vowel:
+            return "all consonants + \(selectedVowel)"
+        }
+    }
+
+    var nextSuggestionLabel: String {
+        switch learningPath {
+        case .consonant:
+            guard let currentIndex = consonants.firstIndex(of: selectedConsonant) else {
+                return "Pick another consonant"
+            }
+            if consonants.indices.contains(currentIndex + 1) {
+                return "Next consonant: \(consonants[currentIndex + 1])"
+            }
+            return "Try another consonant"
+        case .vowel:
+            guard let currentIndex = vowels.firstIndex(of: selectedVowel) else {
+                return "Pick another vowel"
+            }
+            if vowels.indices.contains(currentIndex + 1) {
+                return "Next vowel: \(vowels[currentIndex + 1])"
+            }
+            return "Try another vowel"
+        }
+    }
+
+    var canSubmitQuizAnswer: Bool {
+        quizQuestion != nil && quizFeedback == nil
+    }
+
+    func setScreenMode(_ mode: HangulBasicsScreenMode) {
+        screenMode = mode
+        stopAutoplay()
+        if mode == .quiz, quizQuestion == nil {
+            prepareQuizQuestion(autoplay: true)
+        }
+    }
+
+    func setLearningPath(_ path: HangulLearningPath) {
+        guard learningPath != path else { return }
+        learningPath = path
+        stopAutoplay()
+        refreshVisibleItems()
+    }
+
+    func selectBaseSymbol(_ symbol: String) {
+        stopAutoplay()
+        switch learningPath {
+        case .consonant:
+            selectedConsonant = symbol
+        case .vowel:
+            selectedVowel = symbol
+        }
+        refreshVisibleItems()
+    }
+
+    func advanceToNextSelection() {
+        stopAutoplay()
+        switch learningPath {
+        case .consonant:
+            if let currentIndex = consonants.firstIndex(of: selectedConsonant),
+               consonants.indices.contains(currentIndex + 1) {
+                selectedConsonant = consonants[currentIndex + 1]
+            } else if let first = consonants.first {
+                selectedConsonant = first
+            }
+        case .vowel:
+            if let currentIndex = vowels.firstIndex(of: selectedVowel),
+               vowels.indices.contains(currentIndex + 1) {
+                selectedVowel = vowels[currentIndex + 1]
+            } else if let first = vowels.first {
+                selectedVowel = first
+            }
+        }
+        refreshVisibleItems()
+    }
+
+    func switchPath() {
+        stopAutoplay()
+        learningPath = (learningPath == .consonant) ? .vowel : .consonant
+        refreshVisibleItems()
+    }
+
+    func playItem(_ item: HangulBasicsItem, completion: (() -> Void)? = nil) {
+        stopAudioOnly()
+        activePlaybackID = item.id
+        playbackCompletion = completion
+
+        if let audioURL = audioURL(for: item), let player = try? AVAudioPlayer(contentsOf: audioURL) {
+            audioPlayer = player
+            player.delegate = self
+            player.prepareToPlay()
+            player.play()
+            return
+        }
+
+        speakFallback(for: item.syllable)
+    }
+
+    func toggleAutoplay() {
+        if isAutoplaying {
+            stopAutoplay()
+        } else {
+            startAutoplay()
+        }
+    }
+
+    func stopAutoplay() {
+        isAutoplaying = false
+        autoplayQueue = []
+        autoplayIndex = 0
+        stopAudioOnly()
+    }
+
+    func prepareQuizQuestion(autoplay: Bool) {
+        stopAutoplay()
+        guard let next = nextQuizQuestion() else {
+            quizQuestion = nil
+            return
+        }
+
+        quizQuestion = next
+        quizFeedback = nil
+        quizConsonantSelection = consonants.first ?? "ㄱ"
+        quizVowelSelection = vowels.first ?? "ㅏ"
+
+        if autoplay {
+            playQuizPrompt()
+        }
+    }
+
+    func playQuizPrompt() {
+        guard let quizQuestion else { return }
+        playItem(quizQuestion)
+    }
+
+    func submitQuizAnswer() {
+        guard let quizQuestion, quizFeedback == nil else { return }
+
+        let isCorrect = quizConsonantSelection == quizQuestion.consonant && quizVowelSelection == quizQuestion.vowel
+        let message: String
+
+        if isCorrect {
+            message = "Correct: \(quizQuestion.syllable) is \(quizQuestion.consonant) + \(quizQuestion.vowel)."
+        } else {
+            message = "Answer: \(quizQuestion.syllable) is \(quizQuestion.consonant) + \(quizQuestion.vowel)."
+        }
+
+        quizFeedback = HangulBasicsQuizFeedback(isCorrect: isCorrect, message: message)
+    }
+
+    func teardown() {
+        stopAutoplay()
+        speechSynthesizer.delegate = nil
+    }
+
+    nonisolated func audioPlayerDidFinishPlaying(_ player: AVAudioPlayer, successfully flag: Bool) {
+        Task { @MainActor [weak self] in
+            self?.finishCurrentPlayback()
+        }
+    }
+
+    nonisolated func speechSynthesizer(_ synthesizer: AVSpeechSynthesizer, didFinish utterance: AVSpeechUtterance) {
+        Task { @MainActor [weak self] in
+            self?.finishCurrentPlayback()
+        }
+    }
+
+    private func refreshVisibleItems() {
+        switch learningPath {
+        case .consonant:
+            visibleItems = allItems
+                .filter { $0.consonant == selectedConsonant }
+                .sorted { left, right in
+                    let leftOrder = vowelOrder[left.vowel] ?? .max
+                    let rightOrder = vowelOrder[right.vowel] ?? .max
+                    return leftOrder < rightOrder
+                }
+        case .vowel:
+            visibleItems = allItems
+                .filter { $0.vowel == selectedVowel }
+                .sorted { left, right in
+                    let leftOrder = consonantOrder[left.consonant] ?? .max
+                    let rightOrder = consonantOrder[right.consonant] ?? .max
+                    return leftOrder < rightOrder
+                }
+        }
+    }
+
+    private func startAutoplay() {
+        guard !visibleItems.isEmpty else { return }
+        isAutoplaying = true
+        autoplayQueue = visibleItems
+        autoplayIndex = 0
+        playAutoplayItemIfPossible()
+    }
+
+    private func playAutoplayItemIfPossible() {
+        guard isAutoplaying else { return }
+        guard autoplayQueue.indices.contains(autoplayIndex) else {
+            isAutoplaying = false
+            autoplayQueue = []
+            autoplayIndex = 0
+            return
+        }
+
+        let item = autoplayQueue[autoplayIndex]
+        playItem(item) { [weak self] in
+            guard let self else { return }
+            guard self.isAutoplaying else { return }
+
+            self.autoplayIndex += 1
+
+            Task { @MainActor [weak self] in
+                try? await Task.sleep(nanoseconds: 180_000_000)
+                self?.playAutoplayItemIfPossible()
+            }
+        }
+    }
+
+    private func nextQuizQuestion() -> HangulBasicsItem? {
+        guard !allItems.isEmpty else { return nil }
+
+        if allItems.count == 1 {
+            return allItems.first
+        }
+
+        let previousID = quizQuestion?.id
+        let candidates = allItems.filter { $0.id != previousID }
+        return candidates.randomElement() ?? allItems.randomElement()
+    }
+
+    private func stopAudioOnly() {
+        audioPlayer?.stop()
+        audioPlayer = nil
+        if speechSynthesizer.isSpeaking {
+            speechSynthesizer.stopSpeaking(at: .immediate)
+        }
+        activePlaybackID = nil
+        playbackCompletion = nil
+    }
+
+    private func finishCurrentPlayback() {
+        audioPlayer = nil
+        activePlaybackID = nil
+        let completion = playbackCompletion
+        playbackCompletion = nil
+        completion?()
+    }
+
+    private func audioURL(for item: HangulBasicsItem) -> URL? {
+        guard
+            let baseURL = Bundle.main.resourceURL
+        else {
+            return nil
+        }
+
+        let url = baseURL.appendingPathComponent(item.audioPath)
+        guard FileManager.default.fileExists(atPath: url.path) else {
+            return nil
+        }
+        return url
+    }
+
+    private func speakFallback(for text: String) {
+        let utterance = AVSpeechUtterance(string: text)
+        utterance.voice = AVSpeechSynthesisVoice(language: "ko-KR")
+        utterance.rate = 0.42
+        speechSynthesizer.speak(utterance)
+    }
+
+    private static func loadSeedData() -> (consonants: [String], vowels: [String], items: [HangulBasicsItem]) {
+        if
+            let url = Bundle.main.url(forResource: "manifest", withExtension: "json", subdirectory: "output/hangul-basics"),
+            let data = try? Data(contentsOf: url),
+            let decoded = try? JSONDecoder().decode(HangulBasicsManifest.self, from: data)
+        {
+            let consonants = decoded.consonants
+                .filter(\.isPublished)
+                .sorted { left, right in
+                    if left.sortOrder == right.sortOrder {
+                        return left.symbol < right.symbol
+                    }
+                    return left.sortOrder < right.sortOrder
+                }
+                .map(\.symbol)
+
+            let vowels = decoded.vowels
+                .filter(\.isPublished)
+                .sorted { left, right in
+                    if left.sortOrder == right.sortOrder {
+                        return left.symbol < right.symbol
+                    }
+                    return left.sortOrder < right.sortOrder
+                }
+                .map(\.symbol)
+
+            let items = decoded.items.map { item in
+                HangulBasicsItem(
+                    id: item.id,
+                    slug: item.slug,
+                    consonant: item.consonant,
+                    vowel: item.vowel,
+                    syllable: item.syllable,
+                    audioPath: item.audioPath
+                )
+            }
+
+            if !consonants.isEmpty, !vowels.isEmpty, !items.isEmpty {
+                return (consonants, vowels, items)
+            }
+        }
+
+        let fallbackConsonants = ["ㄱ", "ㄴ", "ㄷ", "ㄹ", "ㅁ", "ㅂ", "ㅅ", "ㅇ", "ㅈ", "ㅊ", "ㅋ", "ㅌ", "ㅍ", "ㅎ"]
+        let fallbackVowels = ["ㅏ", "ㅓ", "ㅗ", "ㅜ", "ㅡ", "ㅣ", "ㅐ", "ㅔ", "ㅑ", "ㅕ", "ㅛ", "ㅠ"]
+        let items = fallbackConsonants.flatMap { consonant in
+            fallbackVowels.map { vowel in
+                let slug = "c\(consonant.unicodeScalarCode)-v\(vowel.unicodeScalarCode)"
+                let syllable = composeHangulSyllable(consonant: consonant, vowel: vowel)
+                return HangulBasicsItem(
+                    id: slug,
+                    slug: slug,
+                    consonant: consonant,
+                    vowel: vowel,
+                    syllable: syllable,
+                    audioPath: "output/audio/hangul-basics/\(slug)/ko_normal.wav"
+                )
+            }
+        }
+        return (fallbackConsonants, fallbackVowels, items)
+    }
+}
+
+private extension String {
+    var unicodeScalarCode: String {
+        guard let value = unicodeScalars.first?.value else {
+            return "0000"
+        }
+        return String(format: "%04x", value)
+    }
+}
+
+private func composeHangulSyllable(consonant: String, vowel: String) -> String {
+    let choseongIndex: [String: UInt32] = [
+        "ㄱ": 0, "ㄴ": 2, "ㄷ": 3, "ㄹ": 5, "ㅁ": 6, "ㅂ": 7, "ㅅ": 9,
+        "ㅇ": 11, "ㅈ": 12, "ㅊ": 14, "ㅋ": 15, "ㅌ": 16, "ㅍ": 17, "ㅎ": 18
+    ]
+    let jungseongIndex: [String: UInt32] = [
+        "ㅏ": 0, "ㅐ": 1, "ㅑ": 2, "ㅓ": 4, "ㅔ": 5, "ㅕ": 6,
+        "ㅗ": 8, "ㅛ": 12, "ㅜ": 13, "ㅠ": 17, "ㅡ": 18, "ㅣ": 20
+    ]
+
+    guard
+        let choseong = choseongIndex[consonant],
+        let jungseong = jungseongIndex[vowel]
+    else {
+        return consonant + vowel
+    }
+
+    let codepoint = 0xAC00 + ((choseong * 21) + jungseong) * 28
+    guard let scalar = UnicodeScalar(codepoint) else {
+        return consonant + vowel
+    }
+    return String(scalar)
+}
+
+struct HangulBasicsView: View {
+    @Environment(\.colorScheme) private var colorScheme
+    @StateObject private var viewModel = HangulBasicsViewModel()
+
+    private let symbolColumns = Array(repeating: GridItem(.flexible(), spacing: 10), count: 6)
+    private let syllableColumns = Array(repeating: GridItem(.flexible(), spacing: 10), count: 4)
+
+    var body: some View {
+        ZStack {
+            backgroundGradient
+                .ignoresSafeArea()
+
+            ScrollView {
+                VStack(spacing: 16) {
+                    introCard
+                    modePicker
+
+                    if viewModel.screenMode == .learn {
+                        learnContent
+                    } else {
+                        quizContent
+                    }
+                }
+                .padding(.horizontal, 20)
+                .padding(.top, 14)
+                .padding(.bottom, 36)
+            }
+        }
+        .navigationTitle("Hangul Basics")
+        .navigationBarTitleDisplayMode(.inline)
+        .onDisappear {
+            viewModel.teardown()
+        }
+    }
+
+    private var introCard: some View {
+        VStack(alignment: .leading, spacing: 10) {
+            Text("Beginner sounds")
+                .font(.system(.caption, design: .rounded).weight(.semibold))
+                .textCase(.uppercase)
+                .tracking(1.0)
+                .foregroundStyle(secondaryTextColor)
+
+            Text("Pick one consonant or vowel, then hear every match.")
+                .font(.system(.title3, design: .rounded).weight(.bold))
+                .foregroundStyle(primaryTextColor)
+        }
+        .frame(maxWidth: .infinity, alignment: .leading)
+        .padding(.horizontal, 2)
+        .padding(.vertical, 4)
+    }
+
+    private var modePicker: some View {
+        HStack(spacing: 10) {
+            ForEach(HangulBasicsScreenMode.allCases, id: \.self) { mode in
+                Button {
+                    viewModel.setScreenMode(mode)
+                } label: {
+                    Text(mode.title)
+                        .font(.system(.subheadline, design: .rounded).weight(.semibold))
+                        .foregroundStyle(viewModel.screenMode == mode ? Color.white : primaryTextColor)
+                        .frame(maxWidth: .infinity)
+                        .padding(.vertical, 10)
+                        .background(
+                            Capsule(style: .continuous)
+                                .fill(
+                                    viewModel.screenMode == mode
+                                        ? Color.accentPrimary
+                                        : Color.surfaceElevated
+                                )
+                        )
+                }
+                .buttonStyle(.plain)
+            }
+        }
+        .padding(6)
+        .background(
+            Capsule(style: .continuous)
+                .fill(Color.surfacePrimary)
+        )
+        .overlay(
+            Capsule(style: .continuous)
+                .stroke(Color.borderSubtle, lineWidth: 1)
+        )
+    }
+
+    private var learnContent: some View {
+        VStack(spacing: 14) {
+            learningPathCard
+            symbolPickerCard
+            resultGridCard
+            continueCard
+        }
+    }
+
+    private var learningPathCard: some View {
+        VStack(alignment: .leading, spacing: 12) {
+            Text("Start path")
+                .font(.system(.caption, design: .rounded).weight(.semibold))
+                .textCase(.uppercase)
+                .tracking(1.1)
+                .foregroundStyle(secondaryTextColor)
+
+            HStack(spacing: 10) {
+                ForEach(HangulLearningPath.allCases, id: \.self) { path in
+                    Button {
+                        viewModel.setLearningPath(path)
+                    } label: {
+                        VStack(alignment: .leading, spacing: 8) {
+                            Text(path.title)
+                                .font(.system(.subheadline, design: .rounded).weight(.semibold))
+
+                            Text(path.subtitle)
+                                .font(.system(.caption, design: .serif))
+                                .lineLimit(2)
+                        }
+                        .foregroundStyle(viewModel.learningPath == path ? Color.white : primaryTextColor)
+                        .padding(12)
+                        .frame(maxWidth: .infinity, alignment: .leading)
+                        .background(
+                            RoundedRectangle(cornerRadius: 16, style: .continuous)
+                                .fill(
+                                    viewModel.learningPath == path
+                                        ? Color.accentPrimary
+                                        : Color.surfaceElevated
+                                )
+                        )
+                    }
+                    .buttonStyle(.plain)
+                }
+            }
+        }
+        .padding(18)
+        .background(cardBackground)
+        .overlay(cardOutline)
+    }
+
+    private var symbolPickerCard: some View {
+        VStack(alignment: .leading, spacing: 12) {
+            Text(viewModel.learningPath == .consonant ? "Choose a consonant" : "Choose a vowel")
+                .font(.system(.caption, design: .rounded).weight(.semibold))
+                .textCase(.uppercase)
+                .tracking(1.1)
+                .foregroundStyle(secondaryTextColor)
+
+            LazyVGrid(columns: symbolColumns, spacing: 10) {
+                ForEach(viewModel.selectionSymbols, id: \.self) { symbol in
+                    let isSelected = symbol == viewModel.selectedBaseSymbol
+                    Button {
+                        viewModel.selectBaseSymbol(symbol)
+                    } label: {
+                        Text(symbol)
+                            .font(.custom("NotoSansKR-Bold", size: 24))
+                            .foregroundStyle(isSelected ? Color.white : primaryTextColor)
+                            .frame(maxWidth: .infinity, minHeight: 46)
+                            .background(
+                                RoundedRectangle(cornerRadius: 14, style: .continuous)
+                                    .fill(
+                                        isSelected
+                                            ? Color.accentPrimary
+                                            : Color.surfaceElevated
+                                    )
+                            )
+                    }
+                    .buttonStyle(.plain)
+                }
+            }
+        }
+        .padding(18)
+        .background(cardBackground)
+        .overlay(cardOutline)
+    }
+
+    private var resultGridCard: some View {
+        VStack(alignment: .leading, spacing: 12) {
+            HStack {
+                VStack(alignment: .leading, spacing: 2) {
+                    Text("Sound set")
+                        .font(.system(.caption, design: .rounded).weight(.semibold))
+                        .textCase(.uppercase)
+                        .tracking(1.1)
+                        .foregroundStyle(secondaryTextColor)
+                    Text(viewModel.promptTitle)
+                        .font(.system(.headline, design: .rounded).weight(.bold))
+                        .foregroundStyle(primaryTextColor)
+                }
+
+                Spacer()
+
+                Button {
+                    viewModel.toggleAutoplay()
+                } label: {
+                    HStack(spacing: 6) {
+                        Image(systemName: viewModel.isAutoplaying ? "stop.fill" : "play.fill")
+                        Text(viewModel.isAutoplaying ? "Stop" : "Autoplay")
+                    }
+                    .font(.system(.footnote, design: .rounded).weight(.semibold))
+                    .foregroundStyle(Color.white)
+                    .padding(.horizontal, 10)
+                    .padding(.vertical, 8)
+                    .background(
+                        Capsule(style: .continuous)
+                            .fill(Color.accentPrimary)
+                    )
+                }
+                .buttonStyle(.plain)
+            }
+
+            LazyVGrid(columns: syllableColumns, spacing: 10) {
+                ForEach(viewModel.visibleItems) { item in
+                    let isActive = viewModel.activePlaybackID == item.id
+                    Button {
+                        viewModel.playItem(item)
+                    } label: {
+                        VStack(spacing: 4) {
+                            Text(item.syllable)
+                                .font(.custom("NotoSansKR-Bold", size: 30))
+                        }
+                        .foregroundStyle(isActive ? Color.white : primaryTextColor)
+                        .frame(maxWidth: .infinity, minHeight: 78)
+                        .background(
+                            RoundedRectangle(cornerRadius: 14, style: .continuous)
+                                .fill(
+                                    isActive
+                                        ? Color.accentPrimary
+                                        : Color.surfaceElevated
+                                )
+                        )
+                    }
+                    .buttonStyle(.plain)
+                }
+            }
+        }
+        .padding(18)
+        .background(cardBackground)
+        .overlay(cardOutline)
+    }
+
+    private var continueCard: some View {
+        VStack(alignment: .leading, spacing: 12) {
+            Text("Keep learning")
+                .font(.system(.caption, design: .rounded).weight(.semibold))
+                .textCase(.uppercase)
+                .tracking(1.1)
+                .foregroundStyle(secondaryTextColor)
+
+            Text("Move to a new set right away to keep contrast high and memory sticky.")
+                .font(.system(.subheadline, design: .serif))
+                .foregroundStyle(secondaryTextColor)
+
+            VStack(alignment: .leading, spacing: 10) {
+                Button(viewModel.nextSuggestionLabel) {
+                    viewModel.advanceToNextSelection()
+                }
+                .buttonStyle(.borderedProminent)
+                .tint(Color.accentPrimary)
+
+                Button(viewModel.learningPath == .consonant ? "Switch to vowels" : "Switch to consonants") {
+                    viewModel.switchPath()
+                }
+                .buttonStyle(.bordered)
+                .tint(Color.textSecondary)
+            }
+
+            Button {
+                viewModel.setScreenMode(.quiz)
+            } label: {
+                Label("Test this in quiz mode", systemImage: "waveform")
+                    .font(.system(.subheadline, design: .rounded).weight(.semibold))
+                    .frame(maxWidth: .infinity, alignment: .leading)
+                    .padding(.horizontal, 12)
+                    .padding(.vertical, 14)
+                    .background(
+                        RoundedRectangle(cornerRadius: 14, style: .continuous)
+                            .fill(Color.surfaceElevated)
+                    )
+            }
+            .buttonStyle(.plain)
+            .foregroundStyle(primaryTextColor)
+        }
+        .padding(18)
+        .background(cardBackground)
+        .overlay(cardOutline)
+    }
+
+    private var quizContent: some View {
+        VStack(spacing: 14) {
+            quizPromptCard
+            quizPickerCard
+
+            if viewModel.quizFeedback != nil {
+                Button {
+                    viewModel.prepareQuizQuestion(autoplay: true)
+                } label: {
+                    Text("Next Sound")
+                        .font(.system(.body, design: .rounded).weight(.semibold))
+                        .foregroundStyle(primaryTextColor)
+                        .frame(maxWidth: .infinity, minHeight: 54)
+                        .background(
+                            RoundedRectangle(cornerRadius: 16, style: .continuous)
+                                .fill(Color.surfaceElevated)
+                        )
+                        .overlay(
+                            RoundedRectangle(cornerRadius: 16, style: .continuous)
+                                .stroke(Color.borderSubtle, lineWidth: 1)
+                        )
+                }
+                .buttonStyle(.plain)
+            }
+        }
+    }
+
+    private var quizPromptCard: some View {
+        VStack(spacing: 14) {
+            Text("Hear the sound and pick the consonant + vowel pair.")
+                .font(.system(.subheadline, design: .serif))
+                .foregroundStyle(Color.white.opacity(0.92))
+                .frame(maxWidth: .infinity, alignment: .leading)
+
+            Button {
+                viewModel.playQuizPrompt()
+            } label: {
+                ZStack {
+                    RoundedRectangle(cornerRadius: 30, style: .continuous)
+                        .fill(Color.white)
+                        .frame(width: 124, height: 124)
+
+                    Image(systemName: "speaker.wave.2.fill")
+                        .font(.system(size: 46, weight: .bold))
+                        .foregroundStyle(Color.accentPrimary)
+                }
+            }
+            .buttonStyle(.plain)
+
+            Text("Tap the speaker any time before answering.")
+                .font(.system(.footnote, design: .serif))
+                .foregroundStyle(Color.white.opacity(0.88))
+        }
+        .padding(18)
+        .background(
+            RoundedRectangle(cornerRadius: 22, style: .continuous)
+                .fill(JjinTheme.hangulGradient)
+        )
+    }
+
+    private var quizPickerCard: some View {
+        VStack(alignment: .leading, spacing: 12) {
+            Text("Choose the pair")
+                .font(.system(.caption, design: .rounded).weight(.semibold))
+                .textCase(.uppercase)
+                .tracking(1.1)
+                .foregroundStyle(secondaryTextColor)
+
+            HStack(spacing: 12) {
+                VStack(alignment: .center, spacing: 6) {
+                    Text("Consonant")
+                        .font(.system(.caption, design: .rounded).weight(.semibold))
+                        .foregroundStyle(secondaryTextColor)
+                        .frame(maxWidth: .infinity, alignment: .center)
+                    Picker("Consonant", selection: $viewModel.quizConsonantSelection) {
+                        ForEach(viewModel.consonants, id: \.self) { symbol in
+                            Text(symbol).tag(symbol)
+                        }
+                    }
+                    .pickerStyle(.wheel)
+                    .labelsHidden()
+                    .frame(maxWidth: .infinity, minHeight: 206, maxHeight: 206)
+                }
+                .frame(maxWidth: .infinity)
+
+                VStack(alignment: .center, spacing: 6) {
+                    Text("Vowel")
+                        .font(.system(.caption, design: .rounded).weight(.semibold))
+                        .foregroundStyle(secondaryTextColor)
+                        .frame(maxWidth: .infinity, alignment: .center)
+                    Picker("Vowel", selection: $viewModel.quizVowelSelection) {
+                        ForEach(viewModel.vowels, id: \.self) { symbol in
+                            Text(symbol).tag(symbol)
+                        }
+                    }
+                    .pickerStyle(.wheel)
+                    .labelsHidden()
+                    .frame(maxWidth: .infinity, minHeight: 206, maxHeight: 206)
+                }
+                .frame(maxWidth: .infinity)
+            }
+
+            if let feedback = viewModel.quizFeedback {
+                Text(feedback.message)
+                    .font(.system(.subheadline, design: .serif))
+                    .foregroundStyle(feedback.isCorrect ? successColor : warningColor)
+                    .lineLimit(1)
+                    .minimumScaleFactor(0.78)
+            }
+
+            Button {
+                viewModel.submitQuizAnswer()
+            } label: {
+                Text("Check Answer")
+                    .font(.system(.body, design: .rounded).weight(.semibold))
+                    .foregroundStyle(Color.white)
+                    .frame(maxWidth: .infinity, minHeight: 54)
+                    .background(
+                        RoundedRectangle(cornerRadius: 16, style: .continuous)
+                            .fill(Color.accentPrimary)
+                    )
+            }
+            .buttonStyle(.plain)
+            .disabled(!viewModel.canSubmitQuizAnswer)
+            .opacity(viewModel.canSubmitQuizAnswer ? 1.0 : 0.45)
+        }
+        .padding(18)
+        .background(cardBackground)
+        .overlay(cardOutline)
+    }
+
+    private var backgroundGradient: LinearGradient {
+        LinearGradient(
+            colors: [
+                Color.appBackground,
+                Color.appBackgroundTinted,
+                Color.surfaceSupportNavy.opacity(colorScheme == .dark ? 0.8 : 0.5)
+            ],
+            startPoint: .topLeading,
+            endPoint: .bottomTrailing
+        )
+    }
+
+    private var cardBackground: some View {
+        RoundedRectangle(cornerRadius: 22, style: .continuous)
+            .fill(Color.surfacePrimary)
+    }
+
+    private var cardOutline: some View {
+        RoundedRectangle(cornerRadius: 22, style: .continuous)
+            .stroke(Color.borderSubtle, lineWidth: 1)
+    }
+
+    private var primaryTextColor: Color {
+        Color.textPrimary
+    }
+
+    private var secondaryTextColor: Color {
+        Color.textSecondary
+    }
+
+    private var successColor: Color {
+        Color.statusPositiveText
+    }
+
+    private var warningColor: Color {
+        Color.statusWarningText
+    }
+}

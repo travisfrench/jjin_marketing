@@ -1,7 +1,7 @@
 import Link from "next/link";
 import Image from "next/image";
 import { SectionShell } from "@/components/marketing/section-shell";
-import { footerLinks } from "@/lib/marketing-content";
+import { footerLinkSections } from "@/lib/marketing-content";
 import { appStoreUrl } from "@/lib/site-config";
 
 const appStoreBadgeSrc =
@@ -43,15 +43,30 @@ export function Footer() {
             </a>
           </div>
 
-          <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
-            {footerLinks.map((link) => (
-              <Link
-                key={link.href}
-                href={link.href}
-                className="text-sm text-neutral-700 transition hover:text-neutral-950"
-              >
-                {link.label}
-              </Link>
+          <div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-[1.3fr_1fr_0.8fr]">
+            {footerLinkSections.map((section) => (
+              <nav key={section.title} aria-label={section.title}>
+                <h2 className="text-xs font-semibold uppercase tracking-[0.16em] text-neutral-950">
+                  {section.title}
+                </h2>
+                <div
+                  className={
+                    section.title === "Learn Korean"
+                      ? "mt-4 grid grid-cols-2 gap-x-5 gap-y-3"
+                      : "mt-4 grid gap-3"
+                  }
+                >
+                  {section.links.map((link) => (
+                    <Link
+                      key={link.href}
+                      href={link.href}
+                      className="text-sm leading-5 text-neutral-700 transition hover:text-neutral-950"
+                    >
+                      {link.label}
+                    </Link>
+                  ))}
+                </div>
+              </nav>
             ))}
           </div>
         </div>

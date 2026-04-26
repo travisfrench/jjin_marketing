@@ -8,16 +8,19 @@ function cleanEnglish(value: string) {
   return value.replace(/\s*\/\s*/g, " or ").trim();
 }
 
+function capitalizeFirst(value: string) {
+  const trimmed = value.trim();
+  if (!trimmed) return trimmed;
+  return `${trimmed.charAt(0).toUpperCase()}${trimmed.slice(1)}`;
+}
+
 function isQuestion(value: string) {
   return value.trim().endsWith("?");
 }
 
-function getUseCaseLabel(phrase: PhraseRecord) {
-  return phrase.useCasePrimary.replaceAll("_", " ") || phrase.category;
-}
-
 export function buildPhraseTitle(phrase: PhraseRecord) {
-  const english = cleanEnglish(phrase.englishText);
+  const english = capitalizeFirst(cleanEnglish(phrase.englishText));
+  const romanization = capitalizeFirst(phrase.romanization);
 
   if (phrase.pageTemplateKey.includes("question") || isQuestion(english)) {
     return `Hear "${english}" in Korean`;
@@ -32,10 +35,10 @@ export function buildPhraseTitle(phrase: PhraseRecord) {
   }
 
   if (phrase.pageTemplateKey.includes("meaning")) {
-    return `${phrase.romanization} Meaning and Korean Audio`;
+    return `${romanization} Meaning and Korean Audio`;
   }
 
-  return `Hear "${english}" in Korean`;
+  return `Hear "${english}" in Korean | ${romanization}`;
 }
 
 export function buildPhraseH1(phrase: PhraseRecord) {
@@ -43,11 +46,7 @@ export function buildPhraseH1(phrase: PhraseRecord) {
 }
 
 export function buildPhraseDescription(phrase: PhraseRecord) {
-  const context = phrase.usageNote
-    ? phrase.usageNote.replaceAll("_", " ")
-    : getUseCaseLabel(phrase);
-
-  return `Hear ${phrase.koreanText} (${phrase.romanization}), learn what it means, and see when to use it for ${context}. Practice Korean audio and phrase recall in Jjin.`;
+  return `Hear ${phrase.koreanText} (${phrase.romanization}) spoken clearly and how to say "${phrase.englishText}" in Korean. Listen, repeat, and learn with Jjin.`;
 }
 
 export function phraseNoIndex(phrase: PhraseRecord) {
@@ -120,7 +119,6 @@ export function buildPhrasePageSchema(phrase: PhraseRecord) {
         alternateName: phrase.romanization,
         description: `${phrase.koreanText} means "${phrase.englishText}" in English.`,
         termCode: phrase.slug,
-        inLanguage: "ko-KR",
         inDefinedTermSet: {
           "@type": "DefinedTermSet",
           "@id": phraseLibraryId,

@@ -583,16 +583,16 @@ export const landingPages: LandingPageContent[] = [
     path: "/learn-hangul",
     navLabel: "Hangul",
     linkLabel: "Learn Hangul",
-    metadataTitle: "Learn Hangul on iPhone | Jjin",
+    metadataTitle: "Learn Hangul with an Audio Consonant and Vowel Chart | Jjin",
     metadataDescription:
-      "Use Jjin to learn Hangul on iPhone while practicing practical Korean phrases, reading support, and audio-led beginner lessons.",
-    heroEyebrow: "Hangul support inside practical study",
-    heroTitle: "Learn Hangul while building useful Korean phrase recognition",
+      "Learn Hangul with Jjin's interactive Korean consonant and vowel chart, audio syllable practice, reading support, and beginner-friendly phrase lessons.",
+    heroEyebrow: "Hangul chart plus practical study",
+    heroTitle: "Learn Hangul sounds before they turn into useful Korean phrases",
     heroDescription:
-      "Jjin includes Hangul support for learners who want to get more comfortable reading Korean without separating script practice from real phrase study.",
+      "Jjin helps learners connect Korean consonants, vowels, and syllable blocks with audio, then carry that reading confidence into practical phrase study.",
     heroHighlights: [
-      "Hangul support inside practical lessons",
-      "Beginner-friendly reading reinforcement",
+      "Interactive Hangul consonant and vowel chart",
+      "Audio for each beginner syllable pairing",
       "Phrase study that connects script, sound, and meaning",
     ],
     heroImage: "/marketing/screenshots/hangul-basics.webp",
@@ -648,12 +648,12 @@ export const landingPages: LandingPageContent[] = [
     ],
     screenshotsTitle: "What learning Hangul looks like in the app",
     screenshotsDescription:
-      "Jjin gives Hangul space to be learned, but keeps it connected to real phrase practice so progress feels usable early.",
+      "Jjin gives Hangul space to be learned through consonants, vowels, and audio syllable blocks, but keeps it connected to real phrase practice so progress feels usable early.",
     screenshots: [
       {
-        title: "Hangul basics",
+        title: "Hangul basics chart",
         description:
-          "Begin with script familiarity in a format that feels approachable instead of overwhelming.",
+          "Begin with consonants and vowels in a format that feels approachable instead of overwhelming.",
         src: "/marketing/screenshots/hangul-snippet.webp",
         alt: "Jjin Hangul basics learning screen",
       },
@@ -703,7 +703,7 @@ export const landingPages: LandingPageContent[] = [
     ],
     methodTitle: "A gentler way to start reading Korean",
     methodDescription:
-      "The goal is not to force script drills in isolation. It is to make Hangul easier to revisit because it shows up in useful lessons and repeatable practice.",
+      "The goal is not to force script drills in isolation. It is to make Hangul easier to revisit through audio pairings, useful lessons, and repeatable practice.",
     methodPoints: [
       {
         title: "Learn the script in an approachable way",
@@ -736,7 +736,12 @@ export const landingPages: LandingPageContent[] = [
       {
         question: "Can I use Jjin to learn Hangul as a beginner?",
         answer:
-          "Yes. The app includes Hangul support and makes it part of the broader Korean learning flow instead of isolating it completely.",
+          "Yes. The app includes Hangul support and an audio chart for core Korean consonant and vowel pairings, then makes reading part of the broader learning flow.",
+      },
+      {
+        question: "Does the Hangul chart include audio?",
+        answer:
+          "Yes. Each visible syllable tile can be played on its own, and autoplay reads the current consonant or vowel set in order.",
       },
       {
         question: "Do I need to finish Hangul before learning phrases?",

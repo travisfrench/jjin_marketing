@@ -7,6 +7,8 @@ import {
   Sparkles,
 } from "lucide-react";
 import { Footer } from "@/components/marketing/footer";
+import { HangulHeroPlayableTile } from "@/components/hangul-basics/HangulHeroPlayableTile";
+import { HangulBasicsSection } from "@/components/hangul-basics/HangulBasicsSection";
 import { Navbar } from "@/components/marketing/navbar";
 import { SectionShell } from "@/components/marketing/section-shell";
 import { StudyCard } from "@/components/marketing/study-card";
@@ -612,19 +614,25 @@ export function SeoLandingPageTemplate({ page }: { page: LandingPageContent }) {
                       />
                     </div>
                   </div>
-                  <div className="shrink-0 rounded-[2rem] border border-black/10 bg-[linear-gradient(180deg,#FFFFFF,#F7F9FC)] p-5 shadow-[0_20px_60px_rgba(15,23,42,0.06)]">
-                    <p className="text-xs uppercase tracking-[0.18em] text-neutral-500">
-                      {page.heroScreen.title}
-                    </p>
-                    <p className="mt-3 text-sm leading-6 text-neutral-700">
-                      {page.heroScreen.description}
-                    </p>
-                  </div>
+                  {page.slug === "learn-hangul" ? (
+                    <HangulHeroPlayableTile />
+                  ) : (
+                    <div className="shrink-0 rounded-[2rem] border border-black/10 bg-[linear-gradient(180deg,#FFFFFF,#F7F9FC)] p-5 shadow-[0_20px_60px_rgba(15,23,42,0.06)]">
+                      <p className="text-xs uppercase tracking-[0.18em] text-neutral-500">
+                        {page.heroScreen.title}
+                      </p>
+                      <p className="mt-3 text-sm leading-6 text-neutral-700">
+                        {page.heroScreen.description}
+                      </p>
+                    </div>
+                  )}
                 </div>
               </div>
             </div>
           </SectionShell>
         </section>
+
+        {page.slug === "learn-hangul" && <HangulBasicsSection />}
 
         <section className="relative border-b border-black/8 py-24">
           <SectionShell>
@@ -670,7 +678,7 @@ export function SeoLandingPageTemplate({ page }: { page: LandingPageContent }) {
                 {page.screenshotsTitle}
               </p>
               <h2 className="mt-4 font-heading text-3xl font-semibold tracking-tight text-neutral-950 sm:text-5xl">
-                Jjin is focused on the essentials for immidiate communication
+                Jjin is focused on the essentials for immediate communication
               </h2>
               <p className="mt-5 text-base leading-7 text-neutral-700 sm:text-lg">
                 {page.screenshotsDescription}

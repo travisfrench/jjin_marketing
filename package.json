@@ -9,6 +9,7 @@
     "lint": "next lint",
     "validate:phrases": "node scripts/validate-phrases.mjs",
     "upload:phrase-audio": "node scripts/upload-phrase-audio.mjs",
+    "upload:hangul-basics": "node scripts/seed-hangul-basics-storage.mjs",
     "upload:phrase-timings": "node scripts/upload-phrase-audio.mjs --timings-only",
     "typecheck": "tsc --noEmit"
   },

@@ -1,0 +1,267 @@
+from __future__ import annotations
+
+from dataclasses import dataclass
+from datetime import datetime, timezone
+import logging
+from pathlib import Path
+import shutil
+
+from .config import ConversationBuildSettings
+from .melo_docker import MeloDockerEngine
+from .utils import ensure_directory, json_dumps, log_event, parse_csv_bool, read_csv_rows
+
+
+LOGGER = logging.getLogger(__name__)
+
+SUPPORTED_KINDS = {"consonant", "vowel"}
+
+CHOSEONG_INDEX = {
+    "ㄱ": 0,
+    "ㄴ": 2,
+    "ㄷ": 3,
+    "ㄹ": 5,
+    "ㅁ": 6,
+    "ㅂ": 7,
+    "ㅅ": 9,
+    "ㅇ": 11,
+    "ㅈ": 12,
+    "ㅊ": 14,
+    "ㅋ": 15,
+    "ㅌ": 16,
+    "ㅍ": 17,
+    "ㅎ": 18,
+}
+
+JUNGSEONG_INDEX = {
+    "ㅏ": 0,
+    "ㅐ": 1,
+    "ㅑ": 2,
+    "ㅓ": 4,
+    "ㅔ": 5,
+    "ㅕ": 6,
+    "ㅗ": 8,
+    "ㅛ": 12,
+    "ㅜ": 13,
+    "ㅠ": 17,
+    "ㅡ": 18,
+    "ㅣ": 20,
+}
+
+HANGUL_BASE_CODEPOINT = 0xAC00
+JUNGSEONG_COUNT = 21
+JONGSEONG_COUNT = 28
+
+
+@dataclass(frozen=True, slots=True)
+class HangulSeedSymbol:
+    kind: str
+    symbol: str
+    romanization: str
+    sort_order: int
+    is_published: bool
+
+
+@dataclass(frozen=True, slots=True)
+class HangulBasicsItem:
+    id: str
+    slug: str
+    consonant: str
+    vowel: str
+    syllable: str
+    audio_path: str
+
+
+class HangulBasicsPipeline:
+    def __init__(self, settings: ConversationBuildSettings):
+        self.settings = settings
+        self.engine = MeloDockerEngine(settings)
+        ensure_directory(self.settings.output_dir / "hangul-basics")
+        ensure_directory(self.settings.bundle_output_dir / "hangul-basics")
+        ensure_directory(self.settings.bundle_output_dir / "audio" / "hangul-basics")
+
+    def build(
+        self,
+        *,
+        seed_csv: Path,
+        render_audio: bool = True,
+        export_bundle: bool = True,
+    ) -> dict[str, int | bool | str]:
+        seed_symbols = load_hangul_seed(seed_csv)
+        consonants = [symbol for symbol in seed_symbols if symbol.kind == "consonant" and symbol.is_published]
+        vowels = [symbol for symbol in seed_symbols if symbol.kind == "vowel" and symbol.is_published]
+
+        if not consonants:
+            raise RuntimeError("Seed CSV does not contain any published consonants.")
+        if not vowels:
+            raise RuntimeError("Seed CSV does not contain any published vowels.")
+
+        items = build_hangul_basics_items(consonants=consonants, vowels=vowels)
+        rendered_audio_count = 0
+
+        local_audio_root = ensure_directory(self.settings.output_dir / "hangul-basics")
+        bundle_audio_root = ensure_directory(self.settings.bundle_output_dir / "audio" / "hangul-basics")
+
+        for item in items:
+            local_audio_dir = ensure_directory(local_audio_root / item.slug)
+            local_audio_path = local_audio_dir / "ko_normal.wav"
+
+            if render_audio:
+                self.engine.render_korean(
+                    text=item.syllable,
+                    destination=local_audio_path,
+                    voice_key=self.settings.default_ko_voice,
+                    speed=self.settings.default_ko_speed,
+                    variant=f"hangul-basics-{item.slug}",
+                )
+                rendered_audio_count += 1
+
+            if export_bundle and local_audio_path.exists():
+                bundle_audio_dir = ensure_directory(bundle_audio_root / item.slug)
+                shutil.copy2(local_audio_path, bundle_audio_dir / "ko_normal.wav")
+
+        manifest_payload = compiled_manifest(consonants=consonants, vowels=vowels, items=items)
+
+        local_manifest_dir = ensure_directory(self.settings.output_dir / "hangul-basics")
+        local_manifest_path = local_manifest_dir / "manifest.json"
+        local_manifest_path.write_bytes(json_dumps(manifest_payload))
+
+        bundle_manifest_path: Path | None = None
+        if export_bundle:
+            bundle_manifest_dir = ensure_directory(self.settings.bundle_output_dir / "hangul-basics")
+            bundle_manifest_path = bundle_manifest_dir / "manifest.json"
+            bundle_manifest_path.write_bytes(json_dumps(manifest_payload))
+
+        summary: dict[str, int | bool | str] = {
+            "seed_rows": len(seed_symbols),
+            "consonants_published": len(consonants),
+            "vowels_published": len(vowels),
+            "syllables_compiled": len(items),
+            "audio_rendered": rendered_audio_count,
+            "audio_requested": render_audio,
+            "bundle_exported": export_bundle,
+            "local_manifest": str(local_manifest_path),
+        }
+        if bundle_manifest_path is not None:
+            summary["bundle_manifest"] = str(bundle_manifest_path)
+
+        log_event(LOGGER, "hangul_basics_build_complete", **summary)
+        return summary
+
+
+def load_hangul_seed(seed_csv: Path) -> list[HangulSeedSymbol]:
+    rows = read_csv_rows(seed_csv)
+    loaded: list[HangulSeedSymbol] = []
+
+    for row_index, row in enumerate(rows, start=2):
+        raw_kind = (row.get("kind") or "").strip().lower()
+        if raw_kind not in SUPPORTED_KINDS:
+            raise ValueError(
+                f"Hangul seed row {row_index}: invalid kind `{raw_kind}`. "
+                "Expected `consonant` or `vowel`."
+            )
+
+        symbol = (row.get("symbol") or "").strip()
+        if len(symbol) != 1:
+            raise ValueError(f"Hangul seed row {row_index}: symbol `{symbol}` must be a single Hangul jamo.")
+
+        romanization = (row.get("romanization") or "").strip()
+        sort_order = int((row.get("sort_order") or "0").strip() or 0)
+        is_published = parse_csv_bool((row.get("is_published") or "false").strip())
+
+        if raw_kind == "consonant" and symbol not in CHOSEONG_INDEX:
+            raise ValueError(
+                f"Hangul seed row {row_index}: unsupported consonant `{symbol}` for Hangul basics generation."
+            )
+        if raw_kind == "vowel" and symbol not in JUNGSEONG_INDEX:
+            raise ValueError(f"Hangul seed row {row_index}: unsupported vowel `{symbol}` for Hangul basics generation.")
+
+        loaded.append(
+            HangulSeedSymbol(
+                kind=raw_kind,
+                symbol=symbol,
+                romanization=romanization,
+                sort_order=sort_order,
+                is_published=is_published,
+            )
+        )
+
+    loaded.sort(key=lambda symbol: (symbol.kind, symbol.sort_order, symbol.symbol))
+    return loaded
+
+
+def build_hangul_basics_items(
+    *,
+    consonants: list[HangulSeedSymbol],
+    vowels: list[HangulSeedSymbol],
+) -> list[HangulBasicsItem]:
+    items: list[HangulBasicsItem] = []
+
+    ordered_consonants = sorted(consonants, key=lambda item: (item.sort_order, item.symbol))
+    ordered_vowels = sorted(vowels, key=lambda item: (item.sort_order, item.symbol))
+
+    for consonant in ordered_consonants:
+        for vowel in ordered_vowels:
+            syllable = compose_hangul_syllable(consonant.symbol, vowel.symbol)
+            slug = f"c{ord(consonant.symbol):04x}-v{ord(vowel.symbol):04x}"
+            audio_path = f"output/audio/hangul-basics/{slug}/ko_normal.wav"
+
+            items.append(
+                HangulBasicsItem(
+                    id=slug,
+                    slug=slug,
+                    consonant=consonant.symbol,
+                    vowel=vowel.symbol,
+                    syllable=syllable,
+                    audio_path=audio_path,
+                )
+            )
+
+    return items
+
+
+def compose_hangul_syllable(consonant: str, vowel: str) -> str:
+    choseong = CHOSEONG_INDEX[consonant]
+    jungseong = JUNGSEONG_INDEX[vowel]
+    codepoint = HANGUL_BASE_CODEPOINT + ((choseong * JUNGSEONG_COUNT) + jungseong) * JONGSEONG_COUNT
+    return chr(codepoint)
+
+
+def compiled_manifest(
+    *,
+    consonants: list[HangulSeedSymbol],
+    vowels: list[HangulSeedSymbol],
+    items: list[HangulBasicsItem],
+) -> dict[str, object]:
+    return {
+        "version": 1,
+        "generatedAt": datetime.now(timezone.utc).isoformat(),
+        "consonants": [
+            {
+                "symbol": item.symbol,
+                "romanization": item.romanization,
+                "sortOrder": item.sort_order,
+                "isPublished": item.is_published,
+            }
+            for item in sorted(consonants, key=lambda value: (value.sort_order, value.symbol))
+        ],
+        "vowels": [
+            {
+                "symbol": item.symbol,
+                "romanization": item.romanization,
+                "sortOrder": item.sort_order,
+                "isPublished": item.is_published,
+            }
+            for item in sorted(vowels, key=lambda value: (value.sort_order, value.symbol))
+        ],
+        "items": [
+            {
+                "id": item.id,
+                "slug": item.slug,
+                "consonant": item.consonant,
+                "vowel": item.vowel,
+                "syllable": item.syllable,
+                "audioPath": item.audio_path,
+            }
+            for item in items
+        ],
+    }
