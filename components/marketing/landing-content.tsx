@@ -23,6 +23,8 @@ import {
 } from "@/lib/seo-page-content";
 import { appStoreUrl } from "@/lib/site-config";
 import { buildBreadcrumbSchema } from "@/lib/seo";
+import { getPhraseAudioSources } from "@/lib/phrases/phrase-audio";
+import { getPhraseBySlug, getPhrasePath } from "@/lib/phrases/phrase-data";
 import { MdAirplaneTicket } from "react-icons/md";
 import { FaEarListen, FaPersonWalkingLuggage, FaAnchorLock } from "react-icons/fa6";
 import { TbAlphabetKorean, TbBowlChopsticks } from "react-icons/tb";
@@ -64,6 +66,28 @@ function getFeatureIcon(icon?: string) {
 
 function formatStepNumber(index: number) {
   return String(index + 1).padStart(2, "0");
+}
+
+function getLandingPhraseDetails(item: LandingPhrase) {
+  const phrase = item.slug ? getPhraseBySlug(item.slug) : undefined;
+  const audioSource = phrase ? getPhraseAudioSources(phrase)[0] : undefined;
+  const phraseHref =
+    phrase && phrase.isPublished && phrase.pseoPageEnabled
+      ? getPhrasePath(phrase)
+      : undefined;
+  const categoryHref = phrase?.category
+    ? `/korean-phrases/${phrase.category}`
+    : undefined;
+
+  return {
+    label: item.label,
+    phrase: phrase?.koreanText ?? item.phrase,
+    romanization: phrase?.romanization ?? item.romanization,
+    meaning: phrase?.englishText ?? item.meaning,
+    audioSrc: audioSource?.src ?? item.audioSrc,
+    phraseHref,
+    categoryHref,
+  };
 }
 
 function AudienceSpotlight({ items }: { items: LandingFeature[] }) {
@@ -137,7 +161,6 @@ function FeatureBands({ items }: { items: LandingFeature[] }) {
     <div className="overflow-hidden rounded-[2.4rem] border border-black/10 bg-[linear-gradient(180deg,rgba(255,255,255,0.94),rgba(246,249,255,0.94))] shadow-[0_28px_80px_rgba(15,23,42,0.06)]">
       {items.map((item, index) => {
         const Icon = getFeatureIcon(item.icon);
-        const stepNumber = formatStepNumber(index);
 
         return (
           <article
@@ -146,9 +169,6 @@ function FeatureBands({ items }: { items: LandingFeature[] }) {
               index === 0 ? "" : "border-t border-black/8"
             }`}
           >
-            <p className="font-heading text-3xl font-semibold tracking-[-0.04em] text-neutral-300 sm:text-4xl">
-              {stepNumber}
-            </p>
             <span className="flex h-12 w-12 items-center justify-center rounded-2xl bg-white text-[#2253D9] shadow-[0_12px_30px_rgba(34,83,217,0.12)]">
               <Icon className="h-6 w-6" />
             </span>
@@ -240,62 +260,87 @@ function ScreenshotShowcase({ screenshots }: { screenshots: LandingScreenshot[] 
 function PhraseRows({ phrases }: { phrases: LandingPhrase[] }) {
   return (
     <div className="space-y-5">
-      {phrases.map((item, index) => (
-        <figure
-          key={`${item.label}-${item.phrase}`}
-          className="rounded-[2.3rem] border border-black/10 bg-white/82 p-4 shadow-[0_24px_70px_rgba(15,23,42,0.07)] sm:p-6"
-        >
-          <div className="grid gap-6 lg:grid-cols-[0.92fr,1.08fr] lg:items-center">
-            <div className={index % 2 === 1 ? "lg:order-2" : ""}>
-              <div className="flex flex-wrap items-center gap-3">
-                <span className="inline-flex rounded-full border border-[#D7E2FF] bg-[#EEF4FF] px-3 py-1 text-xs uppercase tracking-[0.2em] text-[#2253D9]">
-                  {item.label}
-                </span>
-                <span className="font-heading text-xs uppercase tracking-[0.32em] text-neutral-400">
-                  {formatStepNumber(index)}
-                </span>
-              </div>
-              <h3 className="mt-5 font-heading text-3xl font-semibold tracking-tight text-neutral-950">
-                {item.meaning}
-              </h3>
-              <p className="mt-4 max-w-xl text-base leading-7 text-neutral-700">
-                {item.note}
-              </p>
-              <div className="mt-6 grid gap-3 sm:grid-cols-2">
-                <div className="rounded-[1.35rem] border border-black/8 bg-[linear-gradient(180deg,#FFFFFF,#F7F9FC)] px-4 py-3">
-                  <p className="text-[11px] uppercase tracking-[0.22em] text-neutral-400">
-                    Phrase
-                  </p>
-                  <p className="mt-2 text-lg font-medium text-neutral-950">
-                    {item.phrase}
-                  </p>
-                </div>
-                <div className="rounded-[1.35rem] border border-black/8 bg-[linear-gradient(180deg,#FFFFFF,#F7F9FC)] px-4 py-3">
-                  <p className="text-[11px] uppercase tracking-[0.22em] text-neutral-400">
-                    Romanization
-                  </p>
-                  <p className="mt-2 text-sm font-medium text-neutral-700">
-                    {item.romanization}
-                  </p>
-                </div>
-              </div>
-            </div>
+      {phrases.map((item, index) => {
+        const details = getLandingPhraseDetails(item);
 
-            <div className={index % 2 === 1 ? "lg:order-1" : ""}>
-              <StudyCard
-                variant="hero"
-                label={item.label}
-                phrase={item.phrase}
-                romanization={item.romanization}
-                meaning={item.meaning}
-                audioSrc={item.audioSrc}
-                audioLabel={`Play ${item.label} phrase audio`}
-                className="max-w-none border-[#D5DDEA] bg-[linear-gradient(160deg,rgba(18,24,30,0.96),rgba(7,9,13,0.94))] p-5"
-              />
+        return (
+          <figure
+            key={`${item.label}-${item.phrase}`}
+            className="rounded-[2.3rem] border border-black/10 bg-white/82 p-4 shadow-[0_24px_70px_rgba(15,23,42,0.07)] sm:p-6"
+          >
+            <div className="grid gap-6 lg:grid-cols-[0.92fr,1.08fr] lg:items-center">
+              <div className={index % 2 === 1 ? "lg:order-2" : ""}>
+                <div className="flex flex-wrap items-center gap-3">
+                  {details.categoryHref ? (
+                    <Link
+                      href={details.categoryHref}
+                      className="inline-flex rounded-full border border-[#D7E2FF] bg-[#EEF4FF] px-3 py-1 text-xs uppercase tracking-[0.2em] text-[#2253D9] transition hover:border-[#2253D9]/40 hover:bg-[#E3ECFF]"
+                    >
+                      {details.label}
+                    </Link>
+                  ) : (
+                    <span className="inline-flex rounded-full border border-[#D7E2FF] bg-[#EEF4FF] px-3 py-1 text-xs uppercase tracking-[0.2em] text-[#2253D9]">
+                      {details.label}
+                    </span>
+                  )}
+                  <span className="font-heading text-xs uppercase tracking-[0.32em] text-neutral-400">
+                    {formatStepNumber(index)}
+                  </span>
+                </div>
+                <h3 className="mt-5 font-heading text-3xl font-semibold tracking-tight text-neutral-950">
+                  {details.meaning}
+                </h3>
+                <p className="mt-4 max-w-xl text-base leading-7 text-neutral-700">
+                  {item.note}
+                </p>
+                <div className="mt-6 grid gap-3 sm:grid-cols-2">
+                  <div className="rounded-[1.35rem] border border-black/8 bg-[linear-gradient(180deg,#FFFFFF,#F7F9FC)] px-4 py-3">
+                    <p className="text-[11px] uppercase tracking-[0.22em] text-neutral-400">
+                      Phrase
+                    </p>
+                    <p className="mt-2 text-lg font-medium text-neutral-950">
+                      {details.phrase}
+                    </p>
+                  </div>
+                  <div className="rounded-[1.35rem] border border-black/8 bg-[linear-gradient(180deg,#FFFFFF,#F7F9FC)] px-4 py-3">
+                    <p className="text-[11px] uppercase tracking-[0.22em] text-neutral-400">
+                      Romanization
+                    </p>
+                    <p className="mt-2 text-sm font-medium text-neutral-700">
+                      {details.romanization}
+                    </p>
+                  </div>
+                </div>
+                {details.phraseHref ? (
+                  <Link
+                    href={details.phraseHref}
+                    className="mt-5 inline-flex items-center gap-2 text-sm font-semibold text-[#2253D9]"
+                  >
+                    Hear the full phrase
+                    <ArrowRight className="h-4 w-4" />
+                  </Link>
+                ) : null}
+              </div>
+
+              <div className={index % 2 === 1 ? "lg:order-1" : ""}>
+                <StudyCard
+                  variant="hero"
+                  label={details.label}
+                  phrase={details.phrase}
+                  romanization={details.romanization}
+                  meaning={details.meaning}
+                  audioSrc={details.audioSrc}
+                  audioLabel={`Play ${details.label} phrase audio`}
+                  labelHref={details.categoryHref}
+                  phraseHref={details.phraseHref}
+                  phraseCtaLabel="Open phrase page"
+                  className="max-w-none border-[#D5DDEA] bg-[linear-gradient(160deg,rgba(18,24,30,0.96),rgba(7,9,13,0.94))] p-5"
+                />
+              </div>
             </div>
-          </div>
-        </figure>
-      ))}
+          </figure>
+        );
+      })}
     </div>
   );
 }
@@ -475,6 +520,13 @@ export function FounderPerspectiveSection() {
                 mirror the situations that actually repeat.
               </p>
             </div>
+            <Link
+              href="/about"
+              className="mt-6 inline-flex items-center gap-2 text-sm font-semibold text-[#2253D9]"
+            >
+              Read the founder story
+              <ArrowRight className="h-4 w-4" />
+            </Link>
           </div>
         </div>
       </SectionShell>
@@ -665,6 +717,23 @@ export function SeoLandingPageTemplate({ page }: { page: LandingPageContent }) {
                   recognize, and easier to revisit when the same situations show
                   up again.
                 </p>
+                <div className="mt-7 flex flex-wrap gap-4">
+                  <Link
+                    href="/korean-phrases"
+                    className="inline-flex items-center gap-2 rounded-full border border-[#2253D9]/20 bg-[#EEF4FF] px-5 py-3 text-sm font-semibold text-[#2253D9] transition hover:border-[#2253D9]/40 hover:bg-[#E2EBFF]"
+                  >
+                    Try phrase examples
+                    <ArrowRight className="h-4 w-4" />
+                  </Link>
+                  {page.slug !== "learn-hangul" ? (
+                    <Link
+                      href="/learn-hangul"
+                      className="inline-flex items-center gap-2 rounded-full border border-black/10 bg-white px-5 py-3 text-sm font-semibold text-neutral-800 transition hover:border-black/20 hover:bg-neutral-50"
+                    >
+                      See Hangul basics
+                    </Link>
+                  ) : null}
+                </div>
               </div>
               <FeatureBands items={page.features} />
             </div>

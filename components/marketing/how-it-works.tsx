@@ -1,5 +1,7 @@
 "use client";
 
+import Link from "next/link";
+import { ArrowRight } from "lucide-react";
 import { motion, useReducedMotion } from "framer-motion";
 import { howItWorksItems } from "@/lib/marketing-content";
 import { SectionShell } from "@/components/marketing/section-shell";
@@ -53,6 +55,21 @@ export function HowItWorks() {
           Designed around short, repeatable study loops instead of broad lesson
           filler.
         </p>
+        <div className="mt-8 flex flex-wrap justify-center gap-4">
+          <Link
+            href="/korean-phrases"
+            className="inline-flex items-center gap-2 rounded-full border border-[#2253D9]/20 bg-[#EEF4FF] px-5 py-3 text-sm font-semibold text-[#2253D9] transition hover:border-[#2253D9]/40 hover:bg-[#E2EBFF]"
+          >
+            Try the phrase library
+            <ArrowRight className="h-4 w-4" />
+          </Link>
+          <Link
+            href="/learn-hangul"
+            className="inline-flex items-center gap-2 rounded-full border border-black/10 bg-white px-5 py-3 text-sm font-semibold text-neutral-800 transition hover:border-black/20 hover:bg-neutral-50"
+          >
+            Practice Hangul basics
+          </Link>
+        </div>
       </SectionShell>
     </section>
   );

@@ -1,10 +1,11 @@
 import Image from "next/image";
 import Link from "next/link";
-import { ArrowRight, Compass, Headphones } from "lucide-react";
+import { ArrowRight, Headphones } from "lucide-react";
 import { Navbar } from "@/components/marketing/navbar";
 import { Footer } from "@/components/marketing/footer";
 import { SectionShell } from "@/components/marketing/section-shell";
 import { QuickPhrasePlayButton } from "@/components/phrases/quick-phrase-play-button";
+import { PhraseLearningFlowSection } from "@/components/phrases/phrase-learning-flow-section";
 import { appStoreUrl } from "@/lib/site-config";
 import { getPhraseAudioSources } from "@/lib/phrases/phrase-audio";
 import { getPhrasePath } from "@/lib/phrases/phrase-data";
@@ -217,6 +218,11 @@ export function PhraseHubTemplate({
             </SectionShell>
           </section>
         ) : null}
+
+        <PhraseLearningFlowSection
+          title={`Practice ${hub.title.toLowerCase()} inside the full app flow`}
+          description="Category pages are a focused preview. Jjin adds the app details around them: listening-first review, Hangul support, and short loops that make practical Korean easier to revisit."
+        />
 
         <section className="py-20 sm:py-24">
           <SectionShell>

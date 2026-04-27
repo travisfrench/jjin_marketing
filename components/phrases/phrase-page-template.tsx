@@ -7,6 +7,7 @@ import { SectionShell } from "@/components/marketing/section-shell";
 import { JsonLd } from "@/components/seo/json-ld";
 import { QuickPhrasePlayButton } from "@/components/phrases/quick-phrase-play-button";
 import { PhraseStudyPreviewCard } from "@/components/phrases/phrase-study-preview-card";
+import { PhraseLearningFlowSection } from "@/components/phrases/phrase-learning-flow-section";
 import { buildBreadcrumbSchema } from "@/lib/seo";
 import { getPhraseAudioSources } from "@/lib/phrases/phrase-audio";
 import { getPhrasePath } from "@/lib/phrases/phrase-data";
@@ -246,6 +247,11 @@ export function PhrasePageTemplate({
             </SectionShell>
           </section>
         ) : null}
+
+        <PhraseLearningFlowSection
+          title={`Use ${phrase.romanization} as part of a real study loop`}
+          description={`This phrase page helps you hear ${phrase.koreanText} in context. Jjin keeps that same phrase connected to category practice, listening review, and repeatable app study.`}
+        />
 
         <section className="py-20 sm:py-24">
           <SectionShell>

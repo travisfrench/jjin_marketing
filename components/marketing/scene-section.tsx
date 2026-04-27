@@ -1,6 +1,7 @@
 "use client";
 
 import Image from "next/image";
+import Link from "next/link";
 import { useRef, useState } from "react";
 import {
   useMotionValueEvent,
@@ -94,9 +95,17 @@ export function SceneSection({ scenes }: SceneSectionProps) {
                   meaning={scene.meaning}
                   audioSrc={scene.audio}
                   pills={scene.pills}
+                  pillLinks={scene.pillLinks}
+                  labelHref={scene.categoryHref}
+                  phraseHref={scene.phraseHref}
                 />
                 <div className="max-w-3xl space-y-3">
-                  <p className="text-sm uppercase tracking-[0.15em] text-white/80">{scene.label}</p>
+                  <Link
+                    href={scene.categoryHref}
+                    className="inline-flex rounded-full border border-white/20 bg-white/55 px-3 py-1 text-xs font-bold uppercase tracking-[0.14em] text-neutral-800 transition hover:border-white/40 hover:bg-white/70"
+                  >
+                    {scene.label}
+                  </Link>
                   <h2 className="font-heading text-4xl font-semibold leading-tight text-foreground sm:text-5xl">
                     {scene.title}
                   </h2>
@@ -195,11 +204,19 @@ export function SceneSection({ scenes }: SceneSectionProps) {
                     audioLabel={`Play ${scene.label} phrase audio`}
                     isActive={isActive}
                     pills={scene.pills}
+                    pillLinks={scene.pillLinks}
+                    labelHref={scene.categoryHref}
+                    phraseHref={scene.phraseHref}
                     className="mx-auto"
                   />
 
                   <div className="max-w-3xl space-y-3">
-                    <p className="inline-flex rounded-full border border-white/20 bg-white/55 px-3 py-1 text-xs font-bold uppercase tracking-[0.14em] text-neutral-800">{scene.label}</p>
+                    <Link
+                      href={scene.categoryHref}
+                      className="inline-flex rounded-full border border-white/20 bg-white/55 px-3 py-1 text-xs font-bold uppercase tracking-[0.14em] text-neutral-800 transition hover:border-white/40 hover:bg-white/70"
+                    >
+                      {scene.label}
+                    </Link>
                     <h2 className="font-heading text-4xl font-semibold leading-tight text-foreground sm:text-5xl lg:text-6xl">
                       {scene.title}
                     </h2>

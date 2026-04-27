@@ -1,6 +1,7 @@
 "use client";
 
-import { Pause, Play } from "lucide-react";
+import { ArrowRight, Pause, Play } from "lucide-react";
+import Link from "next/link";
 import { useEffect, useRef, useState } from "react";
 import { cn } from "@/lib/utils";
 
@@ -15,6 +16,10 @@ type StudyCardProps = {
   audioSrc?: string;
   audioLabel?: string;
   isActive?: boolean;
+  labelHref?: string;
+  phraseHref?: string;
+  phraseCtaLabel?: string;
+  pillLinks?: { label: string; href: string }[];
 };
 
 export function StudyCard({
@@ -28,6 +33,10 @@ export function StudyCard({
   audioSrc,
   audioLabel,
   isActive = true,
+  labelHref,
+  phraseHref,
+  phraseCtaLabel = "Study phrase",
+  pillLinks,
 }: StudyCardProps) {
   const audioRef = useRef<HTMLAudioElement | null>(null);
   const [isPlaying, setIsPlaying] = useState(false);
@@ -86,7 +95,14 @@ export function StudyCard({
       <div className="absolute inset-0 bg-noise-layer opacity-60" aria-hidden />
       <div className="relative z-10 space-y-3">
         <div className="flex items-center justify-between gap-3">
-          {label ? (
+          {label && labelHref ? (
+            <Link
+              href={labelHref}
+              className="inline-flex rounded-full border border-warm/50 bg-warm/10 px-3 py-1 text-xs font-medium uppercase tracking-[0.12em] text-warm transition hover:border-warm/80 hover:bg-warm/20"
+            >
+              {label}
+            </Link>
+          ) : label ? (
             <p className="inline-flex rounded-full border border-warm/50 bg-warm/10 px-3 py-1 text-xs font-medium uppercase tracking-[0.12em] text-warm">
               {label}
             </p>
@@ -137,17 +153,43 @@ export function StudyCard({
           </p>
         </div>
 
-        {pills?.length ? (
-          <ul className="flex flex-wrap gap-2">
-            {pills.map((pill) => (
-              <li
-                key={pill}
-                className="mt-4 rounded-full border border-white/15 bg-white/5 px-2.5 py-1 text-xs text-white/80"
+        {pills?.length || phraseHref ? (
+          <div className="mt-4 flex flex-wrap items-center justify-between gap-3">
+            {pills?.length ? (
+              <ul className="flex flex-wrap gap-2">
+                {pills.map((pill) => {
+                  const href = pillLinks?.find((item) => item.label === pill)?.href;
+
+                  return (
+                    <li key={pill}>
+                      {href ? (
+                        <Link
+                          href={href}
+                          className="rounded-full border border-white/15 bg-white/5 px-2.5 py-1 text-xs text-white/80 transition hover:border-white/35 hover:bg-white/12 hover:text-white"
+                        >
+                          {pill}
+                        </Link>
+                      ) : (
+                        <span className="rounded-full border border-white/15 bg-white/5 px-2.5 py-1 text-xs text-white/80">
+                          {pill}
+                        </span>
+                      )}
+                    </li>
+                  );
+                })}
+              </ul>
+            ) : null}
+
+            {phraseHref ? (
+              <Link
+                href={phraseHref}
+                className="group ml-auto inline-flex items-center gap-1.5 text-sm font-semibold text-warm transition hover:text-white"
               >
-                {pill}
-              </li>
-            ))}
-          </ul>
+                {phraseCtaLabel}
+                <ArrowRight className="h-4 w-4 transition group-hover:translate-x-1" />
+              </Link>
+            ) : null}
+          </div>
         ) : null}
       </div>
     </article>

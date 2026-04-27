@@ -35,11 +35,14 @@ export const phraseCategoryLinks = [
 export type SceneContent = {
   id: string;
   label: string;
+  categoryHref: string;
+  phraseHref?: string;
   title: string;
   phrase: string;
   romanization: string;
   meaning: string;
   pills: string[];
+  pillLinks: { label: string; href: string }[];
   copy: string;
   image: string;
   audio: string;
@@ -49,11 +52,17 @@ export const scenes: SceneContent[] = [
   {
     id: "restaurant",
     label: "Restaurant",
+    categoryHref: "/korean-phrases/restaurant",
     title: "Handle your first table interaction with confidence",
     phrase: "메뉴 좀 주세요",
     romanization: "menyu jom juseyo",
     meaning: "Let me look at the menu",
     pills: ["Dining", "Menu", "Confidence"],
+    pillLinks: [
+      { label: "Dining", href: "/korean-phrases/restaurant" },
+      { label: "Menu", href: "/korean-phrases/restaurant" },
+      { label: "Confidence", href: "/korean-learning-app" },
+    ],
     copy: "Start comfortably the moment you sit down.",
     image: "/marketing/scenes/jjin-kbbq-bg.webp",
     audio: "/marketing/audio/menu.wav",
@@ -61,11 +70,17 @@ export const scenes: SceneContent[] = [
   {
     id: "cafe",
     label: "Cafe",
+    categoryHref: "/korean-phrases/cafe",
     title: "Order naturally in a cafe without overthinking",
     phrase: "포장해 주세요",
     romanization: "pojanghae juseyo",
     meaning: "To go please",
     pills: ["Ordering", "Takeout", "Speed"],
+    pillLinks: [
+      { label: "Ordering", href: "/korean-phrases/cafe" },
+      { label: "Takeout", href: "/korean-phrases/cafe" },
+      { label: "Speed", href: "/korean-listening-practice" },
+    ],
     copy: "Useful at the counter when you need to order quickly.",
     image: "/marketing/scenes/jjin-cafe-bg.webp",
     audio: "/marketing/audio/pojanghae-juseyo.wav",
@@ -73,11 +88,17 @@ export const scenes: SceneContent[] = [
   {
     id: "transit",
     label: "Transit",
+    categoryHref: "/korean-phrases/transit",
     title: "Move through stations when you need answers fast",
     phrase: "어디에서 타요?",
     romanization: "eodieseo tayo?",
     meaning: "Where do I board?",
     pills: ["Subway", "Directions", "Urgent"],
+    pillLinks: [
+      { label: "Subway", href: "/korean-phrases/transit" },
+      { label: "Directions", href: "/korean-phrases/directions" },
+      { label: "Urgent", href: "/korean-phrases/emergency" },
+    ],
     copy: "Learn what helps when you need to move and ask fast.",
     image: "/marketing/scenes/jjin-subway-bg.webp",
     audio: "/marketing/audio/eodieseo-tayo.wav",
@@ -85,11 +106,18 @@ export const scenes: SceneContent[] = [
   {
     id: "hotel",
     label: "Hotel",
+    categoryHref: "/korean-phrases/hotel",
+    phraseHref: "/phrases/check-in-in-korean",
     title: "Check in smoothly and keep travel interactions simple",
     phrase: "체크인",
     romanization: "Chekeu in",
     meaning: "Check in",
     pills: ["Traveling", "Arrival", "Polite"],
+    pillLinks: [
+      { label: "Traveling", href: "/learn-korean-for-travel" },
+      { label: "Arrival", href: "/korean-phrases/hotel" },
+      { label: "Polite", href: "/korean-phrases/courtesy" },
+    ],
     copy: "Smooth out the essential parts of travel.",
     image: "/marketing/scenes/jjin-hotel-bg.webp",
     audio: "/marketing/audio/chekeu-in.wav",
@@ -97,11 +125,18 @@ export const scenes: SceneContent[] = [
   {
     id: "basics",
     label: "Basics",
+    categoryHref: "/korean-phrases/courtesy",
+    phraseHref: "/phrases/excuse-me-in-korean",
     title: "Build practical confidence for everyday Seoul moments",
     phrase: "실례합니다",
     romanization: "sillyehamnida",
     meaning: "Excuse me",
     pills: ["Conversation", "Everyday", "Respectful"],
+    pillLinks: [
+      { label: "Conversation", href: "/korean-phrases/courtesy" },
+      { label: "Everyday", href: "/korean-learning-app" },
+      { label: "Respectful", href: "/korean-phrases/courtesy" },
+    ],
     copy: "One of the most useful phrases when you are learning in the real world.",
     image: "/marketing/scenes/jjin-basics-bg.webp",
     audio: "/marketing/audio/sillyehamnida.wav",
