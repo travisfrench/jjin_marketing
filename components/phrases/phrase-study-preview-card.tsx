@@ -294,16 +294,16 @@ export function PhraseStudyPreviewCard({
 
   const cardGlow =
     phase === "practice"
-      ? "shadow-[0_0_0_2px_rgba(205,46,58,0.18),0_0_0_6px_rgba(0,71,160,0.12),0_34px_90px_rgba(15,23,42,0.16)] bg-white/40 rounded-2xl backdrop-blur-sm"
-      : "bg-white/40 rounded-2xl backdrop-blur-sm";
+      ? "border border-white/45 bg-[linear-gradient(135deg,rgba(255,255,255,0.62),rgba(205,46,58,0.13)_42%,rgba(0,71,160,0.12))] shadow-[0_0_0_2px_rgba(205,46,58,0.16),0_0_0_6px_rgba(0,71,160,0.1),0_34px_90px_rgba(15,23,42,0.16)] backdrop-blur-xl"
+      : "border border-white/45 bg-[linear-gradient(135deg,rgba(205,46,58,0.24),rgba(255,255,255,0.28)_46%,rgba(0,71,160,0.26))] shadow-[0_28px_80px_rgba(15,23,42,0.12)] backdrop-blur-sm";
 
   return (
     <article
       className={`relative mx-auto w-full max-w-[27rem] overflow-hidden rounded-[2.4rem] py-6 text-center text-neutral-950 ${cardGlow} transition-shadow duration-500`}
     >
       <div
-        className={`pointer-events-none absolute inset-0 rounded-[2.4rem] opacity-0 transition-opacity duration-500 ${
-          phase === "practice" ? "opacity-100" : ""
+        className={`pointer-events-none absolute inset-0 rounded-[2.4rem] bg-[radial-gradient(circle_at_22%_14%,rgba(255,255,255,0.78),transparent_30%),radial-gradient(circle_at_78%_86%,rgba(255,255,255,0.46),transparent_34%)] transition-opacity duration-500 ${
+          phase === "practice" ? "opacity-95" : "opacity-70"
         }`}
       >
 
@@ -352,7 +352,7 @@ export function PhraseStudyPreviewCard({
               <span
                 key={`${unit}-${index}`}
                 className={`transition-colors duration-150 ${
-                  isActive ? "text-[#C56D5C]" : "text-neutral-950/42"
+                  isActive ? "text-[#CD2E3A]" : "text-neutral-950/42"
                 }`}
               >
                 {unit}
@@ -379,7 +379,7 @@ export function PhraseStudyPreviewCard({
             type="button"
             onClick={() => void runStudySequence(isRunning)}
             disabled={!activeAudio?.src}
-            className="inline-flex h-16 w-28 items-center justify-center rounded-[2rem] bg-neutral-950/5 text-[#C56D5C] transition hover:bg-neutral-950/8 disabled:text-neutral-300"
+            className="inline-flex h-16 w-28 items-center justify-center rounded-[2rem] border border-[#CD2E3A]/15 bg-white/45 text-[#CD2E3A] shadow-[inset_0_1px_0_rgba(255,255,255,0.5)] transition hover:border-[#CD2E3A]/25 hover:bg-white/65 disabled:text-neutral-300"
             aria-label={isRunning ? "Restart practice preview" : "Start practice preview"}
           >
             {isRunning ? <RotateCcw className="h-7 w-7" /> : <Play className="h-6 w-6 fill-current" />}
@@ -404,7 +404,7 @@ export function PhraseStudyPreviewCard({
                 {option}
                 <span
                   className={`h-2.5 w-2.5 rounded-full ${
-                    active ? "bg-[#34C759]" : "bg-black/10 border-black/30 border"
+                    active ? "bg-[#0047A0]" : "bg-black/10 border-black/30 border"
                   }`}
                 />
               </button>
