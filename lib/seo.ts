@@ -81,10 +81,10 @@ export function createMetadata({
     robots: noIndex
       ? {
           index: false,
-          follow: false,
+          follow: true,
           googleBot: {
             index: false,
-            follow: false,
+            follow: true,
           },
         }
       : {
